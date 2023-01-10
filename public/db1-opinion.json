@@ -1,0 +1,46 @@
+{
+  "items": [
+    {
+      "flag": "default",
+      "featured": true,
+      "revisions": [],
+      "name": "VueJS",
+      "title": "Vue JS",
+      "ring": "adopt",
+      "quadrant": "languages-and-frameworks",
+      "body": "<p><div><p>Vue.js is a popular JavaScript framework for building user interfaces and single-page applications. It was created by Evan You in 2014 and has since grown in popularity due to its simplicity and flexibility.</p><p>One of the key features of Vue.js is its reactivity system, which allows developers to easily track and update the state of a component. This makes it particularly well-suited for building complex and interactive user interfaces.</p><p>Vue.js also includes a powerful set of official and community-developed tools and libraries, such as Vue CLI, Vuex, and Vue Router. These tools and libraries make it easy to set up, develop, and maintain Vue.js projects, even for large and complex applications.</p><p>In addition to its technical benefits, Vue.js also has a large and active community of developers, which results in a wealth of resources, tutorials, and support. This makes it a great choice for organizations that want to adopt a modern, well-supported framework for their frontend projects.</p><p>Adoption of Vue.js provides the following benefits:</p><ul><li>Easy to learn and understand, even for developers with limited experience with JavaScript frameworks</li><li>Performance and flexibility</li><li>Good developer experience</li><li>Large and active community</li><li>A wide range of available tools and libraries</li></ul><p>This make it a suitable choice for a wide range of projects, from small and simple websites to large and complex web applications.</p></div></p>\n",
+      "info": "",
+      "release": "2017-03-01"
+    },
+    {
+      "flag": "default",
+      "featured": true,
+      "revisions": [
+        {
+          "name": "adr",
+          "release": "2018-03-01",
+          "title": "ADR",
+          "ring": "assess",
+          "quadrant": "methods-and-patterns",
+          "body": "<p>Architecture Decision Records</p>\n<p>ADR is a lightweight documentation of important architecture decisions taken by the team.\nWithout documentation of the architecture and the architecture decisions, new team members can only do two things:</p>\n<ul>\n<li>either (blindy) accept what they find and see or</li>\n<li>(blindy) change things</li>\n</ul>\n<p>It goes without saying that both options aren&#39;t right.</p>\n<p>Therefore, we suggest documenting the important architecture decisions. We use a simple tool such as <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://github.com/npryce/adr-tools\">https://github.com/npryce/adr-tools</a> and store them in version control.\nIn larger projects with many teams we also establish a regular &quot;architecture board / COI&quot; with regular meetings.\nOften, the architecture decisions are taken in such meetings.</p>\n<p>The main purpose of this documentation is to:</p>\n<ul>\n<li>inform new team members about the previous architecture decisions and their purpose and backgrounds</li>\n<li>inform the whole team (including all people who were absent)</li>\n<li>create documentation that can be used to remember things (e.g. conventions, patterns, etc.)</li>\n</ul>\n"
+        },
+        {
+          "name": "adr",
+          "release": "2023-03-01",
+          "title": "ADR",
+          "ring": "assess",
+          "quadrant": "methods-and-patterns",
+          "body": "<p>teste </p>\n"
+        }
+      ],
+      "name": "adr",
+      "title": "ADR",
+      "ring": "assess",
+      "quadrant": "methods-and-patterns",
+      "body": "<p>Architecture Decision Records</p>\n<p>ADR is a lightweight documentation of important architecture decisions taken by the team.\nWithout documentation of the architecture and the architecture decisions, new team members can only do two things:</p>\n<ul>\n<li>either (blindy) accept what they find and see or</li>\n<li>(blindy) change things</li>\n</ul>\n<p>It goes without saying that both options aren&#39;t right.</p>\n<p>Therefore, we suggest documenting the important architecture decisions. We use a simple tool such as <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://github.com/npryce/adr-tools\">https://github.com/npryce/adr-tools</a> and store them in version control.\nIn larger projects with many teams we also establish a regular &quot;architecture board / COI&quot; with regular meetings.\nOften, the architecture decisions are taken in such meetings.</p>\n<p>The main purpose of this documentation is to:</p>\n<ul>\n<li>inform new team members about the previous architecture decisions and their purpose and backgrounds</li>\n<li>inform the whole team (including all people who were absent)</li>\n<li>create documentation that can be used to remember things (e.g. conventions, patterns, etc.)</li>\n</ul>\n",
+      "info": "",
+      "release": "2018-03-01"
+    }
+  ],
+  "releases": ["2023-20-01"]
+}

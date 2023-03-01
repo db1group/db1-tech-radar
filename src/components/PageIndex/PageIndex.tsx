@@ -29,7 +29,6 @@ export default function PageIndex({
   const publishedLabel = pageIndex?.publishedLabel || "Published";
 
   const newestRelease = releases.slice(-1)[0];
-  console.log(releases);
   const numberOfReleases = releases.length;
   const showChart =
     config.homepageContent === HomepageOption.chart ||

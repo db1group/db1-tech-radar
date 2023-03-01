@@ -4,6 +4,186 @@
       "flag": "default",
       "featured": true,
       "revisions": [],
+      "title": "Kotlin",
+      "info": "",
+      "release": "2017-03-01",
+      "name": "Kotlin",
+      "ring": "adopt",
+      "quadrant": "languages-and-frameworks",
+      "body": "<p>Widely adopted after Google adoption as a standard language for Android apps.Wheel on the JVM, which makes life easier for the java developers and with many facilities of modern languages</p>"
+    },
+    {
+      "flag": "default",
+      "featured": true,
+      "revisions": [],
+      "title": "C#",
+      "info": "",
+      "release": "2017-03-01",
+      "name": "csharp",
+      "ring": "adopt",
+      "quadrant": "languages-and-frameworks",
+      "body": "<p>With the broad adoption and beautiful work of Microsoft in .NET Core, it is a language that will still last many years on the rise.The possibility of development in Linux OS, running on servers outside the IIS is something of much value as well.</p>"
+    },
+    {
+      "flag": "default",
+      "featured": true,
+      "revisions": [],
+      "title": "NodeJS",
+      "info": "",
+      "release": "2017-03-01",
+      "name": "NodeJS",
+      "ring": "adopt",
+      "quadrant": "languages-and-frameworks",
+      "body": "<p>For his range of almost infinite libraries, for his ease in working with asynchronous and Io Non-Blocking made the node gain the hearts of Devs.The possibility of working with JS/TS in Backend is something that enables many horizons</p>"
+    },
+    {
+      "flag": "default",
+      "featured": true,
+      "revisions": [],
+      "title": "PHP",
+      "info": "",
+      "release": "2017-03-01",
+      "name": "PHP",
+      "ring": "adopt",
+      "quadrant": "languages-and-frameworks",
+      "body": "<p> The controversial language has been receiving several updates that left them with a new language face.With market players like Facebook, Wikipedia, Slack, Ebanx, WordPress, PHP still has a lot of space in web development.However what most catches the attention of PHP in recent times was Swoole.Which is an internal PHP framework that its performance is as good as of Golang and even better in some benchmarks.</p>"
+    },
+    {
+      "flag": "default",
+      "featured": true,
+      "revisions": [],
+      "title": "Python",
+      "info": "",
+      "release": "2017-03-01",
+      "name": "Python",
+      "ring": "trial",
+      "quadrant": "languages-and-frameworks",
+      "body": "The most popular language among AI developers is a great language to implement web systems.Simple and with a low learning curve has been raising many new developers"
+    },
+    {
+      "flag": "default",
+      "featured": true,
+      "revisions": [],
+      "title": "Golang",
+      "info": "",
+      "release": "2017-03-01",
+      "name": "Golang",
+      "ring": "trial",
+      "quadrant": "languages-and-frameworks",
+      "body": "<p>It has been widely adopted in systems that need your business rule, high performance at low cost.GO is an extremely simple and direct language, which brings positive and negative points in the dev. However, your performance is extremely relevant.</p>"
+    },
+    {
+      "flag": "default",
+      "featured": true,
+      "revisions": [],
+      "title": "Dart",
+      "info": "",
+      "release": "2017-03-01",
+      "name": "Dart",
+      "ring": "assess",
+      "quadrant": "languages-and-frameworks",
+      "body": "<p>With the popularity of the Flutter in all frontands; Web/Mobile Dart has gained a space to shine. A very simple language but with a performance ok. Attention points is the low amount of external resources, such as LIBS and extensions</p>"
+    },
+    {
+      "flag": "default",
+      "featured": true,
+      "revisions": [],
+      "title": "Rust",
+      "info": "",
+      "release": "2017-03-01",
+      "name": "Rust",
+      "ring": "assess",
+      "quadrant": "languages-and-frameworks",
+      "body": "<p>It has been the most popular language of market research, with incredible performance and the possibility of developers leave behind C ++, Rust has been gaining more and more market. Android has been rewritten in Rust and featuring several Memory Safe indicators that leave anyone's eyes shining.</p>"
+    },
+    {
+      "flag": "default",
+      "featured": true,
+      "revisions": [],
+      "title": "Deno",
+      "info": "",
+      "release": "2017-03-01",
+      "name": "Deno",
+      "ring": "assess",
+      "quadrant": "languages-and-frameworks",
+      "body": "<p>Created to be a successor to the Node, I can be an output for those who like TypeScript but prefer something more Safe than Node.Deno comes to solve some issues that the node sinned, such as security for example.With the same creator of the node, Ryan Dahl has been the main name in the development of the node.</p>"
+    },
+    {
+      "flag": "default",
+      "featured": true,
+      "revisions": [],
+      "title": "Typescript",
+      "info": "",
+      "release": "2017-03-01",
+      "name": "Typescript",
+      "ring": "adopt",
+      "quadrant": "languages-and-frameworks",
+      "body": "<p>TypeScript is a programming language which was developed by Microsoft. It is free, open source and superset of the JavaScript. <br><br> Maintained by Microsoft, the language comes with an addition of class-based object oriented programming, as well as optional static typing to the JavaScript. <br><br> It is possible to create JavaScript applications for client or server side using the TypeScript. TypeScript has been created to tackle the development of large programs. Being a superset of the JavaScript, it can be transcompiled to the latter and all JavaScript programs can be considered as TypeScript programs. </p>"
+    },
+    {
+      "flag": "default",
+      "featured": true,
+      "revisions": [],
+      "title": "Angular",
+      "info": "",
+      "release": "2017-03-01",
+      "name": "Angular",
+      "ring": "adopt",
+      "quadrant": "languages-and-frameworks",
+      "body": "<p>Angular is an open-source, JavaScript framework written in TypeScript. Google maintains it, and its primary purpose is to develop single-page applications. As a framework, Angular has clear advantages while also providing a standard structure for developers to work with. It enables users to create large applications in a maintainable manner. </p>"
+    },
+    {
+      "flag": "default",
+      "featured": true,
+      "revisions": [],
+      "title": "React.js",
+      "info": "",
+      "release": "2017-03-01",
+      "name": "React.js",
+      "ring": "adopt",
+      "quadrant": "languages-and-frameworks",
+      "body": "<p>React is a JavaScript-based UI development library. Facebook and an open-source developer community run it. Although React is a library rather than a language, it is widely used in web development. The library first appeared in May 2013 and is now one of the most commonly used frontend libraries for web development. React offers various extensions for entire application architectural support, such as Flux and React Native, beyond mere UI. </p>"
+    },
+    {
+      "flag": "default",
+      "featured": true,
+      "revisions": [],
+      "title": "Keycloak",
+      "info": "",
+      "release": "2017-03-01",
+      "name": "Keycloak",
+      "ring": "adopt",
+      "quadrant": "tools",
+      "body": "<p>Keycloak is an SSO solution for web apps, mobile and RESTful web services. It is an authentication server where users can centrally login, logout, register, and manage their user accounts. The Keycloak admin UI can manage roles and role mappings for any application secured by Keycloak. The Keycloak Server can also be used to perform social logins via the user's favorite social media site i.e. Google, Facebook, Twitter etc.</p>"
+    },
+    {
+      "flag": "default",
+      "featured": true,
+      "revisions": [],
+      "title": "Open API",
+      "info": "",
+      "release": "2017-03-01",
+      "name": "Open API",
+      "ring": "adopt",
+      "quadrant": "tools",
+      "body": "<p>he OpenAPI Specification (OAS) defines a standard, programming language-agnostic interface description for HTTP APIs, which allows both humans and computers to discover and understand the capabilities of a service without requiring access to source code, additional documentation, or inspection of network traffic. When properly defined via OpenAPI, a consumer can understand and interact with the remote service with a minimal amount of implementation logic. Similar to what interface descriptions have done for lower-level programming, the OpenAPI Specification removes guesswork in calling a service. </p>"
+    },
+    {
+      "flag": "default",
+      "featured": true,
+      "revisions": [],
+      "title": "Sonarqube",
+      "info": "",
+      "release": "2017-03-01",
+      "name": "Sonarqube",
+      "ring": "adopt",
+      "quadrant": "tools",
+      "body": "<p>SonarQube is a Code Quality Assurance tool that collects and analyzes source code, and provides reports for the code quality of your project. It combines static and dynamic analysis tools and enables quality to be measured continually over time. </p>"
+    },
+    {
+      "flag": "default",
+      "featured": true,
+      "revisions": [],
       "name": "VueJS",
       "title": "Vue JS",
       "ring": "adopt",
@@ -11,36 +191,7 @@
       "body": "<p><div><p>Vue.js is a popular JavaScript framework for building user interfaces and single-page applications. It was created by Evan You in 2014 and has since grown in popularity due to its simplicity and flexibility.</p><p>One of the key features of Vue.js is its reactivity system, which allows developers to easily track and update the state of a component. This makes it particularly well-suited for building complex and interactive user interfaces.</p><p>Vue.js also includes a powerful set of official and community-developed tools and libraries, such as Vue CLI, Vuex, and Vue Router. These tools and libraries make it easy to set up, develop, and maintain Vue.js projects, even for large and complex applications.</p><p>In addition to its technical benefits, Vue.js also has a large and active community of developers, which results in a wealth of resources, tutorials, and support. This makes it a great choice for organizations that want to adopt a modern, well-supported framework for their frontend projects.</p><p>Adoption of Vue.js provides the following benefits:</p><ul><li>Easy to learn and understand, even for developers with limited experience with JavaScript frameworks</li><li>Performance and flexibility</li><li>Good developer experience</li><li>Large and active community</li><li>A wide range of available tools and libraries</li></ul><p>This make it a suitable choice for a wide range of projects, from small and simple websites to large and complex web applications.</p></div></p>\n",
       "info": "",
       "release": "2017-03-01"
-    },
-    {
-      "flag": "default",
-      "featured": true,
-      "revisions": [
-        {
-          "name": "adr",
-          "release": "2018-03-01",
-          "title": "ADR",
-          "ring": "assess",
-          "quadrant": "methods-and-patterns",
-          "body": "<p>Architecture Decision Records</p>\n<p>ADR is a lightweight documentation of important architecture decisions taken by the team.\nWithout documentation of the architecture and the architecture decisions, new team members can only do two things:</p>\n<ul>\n<li>either (blindy) accept what they find and see or</li>\n<li>(blindy) change things</li>\n</ul>\n<p>It goes without saying that both options aren&#39;t right.</p>\n<p>Therefore, we suggest documenting the important architecture decisions. We use a simple tool such as <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://github.com/npryce/adr-tools\">https://github.com/npryce/adr-tools</a> and store them in version control.\nIn larger projects with many teams we also establish a regular &quot;architecture board / COI&quot; with regular meetings.\nOften, the architecture decisions are taken in such meetings.</p>\n<p>The main purpose of this documentation is to:</p>\n<ul>\n<li>inform new team members about the previous architecture decisions and their purpose and backgrounds</li>\n<li>inform the whole team (including all people who were absent)</li>\n<li>create documentation that can be used to remember things (e.g. conventions, patterns, etc.)</li>\n</ul>\n"
-        },
-        {
-          "name": "adr",
-          "release": "2023-03-01",
-          "title": "ADR",
-          "ring": "assess",
-          "quadrant": "methods-and-patterns",
-          "body": "<p>teste </p>\n"
-        }
-      ],
-      "name": "adr",
-      "title": "ADR",
-      "ring": "assess",
-      "quadrant": "methods-and-patterns",
-      "body": "<p>Architecture Decision Records</p>\n<p>ADR is a lightweight documentation of important architecture decisions taken by the team.\nWithout documentation of the architecture and the architecture decisions, new team members can only do two things:</p>\n<ul>\n<li>either (blindy) accept what they find and see or</li>\n<li>(blindy) change things</li>\n</ul>\n<p>It goes without saying that both options aren&#39;t right.</p>\n<p>Therefore, we suggest documenting the important architecture decisions. We use a simple tool such as <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://github.com/npryce/adr-tools\">https://github.com/npryce/adr-tools</a> and store them in version control.\nIn larger projects with many teams we also establish a regular &quot;architecture board / COI&quot; with regular meetings.\nOften, the architecture decisions are taken in such meetings.</p>\n<p>The main purpose of this documentation is to:</p>\n<ul>\n<li>inform new team members about the previous architecture decisions and their purpose and backgrounds</li>\n<li>inform the whole team (including all people who were absent)</li>\n<li>create documentation that can be used to remember things (e.g. conventions, patterns, etc.)</li>\n</ul>\n",
-      "info": "",
-      "release": "2018-03-01"
     }
   ],
-  "releases": ["2023-20-01"]
+  "releases": ["2023-01-11"]
 }

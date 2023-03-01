@@ -1,18 +1,9 @@
 {
   "name": "db1_technology_radar",
-  "version": "3.4.2",
+  "version": "1.0.0",
   "description": "DB1 Technology Radar",
-  "author": "DB1 GmbH <contact-de@aoe.com> (http://www.aoe.com)",
+  "author": "AOE RADAR",
   "license": "Apache-2.0",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/AOEpeople/aoe_technology_radar.git"
-  },
-  "bin": {
-    "aoe_technology_radar-buildRadar": "dist_scripts/scripts/buildRadar.js",
-    "aoe_technology_radar-createStaticFiles": "dist_scripts/scripts/createStaticFiles.js",
-    "aoe_technology_radar-generateJson": "dist_scripts/scripts/generateJson.js"
-  },
   "scripts": {
     "prepare": "husky install && npm run build:scripts",
     "start": "react-scripts start",
@@ -20,10 +11,13 @@
     "build:scripts": "tsc --project tsconfig.scripts.json",
     "test": "react-scripts test --watchAll=false",
     "ts:check": "tsc --noEmit",
-    "lint": "npm run ts:check && eslint src/**/*.tsx"
+    "lint": "npm run ts:check && eslint src/**/*.tsx",
+    "publish:npm": "rm -rf dist && mkdir dist &&  babel src/components -d dist --copy-files"
   },
   "dependencies": {
     "@apideck/better-ajv-errors": "0.3.6",
+    "@babel/cli": "7.20.7",
+    "@babel/preset-react": "7.18.6",
     "@svgr/webpack": "6.5.1",
     "@testing-library/jest-dom": "5.16.5",
     "@testing-library/react": "13.4.0",

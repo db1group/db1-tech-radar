@@ -1,7 +1,7 @@
 {
-  "footerFootnote": "DB1 is a leading global provider of services for digital transformation and digital business models. DB1 relies exclusively on established Enterprise Open Source technologies. This leads to innovative solutions, digital products and portals in agile software projects, and helps build long-lasting, strategic partnerships with our customers.",
-  "legalInformationLabel": "Legal Information",
-  "legalInformationLink": "https://www.aoe.com/en/imprint.html",
+  "footerFootnote": "DB1 Group consists of technology companies, with three operations in Brazil, one in Argentina and in the United States. It has 20 years of experience in the tech market, offering SaaS and software development services for other companies. Always offering premium and high-quality products and services, the companies in the group are market leaders. DB1 Group business are: ANYMARKET, Consignet, DB1 Global Software, Koncili, Eive, Predize and the Tinbot robot. DB1 Global Software had been the first company of the DB1 group and currently representing 50% of the group business and serving companies throughout the Americas.",
+  "legalInformationLabel": "Created using AOE Radar",
+  "legalInformationLink": "https://github.com/AOEpeople/aoe_technology_radar",
   "pageHelp": {
     "headlinePrefix": "How to use the",
     "paragraphs": [
@@ -38,7 +38,7 @@
     ],
     "quadrants": [
       {
-        "description": "We've placed development languages (such as Scala or Golang) here, as well as more low-level development frameworks (such as Play or Symfony), which are useful for implementing custom software of all kinds.",
+        "description": "Here we've placed development languages, development frameworks, which are useful for implementing custom software of all kinds.",
         "name": "Languages and Frameworks"
       },
       {
@@ -94,31 +94,27 @@
   "searchPlaceholder": "What are you looking for?",
   "socialLinks": [
     {
-      "href": "https://www.facebook.com/aoepeople",
+      "href": "https://www.facebook.com/DB1Global/",
       "iconName": "facebook"
     },
     {
-      "href": "https://twitter.com/aoepeople",
+      "href": "https://twitter.com/db1global",
       "iconName": "twitter"
     },
     {
-      "href": "https://www.linkedin.com/company/aoe",
+      "href": "https://www.linkedin.com/company/db1globalsoftware/",
       "iconName": "linkedIn"
     },
     {
-      "href": "https://www.xing.com/company/aoe",
-      "iconName": "xing"
-    },
-    {
-      "href": "https://www.instagram.com/aoepeople",
+      "href": "https://www.instagram.com/db1global/",
       "iconName": "instagram"
     },
     {
-      "href": "https://www.youtube.com/user/aoepeople",
+      "href": "https://www.youtube.com/channel/UCrwkPFAPgYRPziOaAzWlrqA",
       "iconName": "youtube"
     },
     {
-      "href": "https://github.com/aoepeople",
+      "href": "https://github.com/db1group",
       "iconName": "github"
     }
   ],

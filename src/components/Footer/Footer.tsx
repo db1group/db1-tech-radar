@@ -43,7 +43,7 @@ const Footer: React.FC<Props> = ({ items, pageName }) => {
         </Branding>
       )}
 
-      <FooterEnd />
+      <FooterEnd  />
     </div>
   );
 };

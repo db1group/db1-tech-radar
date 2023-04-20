@@ -55,7 +55,7 @@ var runCommand = function (command) {
         var executedCommand = (0, child_process_1.spawn)(command, {
             stdio: "inherit",
             shell: true,
-            env: __assign({ REACT_APP_RADAR_NAME: "DB1  Tech Radar", REACT_APP_BUILDHASH: (0, crypto_1.randomBytes)(10).toString("hex") }, process.env),
+            env: __assign({ REACT_APP_RADAR_NAME: "DB1 Global Software | Tech Radar", REACT_APP_BUILDHASH: (0, crypto_1.randomBytes)(10).toString("hex") }, process.env),
         });
         executedCommand.on("error", function (error) {
             reject(error);

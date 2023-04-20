@@ -75,9 +75,9 @@
     ],
     "ringsPreDescription": "Each of the items is classified in one of these rings:",
     "sourcecodeLink": {
-      "description": "Contributions and source code of the DB1 Tech Radar are on github:",
+      "description": "Contributions and source code of the Tech Radar are on github:",
       "href": "https://github.com/AOEpeople/aoe_technology_radar",
-      "name": "DB1 Tech Radar on Github"
+      "name": "AOE Tech Radar on Github"
     }
   },
   "pageIndex": {

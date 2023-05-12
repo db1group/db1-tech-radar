@@ -1,4 +1,4 @@
-# Tech Radar - DB1 Global Software
+# Tech Radar - DB1 Global Software 
 
 ## Overview
 

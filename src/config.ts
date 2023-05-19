@@ -20,8 +20,7 @@ export interface ConfigData {
   };
 }
 
-export const radarName =
-  process.env.REACT_APP_RADAR_NAME || "DB1 Global Software | Tech Radar";
+export const radarName = "Tech Radar";
 export const radarNameShort = radarName;
 
 export const getItemPageNames = (items: Item[]) =>
@@ -38,7 +37,8 @@ export function isMobileViewport() {
   return width < 1200;
 }
 
-export const publicUrl = (process.env.PUBLIC_URL || "").replace(/\/$/, '') + "/";
+export const publicUrl =
+  (process.env.PUBLIC_URL || "").replace(/\/$/, "") + "/";
 
 export function assetUrl(file: string) {
   return publicUrl + file;

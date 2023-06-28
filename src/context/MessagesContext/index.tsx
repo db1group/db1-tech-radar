@@ -12,11 +12,16 @@ interface Paragraph {
   values: string[];
 }
 
+interface Ring {
+  name: string;
+  description: string;
+}
+
 interface PageHelp {
   paragraphs: Paragraph[];
   quadrantsPreDescription?: string;
   quadrants: Quadrant[];
-  rings: { name: string; description: string }[];
+  rings: Ring[];
   ringsPreDescription?: string;
   sourcecodeLink?: {
     href: string;

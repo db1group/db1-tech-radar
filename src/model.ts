@@ -4,6 +4,12 @@ export enum HomepageOption {
   both = "both",
 }
 
+export enum Language {
+  pt = "pt",
+  en = "en",
+  es = "es",
+}
+
 export type ItemAttributes = {
   name: string;
   ring: string;
@@ -21,7 +27,9 @@ export enum FlagType {
 
 export type Item = ItemAttributes & {
   featured: boolean;
-  body: string;
+  bodyPt: string;
+  bodyEn: string;
+  bodyEs: string;
   info: string;
   flag: FlagType;
   revisions: Revision[];

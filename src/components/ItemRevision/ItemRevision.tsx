@@ -15,7 +15,7 @@ export default function ItemRevision({
         <Badge type={revision.ring}>
           {revision.ring} | {formatRelease(revision.release, dateFormat)}
         </Badge>
-      </div>
+      </div>      
       <div
         className="markdown"
         dangerouslySetInnerHTML={{ __html: revision.body }}

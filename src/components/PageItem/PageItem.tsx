@@ -1,7 +1,6 @@
 import React from "react";
 
-import { ConfigData, translate } from "../../config";
-import { useMessages } from "../../context/MessagesContext";
+import { ConfigData } from "../../config";
 import { Item, groupByQuadrants } from "../../model";
 import Badge from "../Badge/Badge";
 import EditButton from "../EditButton/EditButton";
@@ -13,6 +12,9 @@ import Link from "../Link/Link";
 import SetTitle from "../SetTitle";
 import "./item-page.scss";
 import { useAnimations } from "./useAnimations";
+import { useTranslation } from "react-i18next";
+import { getItemBody } from "../../hooks/get-item-body";
+
 
 const getItem = (pageName: string, items: Item[]) => {
   const [quadrantName, itemName] = pageName.split("/");
@@ -41,8 +43,8 @@ const PageItem: React.FC<Props> = ({
   leaving,
   onLeave,
 }) => {
-  const { pageItem } = useMessages();
-  const quadrantOverview = pageItem?.quadrantOverview || "Quadrant Overview";
+  const { t } = useTranslation();
+  const quadrantOverview = t('pageItem.quadrantOverview');
 
   const itemsInRing = getItemsInRing(pageName, items);
 
@@ -61,6 +63,8 @@ const PageItem: React.FC<Props> = ({
     />
   ) : null;
 
+  const itemBody = getItemBody(item);
+
   return (
     <>
       <SetTitle title={item.title} />
@@ -71,7 +75,7 @@ const PageItem: React.FC<Props> = ({
               className="item-page__header"
               style={getAnimationState("navHeader")}
             >
-              <h3 className="headline">{translate(config, item.quadrant)}</h3>
+              <h3 className="headline">{t(`quadrants.${item.quadrant}`)}</h3>
             </div>
             <ItemList
               items={itemsInRing}
@@ -82,9 +86,9 @@ const PageItem: React.FC<Props> = ({
               <div className="split">
                 <div className="split__left">
                   <Badge big type={item.ring}>
-                    {item.ring}
+                  {t(`rings.${item.ring}`)}
                   </Badge>
-                </div>
+                </div>                
                 <div className="split__right">
                   <Link className="icon-link" pageName={item.quadrant}>
                     <span className="icon icon--pie icon-link__icon" />
@@ -120,14 +124,14 @@ const PageItem: React.FC<Props> = ({
                 </div>
                 <div className="split__right">
                   <Badge big type={item.ring}>
-                    {item.ring}
+                    {t(`rings.${item.ring}`)}
                   </Badge>
                 </div>
               </div>
             </div>
             <div
               className="markdown"
-              dangerouslySetInnerHTML={{ __html: item.body }}
+              dangerouslySetInnerHTML={{ __html: itemBody}}
             />
             <ItemTags tags={item.tags} />
             {item.revisions.length > 1 && (

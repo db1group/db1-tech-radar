@@ -1,95 +1,98 @@
 import React from "react";
 
 import { radarName } from "../../config";
-import { useMessages } from "../../context/MessagesContext";
 import { sanitize } from "../../sanitize";
 import Fadeable from "../Fadeable/Fadeable";
 import HeroHeadline from "../HeroHeadline/HeroHeadline";
 import SetTitle from "../SetTitle";
+import { useTranslation } from "react-i18next";
 
 interface Props {
   leaving: boolean;
   onLeave: () => void;
 }
 
+interface Quadrant {
+  name: string;
+  description: string;
+}
+
+interface Paragraph {
+  headline: string;
+  values: string[];
+}
+
+interface Ring {
+  name: string;
+  description: string;
+}
+
 const PageHelp: React.FC<Props> = ({ leaving, onLeave }) => {
-  const { pageHelp } = useMessages();
+  const { t } = useTranslation();
 
-  if (pageHelp) {
-    const {
-      paragraphs,
-      quadrants,
-      rings,
-      sourcecodeLink,
-      headlinePrefix,
-      quadrantsPreDescription,
-      ringsPreDescription,
-    } = pageHelp;
-    const title = `${headlinePrefix || "How to use the"} ${radarName}`;
-    return (
-      <Fadeable leaving={leaving} onLeave={onLeave}>
-        <SetTitle title={title} />
-        <HeroHeadline>{title}</HeroHeadline>
-        <div className="fullpage-content">
-          {paragraphs.map(({ headline, values }) => (
-            <React.Fragment key={headline}>
-              <h3>{headline}</h3>
-              {values.map((element, index) => {
-                return (
-                  <p
-                    key={index}
-                    dangerouslySetInnerHTML={sanitize(element)}
-                  ></p>
-                );
-              })}
-            </React.Fragment>
+  const quadrants = t("pageHelp.quadrants", { returnObjects: true }) as Quadrant[];
+  const paragraphs = t("pageHelp.paragraphs", { returnObjects: true }) as Paragraph[];
+  const rings = t("pageHelp.rings", { returnObjects: true }) as Ring[];
+
+  const title = `${t("pageHelp.headlinePrefix")} ${t('radarName')}`;
+  return (
+    <Fadeable leaving={leaving} onLeave={onLeave}>
+      <SetTitle title={title} />
+      <HeroHeadline>{title}</HeroHeadline>
+      <div className="fullpage-content">
+        {paragraphs.map(({ headline, values }) => (
+          <React.Fragment key={headline}>
+            <h3>{headline}</h3>
+            {values.map((element, index) => {
+              return (
+                <p
+                  key={index}
+                  dangerouslySetInnerHTML={sanitize(element)}
+                ></p>
+              );
+            })}
+          </React.Fragment>
+        ))}
+
+        <p>{t("pageHelp.quadrantsPreDescription")}</p>
+        <ul>
+          {quadrants.map(({ name, description }) => (
+            <li key={name}>
+              <strong>{name}:</strong>{" "}
+              <span
+                dangerouslySetInnerHTML={sanitize(description, {})}
+              ></span>
+            </li>
           ))}
+        </ul>
 
-          <p>{quadrantsPreDescription ?? "The quadrants are:"}</p>
-          <ul>
-            {quadrants.map(({ name, description }) => (
-              <li key={name}>
-                <strong>{name}:</strong>{" "}
-                <span
-                  dangerouslySetInnerHTML={sanitize(description, {})}
-                ></span>
-              </li>
-            ))}
-          </ul>
+        <p>{t("pageHelp.ringsPreDescription")}</p>
+        <ul>
+          {rings.map(({name, description}) => (
+            <li key={name}>
+              <strong>{name}:</strong>{" "}
+              <span
+                dangerouslySetInnerHTML={sanitize(description, {})}
+              ></span>
+            </li>
+          ))}
+        </ul>
 
+        {t("pageHelp.sourcecodeLink") && (
           <p>
-            {ringsPreDescription ??
-              "Each of the items is classified in one of these rings:"}
+            {`${t("pageHelp.sourcecodeLink.description")} `}
+            <a
+              href={t<string>("pageHelp.sourcecodeLink.href")}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {t("pageHelp.sourcecodeLink.name")}
+            </a>
           </p>
-          <ul>
-            {rings.map(({ name, description }) => (
-              <li key={name}>
-                <strong>{name}:</strong>{" "}
-                <span
-                  dangerouslySetInnerHTML={sanitize(description, {})}
-                ></span>
-              </li>
-            ))}
-          </ul>
-
-          {sourcecodeLink && (
-            <p>
-              {`${sourcecodeLink.description} `}
-              <a
-                href={sourcecodeLink.href}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {sourcecodeLink.name}
-              </a>
-            </p>
-          )}
-        </div>
-      </Fadeable>
-    );
-  }
-
-  return null;
+        )}
+      </div>
+    </Fadeable>
+  );
 };
 
 export default PageHelp;

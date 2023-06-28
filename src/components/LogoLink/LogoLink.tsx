@@ -1,11 +1,11 @@
 import classNames from "classnames";
-import React from "react";
-
 import { assetUrl, radarNameShort } from "../../config";
 import Link from "../Link/Link";
 import "./logo-link.scss";
+import { useTranslation } from "react-i18next";
 
 export default function LogoLink({ small = false }: { small?: boolean }) {
+  const { t } = useTranslation();
   return (
     <Link
       pageName="index"
@@ -18,9 +18,9 @@ export default function LogoLink({ small = false }: { small?: boolean }) {
           src={assetUrl("logo/db1-logo.png")}
           height="60px"
           
-          alt={radarNameShort}
+          alt={`${t('radarName')}`}
         />
-        <span className="logo-link__text">{radarNameShort}</span>
+        <span className="logo-link__text">{t('radarName')}</span>
       </span>
     </Link>
   );

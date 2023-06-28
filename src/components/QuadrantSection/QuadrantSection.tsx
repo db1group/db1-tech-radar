@@ -13,7 +13,7 @@ const renderList = (
   quadrantName: string,
   groups: Group,
   big: boolean
-) => {  
+) => {
   const itemsInRing = groups[quadrantName][ringName] || [];
 
   if (big) {

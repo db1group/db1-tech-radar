@@ -27,7 +27,7 @@ export default function QuadrantGrid({
   config: ConfigData;
 }) {
   const groups = groupByQuadrants(items);
-  return (    
+  return (
     <div className="quadrant-grid">
       {Object.keys(config.quadrants).map((quadrantName: string) =>
         renderQuadrant(quadrantName, groups, config)

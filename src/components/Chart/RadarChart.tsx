@@ -8,6 +8,7 @@ import { XAxis, YAxis } from "./Axes";
 import BlipPoints from "./BlipPoints";
 import QuadrantRings from "./QuadrantRings";
 import "./chart.scss";
+import { useTranslation } from "react-i18next";
 
 const RingLabel: React.FC<{
   ring: string;
@@ -24,8 +25,9 @@ const RingLabel: React.FC<{
         : config.chartConfig.ringsAttributes[ringIndex - 1].radius,
     // middle point in between two ring arcs
     distanceFromCentre =
-      previousRingRadius + (ringRadius - previousRingRadius) / 2;
+      previousRingRadius + (ringRadius - previousRingRadius) / 2 ;
 
+  const { t } = useTranslation();
   return (
     <g className="ring-label">
       {/* Right hand-side label */}
@@ -35,7 +37,7 @@ const RingLabel: React.FC<{
         textAnchor="middle"
         dy=".35em"
       >
-        {ring}
+        {t(`rings.${ring}`)}
       </text>
       {/* Left hand-side label */}
       <text
@@ -44,7 +46,7 @@ const RingLabel: React.FC<{
         textAnchor="middle"
         dy=".35em"
       >
-        {ring}
+        {t(`rings.${ring}`)}
       </text>
     </g>
   );
@@ -66,7 +68,7 @@ const RadarChart: React.FC<{
   return (
     <div className="chart" style={{ maxWidth: `${config.chartConfig.size}px` }}>
       <svg
-        viewBox={`0 0 ${config.chartConfig.size} ${config.chartConfig.size}`}
+        viewBox={`0 0 ${config.chartConfig.size} ${config.chartConfig.size + 100}`}
       >
         <g transform={`translate(${xScale(0)}, 0)`}>
           <YAxis scale={yScale} />
@@ -75,7 +77,7 @@ const RadarChart: React.FC<{
           <XAxis scale={xScale} />
         </g>
 
-        {Object.values(config.quadrantsMap).map((value, index) => {
+        {Object.values(config.quadrantsMap).map((value) => {
           console.log(value)
           return null
         })}
@@ -105,7 +107,7 @@ const RadarChart: React.FC<{
           config={config}
         />
       </svg>
-      <ReactTooltip className="tooltip" offset={{ top: -5 }} />
+      <ReactTooltip className="tooltip" />
     </div>
   );
 };

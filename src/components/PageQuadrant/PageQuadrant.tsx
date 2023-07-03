@@ -1,5 +1,3 @@
-import React from "react";
-
 import { ConfigData, translate } from "../../config";
 import { Item, featuredOnly, groupByQuadrants } from "../../model";
 import Fadeable from "../Fadeable/Fadeable";
@@ -7,6 +5,7 @@ import HeadlineGroup from "../HeadlineGroup/HeadlineGroup";
 import HeroHeadline from "../HeroHeadline/HeroHeadline";
 import QuadrantSection from "../QuadrantSection/QuadrantSection";
 import SetTitle from "../SetTitle";
+import { useTranslation } from "react-i18next";
 
 type PageQuadrantProps = {
   leaving: boolean;
@@ -24,11 +23,12 @@ export default function PageQuadrant({
   config,
 }: PageQuadrantProps) {
   const groups = groupByQuadrants(featuredOnly(items));
+  const { t } = useTranslation();
   return (
     <Fadeable leaving={leaving} onLeave={onLeave}>
-      <SetTitle title={translate(config, pageName)} />
+      <SetTitle title={t(`quadrants.${pageName}`)} />
       <HeadlineGroup>
-        <HeroHeadline>{translate(config, pageName)}</HeroHeadline>
+        <HeroHeadline>{t(`quadrants.${pageName}`)}</HeroHeadline>
       </HeadlineGroup>
       <QuadrantSection
         groups={groups}

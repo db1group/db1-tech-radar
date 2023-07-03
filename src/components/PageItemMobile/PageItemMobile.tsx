@@ -8,6 +8,8 @@ import ItemRevisions from "../ItemRevisions/ItemRevisions";
 import ItemTags from "../ItemTags/ItemTags";
 import Link from "../Link/Link";
 import SetTitle from "../SetTitle";
+import { useTranslation } from "react-i18next";
+import { getItemBody } from "../../hooks/get-item-body";
 
 type PageItemMobileProps = {
   pageName: string;
@@ -24,6 +26,7 @@ export default function PageItemMobile({
   leaving,
   onLeave,
 }: PageItemMobileProps) {
+  const { t } = useTranslation();
   const getItem = (pageName: string, items: Item[]) => {
     const [quadrantName, itemName] = pageName.split("/");
     const item = items.filter(
@@ -47,6 +50,8 @@ export default function PageItemMobile({
       title={config.editLink.title}
     />
   ) : null;
+  const itemBody = getItemBody(item);
+
   return (
     <Fadeable leaving={leaving} onLeave={onLeave}>
       <SetTitle title={item.title} />
@@ -73,7 +78,7 @@ export default function PageItemMobile({
             </div>
             <div
               className="markdown"
-              dangerouslySetInnerHTML={{ __html: item.body }}
+              dangerouslySetInnerHTML={{ __html: itemBody }}
             />
             <ItemTags tags={item.tags} />
             {item.revisions.length > 1 && (
@@ -90,7 +95,7 @@ export default function PageItemMobile({
             </div>
             <div className="split__right">
               <Link className="icon-link" pageName={item.quadrant}>
-                <span className="icon icon--pie icon-link__icon"></span>Zoom In
+                <span className="icon icon--pie icon-link__icon"></span>{t("zoom-in")}
               </Link>
             </div>
           </div>

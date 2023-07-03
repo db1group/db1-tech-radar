@@ -5,8 +5,10 @@ import Flag from "../Flag/Flag";
 import ItemList from "../ItemList/ItemList";
 import Link from "../Link/Link";
 import "./quadrant-section.scss";
+import { useTranslation } from "react-i18next";
 
 const renderList = (
+  t: Function,
   ringName: string,
   quadrantName: string,
   groups: Group,
@@ -18,7 +20,7 @@ const renderList = (
     return (
       <ItemList items={itemsInRing} noLeadingBorder>
         <Badge type={ringName} big={big}>
-          {ringName}
+          {t(`rings.${ringName}`)}
         </Badge>
       </ItemList>
     );
@@ -27,7 +29,7 @@ const renderList = (
   return (
     <div className="ring-list">
       <div className="ring-list__header">
-        <Badge type={ringName}>{ringName}</Badge>
+        <Badge type={ringName}>{t(`rings.${ringName}`)}</Badge>
       </div>
       {itemsInRing.map((item) => (
         <span key={item.name} className="ring-list__item">
@@ -42,6 +44,7 @@ const renderList = (
 };
 
 const renderRing = (
+  t: Function,
   ringName: string,
   quadrantName: string,
   groups: Group,
@@ -58,7 +61,7 @@ const renderRing = (
   }
   return (
     <div key={ringName} className="quadrant-section__ring">
-      {renderList(ringName, quadrantName, groups, big)}
+      {renderList(t, ringName, quadrantName, groups, big)}
     </div>
   );
 };
@@ -74,18 +77,19 @@ export default function QuadrantSection({
   config: ConfigData;
   big?: boolean;
 }) {
+  const { t } = useTranslation();
   return (
     <div className="quadrant-section">
       <div className="quadrant-section__header">
         <div className="split">
           <div className="split__left">
-            <h4 className="headline">{translate(config, quadrantName)}</h4>
+            <h4 className="headline">{t(`quadrants.${quadrantName}`)}</h4>
           </div>
           {!big && (
             <div className="split__right">
               <Link className="icon-link" pageName={`${quadrantName}`}>
                 <span className="icon icon--pie icon-link__icon" />
-                Zoom In
+                {t("zoom-in")}
               </Link>
             </div>
           )}
@@ -93,7 +97,7 @@ export default function QuadrantSection({
       </div>
       <div className="quadrant-section__rings">
         {config.rings.map((ringName: string) =>
-          renderRing(ringName, quadrantName, groups, config.showEmptyRings, big)
+          renderRing(t, ringName, quadrantName, groups, config.showEmptyRings, big)
         )}
       </div>
     </div>

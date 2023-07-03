@@ -3,8 +3,6 @@ import qs from "query-string";
 import React, { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { radarNameShort } from "../../config";
-import { useMessages } from "../../context/MessagesContext";
 import { useSearchParamState } from "../../hooks/use-search-param-state";
 import { Tag } from "../../model";
 import Branding from "../Branding/Branding";
@@ -12,6 +10,8 @@ import Link from "../Link/Link";
 import LogoLink from "../LogoLink/LogoLink";
 import Search from "../Search/Search";
 import TagsModal from "../TagsModal/TagsModal";
+import { useTranslation } from "react-i18next";
+import ButtonFlag from "../ButtonFlag/ButtonFlag";
 
 export default function Header({
   pageName,
@@ -22,10 +22,11 @@ export default function Header({
 }) {
   const [searchOpen, setSearchOpen] = useState(false);
   const [search, setSearch] = useState("");
-  const { searchLabel, pageHelp, pageOverview } = useMessages();
   const navigate = useNavigate();
   const searchRef = useRef<HTMLInputElement>(null);
   const [searchParamState, setSearchParamsState] = useSearchParamState();
+
+  const { t } = useTranslation();
 
   const openSearch = () => {
     setSearchOpen(true);
@@ -90,14 +91,12 @@ export default function Header({
   return (
     <Branding logoContent={<LogoLink small={smallLogo} />}>
       <div className="nav">
-        {pageHelp && (
-          <div className="nav__item">
-            <Link pageName="help-and-about-tech-radar" className="icon-link">
-              <span className="icon icon--question icon-link__icon" />
-              {pageHelp.headlinePrefix || "How to use"} {radarNameShort}?
-            </Link>
-          </div>
-        )}
+        <div className="nav__item">
+          <Link pageName="help-and-about-tech-radar" className="icon-link">
+            <span className="icon icon--question icon-link__icon" />
+            {t("navbar.help")}
+          </Link>
+        </div>
         {Boolean(tags.length) && (
           <div className="nav__item">
             <button className="icon-link" onClick={toggleModal}>
@@ -109,13 +108,13 @@ export default function Header({
         <div className="nav__item">
           <Link pageName="overview" className="icon-link">
             <span className="icon icon--overview icon-link__icon" />
-            {pageOverview?.title || "Technologies Overview"}
+            {t("navbar.overview")}
           </Link>
         </div>
         <div className="nav__item">
           <button className="icon-link" onClick={handleOpenClick}>
             <span className="icon icon--search icon-link__icon" />
-            {searchLabel || "Search"}
+            {t("navbar.search")}
           </button>
           <div className={classNames("nav__search", { "is-open": searchOpen })}>
             <Search
@@ -135,6 +134,9 @@ export default function Header({
               handleTagChange={handleTagChange}
             />
           )}
+        </div>
+        <div className="nav__item">
+          <ButtonFlag/>
         </div>
       </div>
     </Branding>

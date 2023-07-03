@@ -1,5 +1,3 @@
-import React from "react";
-
 import { ConfigData } from "../../config";
 import { Group, Item, groupByQuadrants } from "../../model";
 import QuadrantSection from "../QuadrantSection/QuadrantSection";

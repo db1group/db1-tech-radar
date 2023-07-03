@@ -2,20 +2,20 @@ import classNames from "classnames";
 import React from "react";
 
 import { useMessages } from "../../context/MessagesContext";
-import SocialLink from "../SocialLink/SocialLink";
 import "./footerend.scss";
+import { useTranslation } from "react-i18next";
+import ItemLink from "../SocialLink/SocialLink";
 
 interface Props {
   modifier?: "in-sidebar";
 }
 
-const FooterEnd: React.FC<Props> = ({ modifier }) => {
+const FooterEnd: React.FC<Props> = ({ modifier}) => {
   const {
-    socialLinksLabel,
     socialLinks,
     legalInformationLink,
-    legalInformationLabel,
   } = useMessages();
+  const { t } = useTranslation();
 
   return (
     <div
@@ -27,11 +27,11 @@ const FooterEnd: React.FC<Props> = ({ modifier }) => {
         {socialLinks && (
           <>
             <div className="footer-social__label">
-              <p>{socialLinksLabel ?? "Follow us:"}</p>
+              <p>{t('socialLinksLabel')}</p>
             </div>
             <div className="footer-social__links">
               {socialLinks.map(({ href, iconName }) => (
-                <SocialLink href={href} iconName={iconName} key={iconName} />
+                <ItemLink href={href} iconName={iconName} key={iconName} />
               ))}
             </div>
           </>
@@ -46,7 +46,7 @@ const FooterEnd: React.FC<Props> = ({ modifier }) => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              {legalInformationLabel || "Legal Information"}
+              {t('legalInformationLabel')}
             </a>
           </p>
         </div>

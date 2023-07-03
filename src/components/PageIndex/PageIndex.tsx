@@ -1,7 +1,6 @@
 import { MomentInput } from "moment";
 
 import { ConfigData, radarName, radarNameShort } from "../../config";
-import { useMessages } from "../../context/MessagesContext";
 import { formatRelease } from "../../date";
 import { HomepageOption, Item, featuredOnly } from "../../model";
 import Fadeable from "../Fadeable/Fadeable";
@@ -9,6 +8,7 @@ import HeroHeadline from "../HeroHeadline/HeroHeadline";
 import QuadrantGrid from "../QuadrantGrid/QuadrantGrid";
 import RadarGrid from "../RadarGrid/RadarGrid";
 import SetTitle from "../SetTitle";
+import { useTranslation } from "react-i18next";
 
 type PageIndexProps = {
   leaving: boolean;
@@ -25,8 +25,8 @@ export default function PageIndex({
   config,
   releases,
 }: PageIndexProps) {
-  const { pageIndex } = useMessages();
-  const publishedLabel = pageIndex?.publishedLabel || "Published";
+  const { t } = useTranslation();
+  const publishedLabel = t('pageIndex.publishedLabel');
 
   const newestRelease = releases.slice(-1)[0];
   const numberOfReleases = releases.length;
@@ -40,8 +40,8 @@ export default function PageIndex({
     <Fadeable leaving={leaving} onLeave={onLeave}>
       <SetTitle title={radarNameShort} />
       <div className="headline-group">
-        <HeroHeadline alt={`Version #${numberOfReleases}`}>
-          {radarName}
+        <HeroHeadline alt={`${t('versionLabel')} #${numberOfReleases}`}>
+          {t('radarName')}
         </HeroHeadline>
       </div>
       {showChart && <RadarGrid items={featuredOnly(items)} config={config} />}

@@ -1,8 +1,8 @@
-import { useMessages } from "../../context/MessagesContext";
 import { Revision } from "../../model";
 import HeadlineGroup from "../HeadlineGroup/HeadlineGroup";
 import ItemRevision from "../ItemRevision/ItemRevision";
 import "./item-revisions.scss";
+import { useTranslation } from "react-i18next";
 
 export default function ItemRevisions({
   revisions,
@@ -11,12 +11,12 @@ export default function ItemRevisions({
   revisions: Revision[];
   dateFormat?: string;
 }) {
-  const { revisionsText } = useMessages();
+  const { t } = useTranslation();
   return (
     <div className="item-revisions">
       <HeadlineGroup secondary>
         <h4 className="headline headline--dark">
-          {revisionsText ?? "Revisions:"}
+          {t('revisionsText')}
         </h4>
       </HeadlineGroup>
 

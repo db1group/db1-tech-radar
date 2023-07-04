@@ -1,6 +1,5 @@
 import React from "react";
 
-import { radarName } from "../../config";
 import { sanitize } from "../../sanitize";
 import Fadeable from "../Fadeable/Fadeable";
 import HeroHeadline from "../HeroHeadline/HeroHeadline";

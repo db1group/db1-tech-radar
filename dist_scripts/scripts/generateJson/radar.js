@@ -184,7 +184,7 @@ var createItems = function (revisions) {
 };
 var ignoreEmptyRevisionBody = function (revision, item) {
     if (!revision.body || revision.body.trim() === "") {
-        return item.body;
+        return item.bodyEn;
     }
     return revision.body;
 };
@@ -197,10 +197,12 @@ var addRevisionToItem = function (item, revision) {
         title: "",
         ring: "trial",
         quadrant: "",
-        body: "",
+        bodyPt: "",
+        bodyEn: "",
+        bodyEs: "",
         info: "",
     }; }
-    var newItem = __assign(__assign(__assign({}, item), revision), { body: ignoreEmptyRevisionBody(revision, item) });
+    var newItem = __assign(__assign(__assign({}, item), revision), { bodyEn: ignoreEmptyRevisionBody(revision, item) });
     if (revisionCreatesNewHistoryEntry(revision, item)) {
         newItem = __assign(__assign({}, newItem), { revisions: __spreadArray([revision], newItem.revisions, true) });
     }

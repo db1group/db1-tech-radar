@@ -130,7 +130,7 @@ const createItems = (revisions: Revision[]) => {
 
 const ignoreEmptyRevisionBody = (revision: Revision, item: Item) => {
   if (!revision.body || revision.body.trim() === "") {
-    return item.body;
+    return item.bodyEn;
   }
   return revision.body;
 };
@@ -144,7 +144,9 @@ const addRevisionToItem = (
     title: "",
     ring: "trial",
     quadrant: "",
-    body: "",
+    bodyPt: "",
+    bodyEn: "",
+    bodyEs: "",
     info: "",
   },
   revision: Revision
@@ -152,7 +154,7 @@ const addRevisionToItem = (
   let newItem: Item = {
     ...item,
     ...revision,
-    body: ignoreEmptyRevisionBody(revision, item),
+    bodyEn: ignoreEmptyRevisionBody(revision, item),
   };
 
   if (revisionCreatesNewHistoryEntry(revision, item)) {

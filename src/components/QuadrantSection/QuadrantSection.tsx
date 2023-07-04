@@ -1,4 +1,4 @@
-import { ConfigData, translate } from "../../config";
+import { ConfigData } from "../../config";
 import { Group } from "../../model";
 import Badge from "../Badge/Badge";
 import Flag from "../Flag/Flag";

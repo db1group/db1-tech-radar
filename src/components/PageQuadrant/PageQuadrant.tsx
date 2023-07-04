@@ -1,4 +1,4 @@
-import { ConfigData, translate } from "../../config";
+import { ConfigData } from "../../config";
 import { Item, featuredOnly, groupByQuadrants } from "../../model";
 import Fadeable from "../Fadeable/Fadeable";
 import HeadlineGroup from "../HeadlineGroup/HeadlineGroup";

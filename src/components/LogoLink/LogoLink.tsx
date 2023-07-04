@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import { assetUrl, radarNameShort } from "../../config";
+import { assetUrl } from "../../config";
 import Link from "../Link/Link";
 import "./logo-link.scss";
 import { useTranslation } from "react-i18next";

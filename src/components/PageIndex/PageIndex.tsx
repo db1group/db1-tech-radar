@@ -1,6 +1,6 @@
 import { MomentInput } from "moment";
 
-import { ConfigData, radarName, radarNameShort } from "../../config";
+import { ConfigData, radarNameShort } from "../../config";
 import { formatRelease } from "../../date";
 import { HomepageOption, Item, featuredOnly } from "../../model";
 import Fadeable from "../Fadeable/Fadeable";

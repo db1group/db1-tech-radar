@@ -2,7 +2,7 @@ import pt from '../../assets/pt.png';
 import en from '../../assets/en.png';
 import es from '../../assets/es.png';
 import i18n from '../../i18n';
-import { Language } from "../../model";
+import { Language, StorageKey } from "../../model";
 
 import "./buttonFlag.scss";
 
@@ -34,7 +34,7 @@ function ButtonFlag() {
           alt={languageOption.name}
           onClick={async () => {
             i18n.changeLanguage(languageOption.value);
-            await localStorage.setItem("language", languageOption.value);
+            await localStorage.setItem(StorageKey.language, languageOption.value);
           }}>          
         </img>
       ))}

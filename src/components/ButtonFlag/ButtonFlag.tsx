@@ -32,8 +32,9 @@ function ButtonFlag() {
           className='buttonFlag'
           src={languageOption.flag}
           alt={languageOption.name}
-          onClick={() => {
+          onClick={async () => {
             i18n.changeLanguage(languageOption.value);
+            await localStorage.setItem("language", languageOption.value);
           }}>          
         </img>
       ))}

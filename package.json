@@ -36,6 +36,7 @@
     "highlight.js": "11.7.0",
     "husky": "8.0.2",
     "i18next": "22.5.1",
+    "i18next-browser-languagedetector": "7.1.0",
     "marked": "4.2.4",
     "moment": "2.29.4",
     "postcss-normalize": "10.0.1",

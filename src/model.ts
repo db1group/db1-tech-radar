@@ -10,6 +10,10 @@ export enum Language {
   es = "es",
 }
 
+export enum StorageKey {
+  language = "language",
+}
+
 export type ItemAttributes = {
   name: string;
   ring: string;

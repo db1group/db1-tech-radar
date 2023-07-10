@@ -2,11 +2,17 @@ import i18n from "i18next";
 import { Item } from "../model";
 
 export function getItemBody(item: Item) {
+  let language;
   const body: any = {
     pt: item.bodyPt,
     en: item.bodyEn,
     es: item.bodyEs,
   };
 
-  return body[i18n.language];
+  
+  i18n.language.includes('-')
+    ? language = i18n.language.split('-')[0]
+    : language = i18n.language;
+
+  return body[language];
 }

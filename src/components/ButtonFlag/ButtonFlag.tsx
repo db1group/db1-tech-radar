@@ -29,7 +29,7 @@ function ButtonFlag() {
     <div>
       {languageOptions.map(languageOption => (
         <img 
-          className='buttonFlag'
+          className='button-flag'
           src={languageOption.flag}
           alt={languageOption.name}
           onClick={async () => {

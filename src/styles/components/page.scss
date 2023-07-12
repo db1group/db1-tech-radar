@@ -19,8 +19,28 @@
       margin: 0;
     }
 
-    @media (max-width: $until-lg) {
+    @media (min-width: $until-sm) {
+      .button-flag__logo {
+        display: none;
+      }
+    }
+
+    @media (max-width: $until-sm) {
       .nav {
+        display: none;
+      }
+
+      .button-flag {
+        display: inline-flex;
+        height: 25px;
+        margin-right: 5px;
+      }
+
+      .button-flag:hover {
+        opacity: 1;
+      }
+
+      .logo-link__text {
         display: none;
       }
     }
@@ -33,5 +53,9 @@
   &__footer {
     margin-top: 5px;
     flex: 0 0 auto;
+
+    .button-flag {
+      display: none;      
+    }
   }
 }

@@ -10,7 +10,7 @@
       "search": "Buscar",
       "searchPlaceholder": "O que você está procurando?"
     },
-    "footerFootnote": "DB1 Group é formada por empresas de tecnologia, com três operações no Brasil, uma na Argentina e uma nos Estados Unidos. Possui 20 anos de experiência no mercado de tecnologia, oferecendo SaaS e serviços de desenvolvimento de software para outras empresas. Oferecendo sempre produtos e serviços premium e de alta qualidade, as empresas do grupo são líderes de mercado. Os negócios do DB1 Group são: ANYMARKET, Consignet, DB1 Global Software, Koncili, Eive, Predize e o robô Tinbot. A DB1 Global Software foi a primeira empresa do grupo DB1 e atualmente representa 50% dos negócios do grupo e atende empresas em todas as Américas.",
+    "footerFootnote": "A DB1 Global Software é uma empresa de desenvolvimento de software com 20 anos de know-how. Fazemos parte do Grupo DB1. O grupo é um conglomerado de tecnologia focado na transformação digital de empresas B2B. A marca se concentra em garantir o crescimento futuro, atendendo às necessidades atuais dos clientes.",
     "legalInformationLabel": "Criado usando o Radar AOE",
     "socialLinksLabel": "Siga-nos:",
     "pageIndex": {
@@ -22,9 +22,9 @@
     "zoom-in": "Ampliar",
     "quadrant": "quadrante",
     "quadrants": {
-      "languages-and-frameworks": "Idiomas e estruturas",
-      "methods-and-patterns": "Métodos e padrões",
-      "platforms-and-aoe-services": "Plataformas e operações",
+      "languages-and-frameworks": "Linguagens & Frameworks",
+      "methods-and-patterns": "Métodos & Padrões",
+      "platforms-and-aoe-services": "Plataformas & Operações",
       "tools": "Ferramentas"
     },
     "pageOverview": {
@@ -32,10 +32,10 @@
     },
     "rings": {
       "all": "todos",
-      "adopt": "adotar",
-      "trial": "teste",
-      "assess": "avaliar",
-      "hold": "manter"
+      "adopt": "adote",
+      "trial": "experimente",
+      "assess": "avalie",
+      "hold": "evite"
     },
     "pageHelp": {
       "headlinePrefix": "Como usar o",
@@ -43,7 +43,7 @@
         {
           "headline": "Introdução",
           "values": [
-            "A tecnologia está se movendo rapidamente e novas tecnologias e inovações surgem continuamente.",
+            "A tecnologia está se movendo rapidamente, novas tecnologias e inovações surgem continuamente.",
             "É essencial para uma empresa de desenvolvimento e tecnologia como a DB1 melhorar constantemente e acompanhar as últimas inovações úteis. É importante procurar abertamente por inovações e novas tecnologias e questionar as tecnologias e os métodos estabelecidos de vez em quando.",
             "Mas também é importante escolher sabiamente quais tecnologias usar em nosso trabalho diário e nos diferentes projetos que estamos realizando. Como todos nós sabemos: Não existe bala de prata."
           ]
@@ -51,14 +51,15 @@
         {
           "headline": "O que é o Radar Tecnológico DB1?",
           "values": [
-            "O Radar Tecnológico é uma visão geral de diferentes tecnologias - de linguagens, estruturas, ferramentas e padrões a plataformas - que consideramos 'novas ou mencionáveis'. Portanto, o radar não oferece uma visão geral de todas as tecnologias estabelecidas, mas se concentra em itens que ganharam importância ou mudaram recentemente."
+            "O Radar Tecnológico é uma visão geral de diferentes tecnologias - de linguagens, frameworks, ferramentas, padrões e plataformas - que consideramos relevantes para o contexto de projeto que atendemos: aplicações corporativas."
           ]
         },
         {
           "headline": "Como ele é criado",
           "values": [
             "Os itens do Radar Tecnológico são levantados pelas diferentes equipes e, portanto, muitos deles estão relacionados ao trabalho e aos desafios que as equipes enfrentam nos diferentes projetos. Na verdade, não incluímos nada no radar que já não tenhamos experimentado pelo menos uma vez.",
-            "Houve muitas discussões valiosas em diferentes grupos de especialistas sobre a classificação e os detalhes de cada uma das tecnologias e inovações. E o resultado de tudo isso pode ser encontrado no radar de tecnologia mais recente."
+            "Houve muitas discussões valiosas em diferentes grupos de especialistas sobre a classificação e os detalhes de cada uma das tecnologias e inovações. E o resultado de tudo isso pode ser encontrado no radar de tecnologia mais recente.",
+            "Uma vez adicionado, um novo item no radar é análisado por uma etapa de pesquisa pelo nosso time de Staff Engineering"
           ]
         },
         {
@@ -67,25 +68,25 @@
             "O radar funciona como uma visão geral das tecnologias que, em nossa opinião, todos os membros das equipes deveriam conhecer.",
             "Seu objetivo é servir de guia e inspiração para o trabalho diário das equipes. Seu objetivo também é fornecer informações úteis e uma perspectiva panorâmica, de modo que as decisões possam ser tomadas com uma compreensão muito mais profunda do assunto. Isso resulta em decisões mais bem informadas e mais bem alinhadas.",
             "Também esperamos que os desenvolvedores de fora da DB1 considerem as informações em nossa visão geral da tecnologia inspiradoras.",
-            "Agrupamos ou categorizamos os itens em 4 quadrantes - (às vezes, quando não está 100% claro onde um item pertence, escolhemos o mais adequado)."
+            "Agrupamos ou categorizamos os itens em 4 quadrantes (às vezes, quando não está 100% claro onde um item pertence, escolhemos o mais adequado)."
           ]
         }
       ],
       "quadrants": [
         {
-          "description": "Aqui colocamos linguagens de desenvolvimento e estruturas de desenvolvimento que são úteis para a implementação de software personalizado de todos os tipos.",
-          "name": "Idiomas e estruturas"
+          "description": "Aqui colocamos linguagens e frameworks de desenvolvimento que são úteis para a implementação de software personalizado de todos os tipos.",
+          "name": "Linguagens e frameworks"
         },
         {
-          "description": "Aqui colocamos diferentes ferramentas de software, desde pequenos ajudantes até projetos de software maiores",
+          "description": "Aqui colocamos diferentes ferramentas de software, desde pequenas ferramentas auxiliares até projetos de software maiores.",
           "name": "Ferramentas"
         },
         {
-          "description": "Os padrões são muito importantes, e muitos deles são válidos por muito tempo (em comparação com algumas ferramentas ou estruturas). Portanto, esta é a categoria em que colocamos informações sobre métodos e padrões relacionados a desenvolvimento, x contínuo, testes, organização, arquitetura etc.",
+          "description": "Os padrões são muito importantes, e muitos deles são válidos por muito tempo (em comparação com algumas ferramentas ou frameworks). Portanto, esta é a categoria em que colocamos informações sobre métodos e padrões relacionados a desenvolvimento, x contínuo, testes, organização, arquitetura etc.",
           "name": "Métodos e padrões"
         },
         {
-          "description": "(incluindo os serviços internos do DB1): Aqui incluímos plataformas e serviços de infraestrutura. Também usamos essa categoria para comunicar notícias sobre os serviços da DB1 que queremos que todas as equipes da DB1 conheçam.",
+          "description": "Aqui incluímos plataformas e serviços de infraestrutura. Também usamos essa categoria para comunicar notícias sobre os serviços da DB1 que queremos que todas as equipes da DB1 conheçam.",
           "name": "Plataformas e operações"
         }
       ],
@@ -93,19 +94,19 @@
       "rings": [
         {
           "description": "Podemos recomendar claramente essa tecnologia. Nós a usamos por um longo período de tempo em muitas equipes e ela provou ser estável e útil.",
-          "name": "Adotar"
+          "name": "Adote"
         },
         {
           "description": "Nós o utilizamos com sucesso e recomendamos que você dê uma olhada mais de perto na tecnologia desse anel. A meta dos itens aqui é examiná-los mais de perto, com o objetivo de levá-los ao nível de adoção.",
-          "name": "Julgamento"
+          "name": "Experimente"
         },
         {
           "description": "Nós os experimentamos e os consideramos promissores. Recomendamos que dê uma olhada nesses itens quando se deparar com uma necessidade específica da tecnologia em seu projeto.",
-          "name": "Avaliar"
+          "name": "Avalie"
         },
         {
           "description": "Esta categoria é um pouco especial. Ao contrário das outras, recomendamos que você pare de fazer ou usar algo. Isso não significa que eles sejam ruins e, muitas vezes, pode ser bom usá-los em projetos existentes. Mas movemos as coisas para cá se acharmos que não devemos mais fazê-las, porque vemos opções ou alternativas melhores agora.",
-          "name": "Manter"
+          "name": "Evite"
         }
       ],
       "ringsPreDescription": "Cada um dos itens é classificado em um desses anéis:",

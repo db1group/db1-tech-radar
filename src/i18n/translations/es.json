@@ -10,7 +10,7 @@
       "search": "Busque en",
       "searchPlaceholder": "¿Qué busca?"
     },
-    "footerFootnote": "El DB1 Group está formado por empresas de tecnología, con tres operaciones en Brasil, una en Argentina y otra en Estados Unidos. Tiene 20 años de experiencia en el mercado de tecnología, ofreciendo SaaS y servicios de desarrollo de software para otras empresas. Siempre ofreciendo productos y servicios premium y de alta calidad, las empresas del grupo son líderes en el mercado. Los negocios del Grupo DB1 son: ANYMARKET, Consignet, DB1 Global Software, Koncili, Eive, Predize y el robot Tinbot. DB1 Global Software ha sido la primera empresa del grupo DB1 y actualmente representa el 50% del negocio del grupo y da servicio a empresas de todo el continente americano. Traducción realizada con la versión gratuita del traductor www.DeepL.com/Translator",
+    "footerFootnote": "DB1 Global Software es una empresa de desarrollo de software con 20 años de experiencia. Somos parte del Grupo DB1. El grupo es un conglomerado tecnológico centrado en la transformación digital de empresas B2B. La marca se enfoca en asegurar el crecimiento futuro al abordar las necesidades actuales de los clientes.",
     "legalInformationLabel": "Creado con el radar AOE",
     "socialLinksLabel": "Síguenos:",
     "pageIndex": {
@@ -22,7 +22,7 @@
     "zoom-in": "Ampliar",
     "quadrant": "cuadrante",
     "quadrants": {
-      "languages-and-frameworks": "Lenguajes y marcos",
+      "languages-and-frameworks": "Lenguajes y frameworks",
       "methods-and-patterns": "Métodos y modelos",
       "platforms-and-aoe-services": "Plataformas y operaciones",
       "tools": "Herramientas"
@@ -32,10 +32,10 @@
     },
     "rings": {
       "all": "todos",
-      "adopt": "adopte",
+      "adopt": "adoptar",
       "trial": "ensayo",
       "assess": "evalúe",
-      "hold": "mantener"
+      "hold": "evitar"
     },
     "pageHelp": {
       "headlinePrefix": "Cómo utilizar el",
@@ -51,7 +51,7 @@
         {
           "headline": "¿Qué es el radar tecnológico DB1?",
           "values": [
-            "El Radar Tecnológico es una panorámica de las distintas tecnologías -desde lenguajes, frameworks, herramientas y patrones hasta plataformas- que consideramos 'nuevas o mencionables'. Por lo tanto, el radar no ofrece una visión general de todas las tecnologías establecidas, sino que se centra en los elementos que han ganado importancia o han cambiado recientemente."
+            "El Radar Tecnológico es una panorámica de las distintas tecnologías - desde lenguajes, frameworks, herramientas y patrones hasta plataformas - que consideramos relevantes para el contexto del proyecto al que servimos: aplicaciones corporativas."
           ]
         },
         {
@@ -67,14 +67,14 @@
             "El radar actúa como una visión general de las tecnologías que creemos que todos los miembros de los equipos deberían conocer en la actualidad.",
             "Su objetivo es servir de guía e inspiración para el trabajo diario en los equipos. Su propósito es también proporcionar información útil y una perspectiva a vista de pájaro, de modo que las decisiones puedan tomarse con una comprensión mucho más profunda del asunto. El resultado son decisiones más informadas y mejor alineadas.",
             "También esperamos que los desarrolladores ajenos a DB1 encuentren inspiradora la información de nuestro resumen tecnológico.",
-            "Agrupamos o clasificamos los artículos en 4 cuadrantes - (a veces, cuando no está 100% claro a qué cuadrante pertenece un artículo, elegimos el que mejor encaja)."
+            "Agrupamos o clasificamos los artículos en 4 cuadrantes (a veces, cuando no está 100% claro a qué cuadrante pertenece un artículo, elegimos el que mejor encaja)."
           ]
         }
       ],
       "quadrants": [
         {
           "description": "Aquí hemos colocado lenguajes de desarrollo, marcos de desarrollo, que son útiles para implementar software personalizado de todo tipo.",
-          "name": "Lenguajes y marcos"
+          "name": "Lenguajes y frameworks"
         },
         {
           "description": "Aquí presentamos diferentes herramientas de software, desde pequeños ayudantes hasta grandes proyectos de software.",
@@ -85,7 +85,7 @@
           "name": "Métodos y modelos"
         },
         {
-          "description": "(incluidos los servicios internos de DB1): Aquí incluimos plataformas y servicios de infraestructura. También utilizamos esta categoría para comunicar noticias sobre los servicios de DB1 que queremos que todos los equipos de DB1 conozcan.",
+          "description": "Aquí incluimos plataformas y servicios de infraestructura. También utilizamos esta categoría para comunicar noticias sobre los servicios de DB1 que queremos que todos los equipos de DB1 conozcan.",
           "name": "Plataformas y operaciones"
         }
       ],
@@ -93,7 +93,7 @@
       "rings": [
         {
           "description": "Podemos recomendar claramente esta tecnología. La hemos utilizado durante mucho tiempo en muchos equipos y ha demostrado ser estable y útil.",
-          "name": "Adopte"
+          "name": "Adoptar"
         },
         {
           "description": "Lo hemos utilizado con éxito y recomendamos echar un vistazo más de cerca a la tecnología de este anillo. El objetivo de los artículos aquí es mirarlos más de cerca, con el objetivo de llevarlos al nivel de adopción.",
@@ -105,7 +105,7 @@
         },
         {
           "description": "Esta categoría es un poco especial. A diferencia de las demás, recomendamos dejar de hacer o usar algo. Eso no significa que sean malas y a menudo puede estar bien utilizarlas en proyectos existentes. Pero movemos las cosas aquí si creemos que no deberíamos seguir haciéndolas, porque ahora vemos mejores opciones o alternativas.",
-          "name": "Mantener"
+          "name": "Evitar"
         }
       ],
       "ringsPreDescription": "Cada uno de los artículos se clasifica en uno de estos anillos:",

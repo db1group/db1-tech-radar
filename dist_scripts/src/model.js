@@ -20,13 +20,23 @@ var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
     return to.concat(ar || Array.prototype.slice.call(from));
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getTags = exports.filteredOnly = exports.getFirstLetter = exports.groupByFirstLetter = exports.groupByQuadrants = exports.nonFeaturedOnly = exports.featuredOnly = exports.FlagType = exports.HomepageOption = void 0;
+exports.getTags = exports.filteredOnly = exports.getFirstLetter = exports.groupByFirstLetter = exports.groupByQuadrants = exports.nonFeaturedOnly = exports.featuredOnly = exports.FlagType = exports.StorageKey = exports.Language = exports.HomepageOption = void 0;
 var HomepageOption;
 (function (HomepageOption) {
     HomepageOption["chart"] = "chart";
     HomepageOption["columns"] = "columns";
     HomepageOption["both"] = "both";
 })(HomepageOption = exports.HomepageOption || (exports.HomepageOption = {}));
+var Language;
+(function (Language) {
+    Language["pt"] = "pt";
+    Language["en"] = "en";
+    Language["es"] = "es";
+})(Language = exports.Language || (exports.Language = {}));
+var StorageKey;
+(function (StorageKey) {
+    StorageKey["language"] = "language";
+})(StorageKey = exports.StorageKey || (exports.StorageKey = {}));
 var FlagType;
 (function (FlagType) {
     FlagType["new"] = "new";

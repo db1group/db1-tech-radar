@@ -19,19 +19,19 @@
       "colour": "#4867ff",
       "txtColour": "white",
       "position": 2,
-      "description": "Here we put information on methods and patterns concerning development, continuous x, testing, organization, architecture, etc."
+      "description": "Patterns are very important. Many of them last much longer than tools or frameworks. Therefore, this category determines how we develop software."
     },
-    "platforms-and-aoe-services": {
+    "platforms-and-services": {
       "colour": "#ff2d5e",
       "txtColour": "#444444",
       "position": 3,
-      "description": "This quadrant clusters technologies around the operation of software and infrastructure related platforms, tools and services."
+      "description": "Here we include infrastructure platforms and services. We also use this category to communicate news about DB1 services that we want all DB1 teams to be aware of."
     },
     "tools": {
       "colour": "#ffc000",
       "txtColour": "white",
       "position": 4,
-      "description": "Here we put different software tools - from small helpers to bigger software projects"
+      "description": "Here we put different software tools - from small helpers to bigger software projects."
     }
   },
   "chartConfig": {

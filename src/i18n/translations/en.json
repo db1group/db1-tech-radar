@@ -78,16 +78,16 @@
           "name": "Languages and Frameworks"
         },
         {
-          "description": "Here we put different software tools - from small helpers to bigger software projects.",
-          "name": "Tools"
-        },
-        {
-          "description": "Patterns are so important, and a lot of them are valid for a long time (compared to some tools or frameworks). So, this is the category where we put information on methods and patterns concerning development, continuous x, testing, organization, architecture, etc.",
+          "description": "Patterns are very important. Many of them last much longer than tools or frameworks. Therefore, this category determines how we develop software.",
           "name": "Methods and Patterns"
         },
         {
           "description": "Here we include infrastructure platforms and services. We also use this category to communicate news about DB1 services that we want all DB1 teams to be aware of.",
           "name": "Platforms and Operations"
+        },
+        {
+          "description": "Here we put different software tools - from small helpers to bigger software projects.",
+          "name": "Tools"
         }
       ],
       "quadrantsPreDescription": "Os quadrantes são:",

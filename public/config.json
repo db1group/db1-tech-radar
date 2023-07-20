@@ -2,7 +2,7 @@
   "quadrants": {
     "languages-and-frameworks": "Languages & Frameworks",
     "methods-and-patterns": "Methods & Patterns",
-    "platforms-and-aoe-services": "Platforms & Operations",
+    "platforms-and-operations": "Platforms & Operations",
     "tools": "Tools"
   },
   "rings": ["adopt", "trial", "assess", "hold"],
@@ -21,7 +21,7 @@
       "position": 2,
       "description": "Patterns are very important. Many of them last much longer than tools or frameworks. Therefore, this category determines how we develop software."
     },
-    "platforms-and-services": {
+    "platforms-and-operations": {
       "colour": "#ff2d5e",
       "txtColour": "#444444",
       "position": 3,

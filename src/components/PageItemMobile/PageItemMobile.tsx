@@ -54,7 +54,7 @@ export default function PageItemMobile({
 
   return (
     <Fadeable leaving={leaving} onLeave={onLeave}>
-      <SetTitle title={item.title} />
+      <SetTitle title={t(item.title)} />
       <div className="mobile-item-page">
         <div className="mobile-item-page__content">
           <div className="mobile-item-page__content__inner">

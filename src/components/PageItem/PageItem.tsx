@@ -67,7 +67,7 @@ const PageItem: React.FC<Props> = ({
 
   return (
     <>
-      <SetTitle title={item.title} />
+      <SetTitle title={t(item.title)} />
       <div className="item-page">
         <div className="item-page__nav">
           <div className="item-page__nav__inner">

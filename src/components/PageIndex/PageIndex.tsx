@@ -1,6 +1,6 @@
 import { MomentInput } from "moment";
 
-import { ConfigData, radarNameShort } from "../../config";
+import { ConfigData } from "../../config";
 import { formatRelease } from "../../date";
 import { HomepageOption, Item, featuredOnly } from "../../model";
 import Fadeable from "../Fadeable/Fadeable";
@@ -26,7 +26,7 @@ export default function PageIndex({
   releases,
 }: PageIndexProps) {
   const { t } = useTranslation();
-  const publishedLabel = t('pageIndex.publishedLabel');
+  const publishedLabel = t("pageIndex.publishedLabel");
 
   const newestRelease = releases.slice(-1)[0];
   const numberOfReleases = releases.length;
@@ -38,10 +38,10 @@ export default function PageIndex({
     config.homepageContent === HomepageOption.both;
   return (
     <Fadeable leaving={leaving} onLeave={onLeave}>
-      <SetTitle title={radarNameShort} />
+      <SetTitle title={t('radarName')} />
       <div className="headline-group">
-        <HeroHeadline alt={`${t('versionLabel')} #${numberOfReleases}`}>
-          {t('radarName')}
+        <HeroHeadline alt={`${t("versionLabel")} #${numberOfReleases}`}>
+          {t("radarName")}
         </HeroHeadline>
       </div>
       {showChart && <RadarGrid items={featuredOnly(items)} config={config} />}

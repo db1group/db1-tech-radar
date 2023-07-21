@@ -24,7 +24,7 @@
     "quadrants": {
       "languages-and-frameworks": "Lenguajes y frameworks",
       "methods-and-patterns": "Métodos y modelos",
-      "platforms-and-aoe-services": "Plataformas y operaciones",
+      "platforms-and-operations": "Plataformas y operaciones",
       "tools": "Herramientas"
     },
     "pageOverview": {
@@ -77,16 +77,16 @@
           "name": "Lenguajes y frameworks"
         },
         {
-          "description": "Aquí presentamos diferentes herramientas de software, desde pequeños ayudantes hasta grandes proyectos de software.",
-          "name": "Herramientas"
-        },
-        {
-          "description": "Los patrones son muy importantes, y muchos de ellos son válidos durante mucho tiempo (en comparación con algunas herramientas o frameworks). Así pues, esta es la categoría en la que ponemos información sobre métodos y patrones relativos al desarrollo, x continuo, pruebas, organización, arquitectura, etc.",
+          "description": "Los estándares son muy importantes. Muchos de ellos duran mucho más que las herramientas o los marcos. Por lo tanto, esta categoría determina cómo desarrollamos el software.",
           "name": "Métodos y modelos"
         },
         {
           "description": "Aquí incluimos plataformas y servicios de infraestructura. También utilizamos esta categoría para comunicar noticias sobre los servicios de DB1 que queremos que todos los equipos de DB1 conozcan.",
           "name": "Plataformas y operaciones"
+        },
+        {
+          "description": "Aquí presentamos diferentes herramientas de software, desde pequeños ayudantes hasta grandes proyectos de software.",
+          "name": "Herramientas"
         }
       ],
       "quadrantsPreDescription": "Los cuadrantes son:",

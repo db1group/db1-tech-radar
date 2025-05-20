@@ -24,7 +24,7 @@
       "fileName": "C:\\projects\\techradar\\radar\\2018-03-01\\adr.md"
     },
     {
-      "flag": "changed",
+      "flag": "default",
       "featured": false,
       "revisions": [
         {
@@ -145,7 +145,7 @@
       "fileName": "C:\\projects\\techradar\\radar\\2019-11-01\\alpakka.md"
     },
     {
-      "flag": "changed",
+      "flag": "default",
       "featured": true,
       "revisions": [
         {
@@ -488,7 +488,7 @@
       "fileName": "C:\\projects\\techradar\\radar\\2018-03-01\\babel.md"
     },
     {
-      "flag": "changed",
+      "flag": "default",
       "featured": true,
       "revisions": [
         {
@@ -609,7 +609,7 @@
       "fileName": "C:\\projects\\techradar\\radar\\2017-03-01\\client-side-error-logging.md"
     },
     {
-      "flag": "changed",
+      "flag": "default",
       "featured": false,
       "revisions": [
         {
@@ -842,7 +842,7 @@
       "fileName": "C:\\projects\\techradar\\radar\\2019-11-01\\datadog.md"
     },
     {
-      "flag": "new",
+      "flag": "default",
       "featured": true,
       "revisions": [
         {
@@ -945,7 +945,7 @@
       "fileName": "C:\\projects\\techradar\\radar\\2017-03-01\\devops-practices.md"
     },
     {
-      "flag": "new",
+      "flag": "default",
       "featured": true,
       "revisions": [
         {
@@ -1023,7 +1023,7 @@
       "fileName": "C:\\projects\\techradar\\radar\\2018-03-01\\docker.md"
     },
     {
-      "flag": "new",
+      "flag": "default",
       "featured": true,
       "revisions": [
         {
@@ -1047,7 +1047,7 @@
       "fileName": "C:\\projects\\techradar\\radar\\2021-01-01\\drupal.md"
     },
     {
-      "flag": "changed",
+      "flag": "default",
       "featured": true,
       "revisions": [
         {
@@ -1778,7 +1778,7 @@
       "fileName": "C:\\projects\\techradar\\radar\\2019-11-01\\hal-hateoas.md"
     },
     {
-      "flag": "changed",
+      "flag": "default",
       "featured": true,
       "revisions": [
         {
@@ -2179,7 +2179,7 @@
       "fileName": "C:\\projects\\techradar\\radar\\2018-03-01\\microservices.md"
     },
     {
-      "flag": "new",
+      "flag": "default",
       "featured": true,
       "revisions": [
         {
@@ -2225,7 +2225,7 @@
       "fileName": "C:\\projects\\techradar\\radar\\2018-03-01\\neo4j.md"
     },
     {
-      "flag": "changed",
+      "flag": "default",
       "featured": true,
       "revisions": [
         {
@@ -2255,7 +2255,7 @@
       "fileName": "C:\\projects\\techradar\\radar\\2021-01-01\\next-js.md"
     },
     {
-      "flag": "changed",
+      "flag": "default",
       "featured": true,
       "revisions": [
         {
@@ -2332,7 +2332,7 @@
       "fileName": "C:\\projects\\techradar\\radar\\2019-11-01\\npm.md"
     },
     {
-      "flag": "new",
+      "flag": "default",
       "featured": true,
       "revisions": [
         {
@@ -2425,7 +2425,7 @@
       "fileName": "C:\\projects\\techradar\\radar\\2019-11-01\\packer.md"
     },
     {
-      "flag": "changed",
+      "flag": "default",
       "featured": false,
       "revisions": [
         {
@@ -2582,7 +2582,7 @@
       "fileName": "C:\\projects\\techradar\\radar\\2018-03-01\\pipeline-as-code.md"
     },
     {
-      "flag": "changed",
+      "flag": "default",
       "featured": false,
       "revisions": [
         {
@@ -2741,7 +2741,7 @@
       "fileName": "C:\\projects\\techradar\\radar\\2019-11-01\\postman.md"
     },
     {
-      "flag": "new",
+      "flag": "default",
       "featured": true,
       "revisions": [
         {
@@ -2819,7 +2819,7 @@
       "fileName": "C:\\projects\\techradar\\radar\\2019-11-01\\puppet-environments.md"
     },
     {
-      "flag": "new",
+      "flag": "default",
       "featured": true,
       "revisions": [
         {
@@ -3039,7 +3039,7 @@
       "fileName": "C:\\projects\\techradar\\radar\\2017-03-01\\rest-assured.md"
     },
     {
-      "flag": "new",
+      "flag": "default",
       "featured": true,
       "revisions": [
         {
@@ -3086,7 +3086,7 @@
       "fileName": "C:\\projects\\techradar\\radar\\2017-03-01\\rxjava.md"
     },
     {
-      "flag": "changed",
+      "flag": "default",
       "featured": true,
       "revisions": [
         {
@@ -3228,7 +3228,7 @@
       "fileName": "C:\\projects\\techradar\\radar\\2021-01-01\\settings-injection.md"
     },
     {
-      "flag": "new",
+      "flag": "default",
       "featured": true,
       "revisions": [
         {
@@ -3517,7 +3517,7 @@
       "fileName": "C:\\projects\\techradar\\radar\\2019-11-01\\symfony-components.md"
     },
     {
-      "flag": "new",
+      "flag": "default",
       "featured": true,
       "revisions": [
         {
@@ -3673,7 +3673,7 @@
       "fileName": "C:\\projects\\techradar\\radar\\2019-11-01\\vault.md"
     },
     {
-      "flag": "changed",
+      "flag": "default",
       "featured": true,
       "revisions": [
         {
@@ -3769,7 +3769,7 @@
       "fileName": "C:\\projects\\techradar\\radar\\2018-03-01\\webpack.md"
     },
     {
-      "flag": "changed",
+      "flag": "default",
       "featured": false,
       "revisions": [
         {

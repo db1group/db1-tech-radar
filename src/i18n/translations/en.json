@@ -11,7 +11,7 @@
       "searchPlaceholder": "What are you looking for?"
     },
     "footerFootnote": "DB1 Global Software is a a software development company with 20 years of know-how. We are part of DB1 Group. The group is a tech company focused on the digital transformation of B2B companies. The brand focuses on ensuring future growth by addressing the current needs of clients.",
-    "legalInformationLabel": "Created using AOE Radar",
+    "legalInformationLabel": "Created using DB1 Radar",
     "socialLinksLabel": "Follow us:",
     "pageIndex": {
       "publishedLabel": "Quadrant Overview"
@@ -112,8 +112,8 @@
       "ringsPreDescription": "Each of the items is classified in one of these rings:",
       "sourcecodeLink": {
         "description": "Contributions and source code of the Tech Radar are on github:",
-        "href": "https://github.com/AOEpeople/aoe_technology_radar",
-        "name": "AOE Tech Radar on Github"
+        "href": "https://github.com/db1group/db1-tech-radar",
+        "name": "DB1 Tech Radar on Github"
       }
     },
     "legend": {

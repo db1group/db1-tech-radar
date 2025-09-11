@@ -677,7 +677,7 @@
       "revisions": [],
       "title": "Java",
       "info": "",
-      "release": "1995-05-23",
+      "release": "2025-09-10",
       "name": "Java",
       "ring": "adopt",
       "quadrant": "languages-and-frameworks",
@@ -691,7 +691,7 @@
       "revisions": [],
       "title": "Spring Framework",
       "info": "",
-      "release": "2003-10-01",
+      "release": "2025-09-10",
       "name": "Spring",
       "ring": "adopt",
       "quadrant": "languages-and-frameworks",
@@ -705,7 +705,7 @@
       "revisions": [],
       "title": "Quarkus",
       "info": "",
-      "release": "2019-03-07",
+      "release": "2025-09-10",
       "name": "Quarkus",
       "ring": "trial",
       "quadrant": "languages-and-frameworks",
@@ -714,5 +714,5 @@
       "bodyEs": "<h2>Nuestra opinión</h2> <p> Quarkus es un framework moderno para aplicaciones Java, creado con un enfoque en cloud-native y microservicios. Busca resolver algunas limitaciones históricas del ecosistema Java, especialmente relacionadas con el tiempo de inicio y el consumo de memoria. </p> <p> Al ser relativamente nuevo (lanzado en 2019), aún no tiene la misma madurez ni adopción que Spring, pero está ganando espacio en escenarios que requieren alto rendimiento y ejecución eficiente en contenedores y entornos serverless. </p> <h2>Por qué</h2> <p> Quarkus fue desarrollado para aprovechar GraalVM y HotSpot, permitiendo generar aplicaciones Java compiladas nativamente con un inicio ultrarrápido y un consumo reducido de recursos. </p> <p> Beneficios: </p> <ol> <li><strong>Cloud-native</strong>: optimizado para ejecutarse en contenedores y Kubernetes.</li> <li><strong>Rendimiento</strong>: inicio rápido y bajo consumo de memoria.</li> <li><strong>Integración</strong>: soporte para especificaciones Jakarta EE y MicroProfile.</li> <li><strong>Productividad</strong>: live reload y experiencia amigable para desarrolladores.</li> <li><strong>Innovación</strong>: fuerte respaldo de Red Hat y comunidad activa.</li> </ol> <p> Desafíos: </p> <ol> <li><strong>Madurez</strong>: ecosistema aún joven en comparación con Spring.</li> <li><strong>Adopción</strong>: menos empresas lo usan en producción, lo que requiere una evaluación cuidadosa.</li> <li><strong>Curva de aprendizaje</strong>: conceptos de compilación nativa y ajustes para GraalVM pueden ser desafiantes.</li> </ol>"
     }
   ],
-  "releases": ["2025-05-20", "2025-06-05"]
+  "releases": ["2025-05-20", "2025-06-05", "2025-09-10"]
 }

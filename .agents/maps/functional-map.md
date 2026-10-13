@@ -115,11 +115,13 @@ Markdown em HTML passa a ser feita por quem escreve a opinião, fora do reposit�
 ponto posicionado no cruzamento do seu quadrante com o seu anel, legendado e navegável.
 
 **Evidência no código.**
-- `src/components/Chart/RadarChart.tsx` — escalas, eixos e composição do SVG.
+- `src/components/Chart/RadarChart.tsx` — escalas e composição do SVG.
+- `src/components/Chart/geometry.ts` — a convenção angular única do desenho: graus, 0° = 12
+  horas, sentido horário.
 - `src/components/Chart/BlipPoints.tsx` — posicionamento dos pontos, com ângulo e raio
   sorteados dentro do setor e repulsão entre pontos vizinhos.
-- `src/components/Chart/QuadrantRings.tsx`, `Axes.tsx`, `BlipShapes.tsx` — arcos, eixos e as
-  três formas de ponto.
+- `src/components/Chart/QuadrantRings.tsx`, `BlipShapes.tsx` — arcos e as três formas de
+  ponto.
 - `src/components/RadarGrid/RadarGrid.tsx` — rótulo de cada quadrante, atalho de aproximação
   e legenda das três formas.
 - `public/config.json` (`chartConfig`) — tamanho, escala, raio e espessura de cada anel.

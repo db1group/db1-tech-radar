@@ -4,7 +4,6 @@ import ReactTooltip from "react-tooltip";
 
 import { ConfigData } from "../../config";
 import { Item } from "../../model";
-import { XAxis, YAxis } from "./Axes";
 import BlipPoints from "./BlipPoints";
 import QuadrantRings from "./QuadrantRings";
 import "./chart.scss";
@@ -70,17 +69,6 @@ const RadarChart: React.FC<{
       <svg
         viewBox={`0 0 ${config.chartConfig.size} ${config.chartConfig.size + 100}`}
       >
-        <g transform={`translate(${xScale(0)}, 0)`}>
-          <YAxis scale={yScale} />
-        </g>
-        <g transform={`translate(0, ${yScale(0)})`}>
-          <XAxis scale={xScale} />
-        </g>
-
-        {Object.values(config.quadrantsMap).map((value) => {
-          console.log(value)
-          return null
-        })}
         {Object.values(config.quadrantsMap).map((value, index) => (
           <QuadrantRings
             key={index}

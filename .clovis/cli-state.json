@@ -1,0 +1,105 @@
+{
+  "artifactLanguage": "pt",
+  "workMode": "maintenance",
+  "discoveryAnswers": {
+    "systemType": "frontend",
+    "scope": {
+      "type": "whole_project"
+    },
+    "restrictions": []
+  },
+  "domainIndex": [
+    {
+      "name": "Taxonomia de Quadrantes e Anéis",
+      "slug": "taxonomia-de-quadrantes-e-aneis",
+      "dependsOn": [],
+      "order": 0,
+      "documented": true,
+      "specified": true
+    },
+    {
+      "name": "Catálogo de Opiniões Tecnológicas",
+      "slug": "catalogo-de-opinioes-tecnologicas",
+      "dependsOn": [
+        "taxonomia-de-quadrantes-e-aneis"
+      ],
+      "order": 1,
+      "documented": true,
+      "specified": true
+    },
+    {
+      "name": "Visualização do Radar",
+      "slug": "visualizacao-do-radar",
+      "dependsOn": [
+        "taxonomia-de-quadrantes-e-aneis",
+        "catalogo-de-opinioes-tecnologicas"
+      ],
+      "order": 2,
+      "documented": true,
+      "specified": true
+    },
+    {
+      "name": "Navegação e Descoberta de Tecnologias",
+      "slug": "navegacao-e-descoberta-de-tecnologias",
+      "dependsOn": [
+        "taxonomia-de-quadrantes-e-aneis",
+        "catalogo-de-opinioes-tecnologicas"
+      ],
+      "order": 3,
+      "documented": true,
+      "specified": true
+    },
+    {
+      "name": "Governança de Contribuição do Radar",
+      "slug": "governanca-de-contribuicao-do-radar",
+      "dependsOn": [
+        "taxonomia-de-quadrantes-e-aneis",
+        "catalogo-de-opinioes-tecnologicas"
+      ],
+      "order": 4,
+      "documented": true,
+      "specified": true
+    },
+    {
+      "name": "Publicação e Distribuição do Radar",
+      "slug": "publicacao-e-distribuicao-do-radar",
+      "dependsOn": [
+        "catalogo-de-opinioes-tecnologicas"
+      ],
+      "order": 5,
+      "documented": true,
+      "specified": true
+    },
+    {
+      "name": "Identidade Institucional DB1",
+      "slug": "identidade-institucional-db1",
+      "dependsOn": [],
+      "order": 6,
+      "documented": true,
+      "specified": true
+    }
+  ],
+  "technicalSkillIndex": [
+    {
+      "name": "Internacionalização do Radar",
+      "slug": "internacionalizacao-do-radar",
+      "description": "Como manter os três idiomas do radar: adicionar e sincronizar chaves em pt, en e es, usar getItemBody para o corpo da opinião, trocar o idioma pelo seletor com persistência em localStorage e formatar datas no locale ativo. Carregar ao mexer em texto de interface, conteúdo de opinião ou formatação de data.",
+      "documented": true
+    },
+    {
+      "name": "Estratégia de Testes",
+      "slug": "estrategia-de-testes",
+      "description": "Como cobrir uma alteração de manutenção: teste unitário para toda lógica nova (modelo, hooks, geometria do gráfico) e teste de componente com Testing Library para cada tela alterada. Cobre onde colocar o arquivo, como montar o teste no setup do Create React App e o que conta como tela alterada. Carregar antes de abrir qualquer alteração de código.",
+      "documented": true
+    },
+    {
+      "name": "Registros de Decisão Arquitetural",
+      "slug": "registros-de-decisao-arquitetural",
+      "description": "Como registrar uma decisão de arquitetura em ADR: formato do documento, local e numeração dos arquivos, e quando uma mudança merece registro — geometria do gráfico, origem do acervo, forma de publicação e troca de biblioteca estrutural. Carregar ao tomar ou revisar uma decisão estrutural do projeto.",
+      "documented": true
+    }
+  ],
+  "authoritativeDocsSource": {
+    "kind": "skills"
+  }
+}

@@ -1,0 +1,8 @@
+#
+# Clovis CLI operational directory.
+# Ignores everything except the durable project state and this file.
+#
+
+*
+!.gitignore
+!cli-state.json

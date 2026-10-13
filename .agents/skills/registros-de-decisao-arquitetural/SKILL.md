@@ -127,7 +127,8 @@ verdadeira.
 Quatro gatilhos deste projeto caem nesse critério por construção:
 
 1. **Geometria do gráfico.** Mudança no desenho do radar e no contrato que o alimenta —
-   `src/components/Chart/` (`RadarChart.tsx`, `BlipPoints.tsx`, `QuadrantRings.tsx`, `Axes.tsx`)
+   `src/components/Chart/` (`RadarChart.tsx`, `BlipPoints.tsx`, `QuadrantRings.tsx`,
+   `geometry.ts`)
    e as chaves `chartConfig` e `quadrantsMap` de `public/config.json`. A reescrita que torna o
    número de quadrantes configurável, em andamento nas branches `feat/us1-geometry-foundation` e
    `feat/us2-rings-arcs-geometry`, é o exemplo vivo: ela extrai o cálculo para

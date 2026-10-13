@@ -93,7 +93,9 @@ As variáveis de build estão declaradas e versionadas em [`.env`](.env) — ess
   componentes.
 - **Quatro quadrantes na geometria.** O desenho em `src/components/Chart` assume quadrantes nas
   posições 1 a 4. A reescrita que torna esse número configurável precisa manter o desenho
-  idêntico ao publicado hoje quando houver quatro quadrantes.
+  idêntico ao publicado hoje quando houver quatro quadrantes; o porquê da escolha e as
+  alternativas descartadas estão em
+  [`docs/adr/0001-geometria-configuravel-do-grafico.md`](docs/adr/0001-geometria-configuravel-do-grafico.md).
 - **Acervo editado à mão.** `public/db1-opinion.json` é alterado por pull request, com `flag` e
   `revisions` preenchidos por quem edita. Tecnologia nova entra no anel `assess`; a promoção é
   decisão do time de engenharia (`CONTRIBUTING.md`).

@@ -101,5 +101,11 @@
   ],
   "authoritativeDocsSource": {
     "kind": "skills"
-  }
+  },
+  "implementedSpecs": [
+    {
+      "slug": "001-geometria-unica-do-radar",
+      "closedAt": "2026-10-07T11:25:25.997Z"
+    }
+  ]
 }

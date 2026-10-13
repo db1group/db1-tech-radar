@@ -91,9 +91,12 @@ As variáveis de build estão declaradas e versionadas em [`.env`](.env) — ess
 - **Três idiomas.** `pt`, `en` e `es` estão codificados no enum `Language` e nos campos
   `bodyPt`, `bodyEn` e `bodyEs` do tipo `Item`. Um quarto idioma exige mudar modelo, dado e
   componentes.
-- **Quatro quadrantes na geometria.** O desenho em `src/components/Chart` assume quadrantes nas
-  posições 1 a 4. A reescrita que torna esse número configurável precisa manter o desenho
-  idêntico ao publicado hoje quando houver quatro quadrantes.
+- **Quatro quadrantes na geometria.** O limite vive nos blocos de rótulo em
+  `src/components/RadarGrid`, nas listas posicionais de descrição dos dicionários de tradução e na
+  ausência de validação da configuração. A reescrita que torna esse número configurável precisa
+  manter o desenho idêntico ao publicado hoje quando houver quatro quadrantes; o porquê da escolha
+  e as alternativas descartadas estão em
+  [`docs/adr/0001-geometria-configuravel-do-grafico.md`](docs/adr/0001-geometria-configuravel-do-grafico.md).
 - **Acervo editado à mão.** `public/db1-opinion.json` é alterado por pull request, com `flag` e
   `revisions` preenchidos por quem edita. Tecnologia nova entra no anel `assess`; a promoção é
   decisão do time de engenharia (`CONTRIBUTING.md`).

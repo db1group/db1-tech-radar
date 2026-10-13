@@ -56,17 +56,30 @@ describe("getTags", () => {
 });
 ```
 
-As funções de geometria do gráfico vivem como funções de módulo não exportadas —
-`generateCoordinates` e `distanceBetween` em `src/components/Chart/BlipPoints.tsx`,
-`arcPath` em `src/components/Chart/QuadrantRings.tsx`. Ao criar ou alterar uma delas,
-exporte-a e cubra-a por unidade, passando as escalas `d3` e um `ConfigData` de fixture.
+A lógica do desenho é coberta por `src/components/Chart/geometry.ts`, que não importa `d3`: é lá
+que vivem a repartição do círculo, o slot de tela de cada quadrante, a conversão para os radianos
+que o gerador de arcos consome, a conversão de polar para cartesiano em pixels de tela, a forma do
+brilho de fundo de cada setor e o sorteio da posição do ponto, e é `geometry.test.tsx` que as
+exercita. Ao lado dele, `src/components/Chart/blips.ts` é o módulo puro que monta a lista de
+pontos a partir dos itens e da configuração, coberto por `blips.test.tsx`.
 
-`generateCoordinates` usa `Math.random()`. Um teste sobre ela deve afirmar invariantes
-(o ponto cai dentro do raio do anel, o sinal das coordenadas corresponde à posição do
-quadrante) ou fixar a aleatoriedade antes de afirmar coordenada exata:
+Módulo que importa o `d3` não é alcançável pela suíte: o `d3` 7.8.0 é publicado como ESM e o
+transform do `react-scripts` não entra em `node_modules`, de modo que um arquivo de teste que
+traga `RadarChart.tsx`, `BlipPoints.tsx` ou `QuadrantRings.tsx` para o grafo de imports falha
+com `SyntaxError` antes de rodar qualquer caso. Cálculo novo do desenho que precise de cobertura
+automática nasce em `geometry.ts`, como função pura sobre números; o que depende das escalas
+`d3` fica como função de módulo no componente, verificado pela conferência visual do pull
+request.
+
+O sorteio da posição do ponto recebe a fonte de aleatoriedade como parâmetro opcional, em
+`blipPosition` e em `buildBlips`, com `Math.random` como padrão. Um teste afirma invariantes com o
+padrão (o ponto cai dentro do setor do quadrante e da faixa do anel) ou injeta um gerador próprio
+para afirmar o caminho determinado — por exemplo, a colisão entre dois pontos do mesmo setor:
 
 ```tsx
-jest.spyOn(Math, "random").mockReturnValue(0.5);
+const alwaysHalf = () => 0.5;
+
+buildBlips(items, config, alwaysHalf);
 ```
 
 ### O que conta como tela alterada
@@ -224,19 +237,16 @@ request descrito em `CONTRIBUTING.md`.
   quando `src/i18n` entra no grafo de imports do teste. Afirme sobre um formato
   independente de locale (`"DD.MM.YYYY"`) ou fixe o idioma no teste antes de esperar
   um nome de mês.
-- **O gráfico é SVG escrito à mão.** Cubra `generateCoordinates`, `arcPath` e
-  `distanceBetween` por unidade; no teste de componente de `RadarChart`, `BlipPoints` e
-  `QuadrantRings`, afirme sobre presença e quantidade de elementos, não sobre valores
-  de `d`, `cx`, `cy` ou `transform`.
-- **A geometria assume quatro quadrantes nas posições 1 a 4.** `arcAngel` em
-  `QuadrantRings.tsx` e o vetor de deslocamento em `BlipPoints.tsx` são indexados por
-  `quadrantPosition - 1`. Fixture com posição fora desse intervalo produz `undefined`
-  em tempo de execução.
+- **O gráfico é SVG escrito à mão e a suíte não o renderiza.** `RadarChart` e `QuadrantRings`
+  importam `d3` e ficam fora do alcance do Jest deste projeto. `BlipPoints.tsx` fica fora pelo
+  `query-string` que o `Link` de cada ponto traz, mesmo sem importar `d3`. O que é afirmável por
+  teste são as funções puras de `geometry.ts` e de `blips.ts`; a conferência do SVG — valores de
+  `d`, `cx`, `cy` e `transform` — é manual, comparando a página com o radar publicado.
 - **A viewport do jsdom é móvel.** `isMobileViewport()` (`src/config.ts`) compara
   `window.innerWidth` com 1200, e o padrão do jsdom é 1024. Um teste que renderiza
   `Router` numa rota de item cai em `PageItemMobile`. Renderize o `Page*` desejado
   direto, ou ajuste `window.innerWidth` antes do render.
-- **Item sem quadrante correspondente some em silêncio.** `BlipPoints` descarta o item
+- **Item sem quadrante correspondente some em silêncio.** `buildBlips` descarta o item
   cujo `quadrant` não existe em `config.quadrantsMap`, sem erro. O teste que espera um
   blip deve usar uma fixture em que `item.quadrant` e `item.ring` existam no
   `ConfigData` passado.

@@ -22,15 +22,16 @@ Cada item diz o que é e o que deixa de funcionar no domínio se ele faltar.
   porque nada valida a geometria em tempo de build.
 
 - **Registro em ADR das decisões de arquitetura do desenho** — a reescrita da geometria para
-  suportar de um a seis quadrantes, em andamento nas branches `feat/us1-geometry-foundation` e
-  `feat/us2-rings-arcs-geometry`, é decisão de arquitetura e exige o desenho idêntico ao atual
-  quando houver quatro quadrantes. Sem o registro, a restrição de equivalência visual se perde e
-  a próxima alteração da geometria não tem contra o que ser conferida.
+  suportar de um a seis quadrantes é decisão de arquitetura, registrada em
+  [`docs/adr/0001-geometria-configuravel-do-grafico.md`](../../../../docs/adr/0001-geometria-configuravel-do-grafico.md),
+  que guarda a exigência de o desenho permanecer idêntico ao publicado quando houver quatro
+  quadrantes. Sem o registro, a restrição de equivalência visual se perde e a próxima alteração
+  da geometria não tem contra o que ser conferida.
 
-- **`d3`** — fornece as escalas lineares que convertem unidade de coordenada em pixel e o gerador
-  de arcos que desenha a faixa de cada anel dentro do setor de cada quadrante. Sem ela, toda a
-  conversão de coordenadas e a construção do caminho dos arcos precisam ser reimplementadas; é a
-  biblioteca de que depende cada número de geometria documentado na skill.
+- **`d3`** — fornece as escalas lineares que posicionam os rótulos de anel e o gerador de arcos que
+  desenha a faixa de cada anel dentro do setor de cada quadrante. Sem ela, a construção do caminho
+  dos arcos e o posicionamento dos rótulos precisam ser reimplementados. O sorteio da posição dos
+  pontos não passa por ela: ângulo, raio e coordenada saem de funções puras sobre números.
 
 - **`react-tooltip`** — monta a dica que identifica o ponto ao passar o mouse, com a cor de fundo
   e a cor de texto do quadrante. Sem ela o diagrama fica mudo: nenhum ponto traz texto fixo ao

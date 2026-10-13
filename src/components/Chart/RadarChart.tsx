@@ -4,7 +4,6 @@ import ReactTooltip from "react-tooltip";
 
 import { ConfigData } from "../../config";
 import { Item } from "../../model";
-import { XAxis, YAxis } from "./Axes";
 import BlipPoints from "./BlipPoints";
 import QuadrantRings from "./QuadrantRings";
 import "./chart.scss";
@@ -65,22 +64,49 @@ const RadarChart: React.FC<{
     .domain(config.chartConfig.scale)
     .range([config.chartConfig.size, 0]);
 
+  const size = config.chartConfig.size,
+    centre = size / 2;
+
   return (
     <div className="chart" style={{ maxWidth: `${config.chartConfig.size}px` }}>
       <svg
         viewBox={`0 0 ${config.chartConfig.size} ${config.chartConfig.size + 100}`}
       >
-        <g transform={`translate(${xScale(0)}, 0)`}>
-          <YAxis scale={yScale} />
-        </g>
-        <g transform={`translate(0, ${yScale(0)})`}>
-          <XAxis scale={xScale} />
-        </g>
+        <defs>
+          <mask
+            id="radar-mask"
+            maskUnits="userSpaceOnUse"
+            x={0}
+            y={0}
+            width={size}
+            height={size}
+          >
+            <rect x={0} y={0} width={size} height={size} fill="black" />
+            <circle cx={centre} cy={centre} r={centre} fill="white" />
+          </mask>
 
-        {Object.values(config.quadrantsMap).map((value) => {
-          console.log(value)
-          return null
-        })}
+          <radialGradient id="glow-gradient">
+            <stop offset="0%" stopColor="white" stopOpacity="0.5" />
+            <stop offset="100%" stopColor="white" stopOpacity="0" />
+          </radialGradient>
+
+          <mask
+            id="glow-mask"
+            maskUnits="userSpaceOnUse"
+            x={0}
+            y={0}
+            width={size}
+            height={size}
+          >
+            <circle
+              cx={centre}
+              cy={centre}
+              r={centre}
+              fill="url(#glow-gradient)"
+            />
+          </mask>
+        </defs>
+
         {Object.values(config.quadrantsMap).map((value, index) => (
           <QuadrantRings
             key={index}
@@ -100,12 +126,7 @@ const RadarChart: React.FC<{
           />
         ))}
 
-        <BlipPoints
-          items={items}
-          xScale={xScale}
-          yScale={yScale}
-          config={config}
-        />
+        <BlipPoints items={items} config={config} />
       </svg>
       <ReactTooltip className="tooltip" />
     </div>

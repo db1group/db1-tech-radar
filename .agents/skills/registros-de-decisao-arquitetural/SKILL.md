@@ -127,10 +127,12 @@ verdadeira.
 Quatro gatilhos deste projeto caem nesse critério por construção:
 
 1. **Geometria do gráfico.** Mudança no desenho do radar e no contrato que o alimenta —
-   `src/components/Chart/` (`RadarChart.tsx`, `BlipPoints.tsx`, `QuadrantRings.tsx`, `Axes.tsx`)
+   `src/components/Chart/` (`RadarChart.tsx`, `BlipPoints.tsx`, `QuadrantRings.tsx`,
+   `geometry.ts`, `blips.ts`)
    e as chaves `chartConfig` e `quadrantsMap` de `public/config.json`. A reescrita que torna o
-   número de quadrantes configurável, em andamento nas branches `feat/us1-geometry-foundation` e
-   `feat/us2-rings-arcs-geometry`, é o exemplo vivo: ela extrai o cálculo para
+   número de quadrantes configurável, em andamento nas branches `feat/us1-geometry-foundation`,
+   `feat/us2-rings-arcs-geometry`, `feat/us3-glow-mask` e `feat/us4-blip-positioner`, é o exemplo
+   vivo: ela extrai o cálculo para
    `src/components/Chart/geometry.ts`, mexe em `public/config.json` e em `src/model.ts`, e
    derruba a restrição de quatro quadrantes declarada no `AGENTS.md`.
 2. **Origem do acervo.** Hoje o acervo é o arquivo estático `public/db1-opinion.json`, editado à

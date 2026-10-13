@@ -101,5 +101,23 @@
   ],
   "authoritativeDocsSource": {
     "kind": "skills"
-  }
+  },
+  "implementedSpecs": [
+    {
+      "slug": "001-geometria-unica-do-radar",
+      "closedAt": "2026-10-07T11:25:25.997Z"
+    },
+    {
+      "slug": "002-arcos-dos-aneis-pela-geometria",
+      "closedAt": "2026-10-07T19:59:05.392Z"
+    },
+    {
+      "slug": "003-brilho-de-fundo-por-mascara",
+      "closedAt": "2026-10-08T13:39:19.115Z"
+    },
+    {
+      "slug": "004-posicionamento-dos-pontos-pela-geometria",
+      "closedAt": "2026-10-08T17:07:20.159Z"
+    }
+  ]
 }

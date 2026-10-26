@@ -13,24 +13,28 @@
       "colour": "#cdcaeb",
       "txtColour": "#444444",
       "position": 1,
+      "order": 4,
       "description": "Here we've placed development languages, development frameworks, which are useful for implementing custom software of all kinds."
     },
     "methods-and-patterns": {
       "colour": "#4867ff",
       "txtColour": "white",
       "position": 2,
+      "order": 1,
       "description": "Patterns are very important. Many of them last much longer than tools or frameworks. Therefore, this category determines how we develop software."
     },
     "platforms-and-operations": {
       "colour": "#ff2d5e",
       "txtColour": "#444444",
       "position": 3,
+      "order": 3,
       "description": "Here we include infrastructure platforms and services. We also use this category to communicate news about DB1 services that we want all DB1 teams to be aware of."
     },
     "tools": {
       "colour": "#ffc000",
       "txtColour": "white",
       "position": 4,
+      "order": 2,
       "description": "Here we put different software tools - from small helpers to bigger software projects."
     }
   },

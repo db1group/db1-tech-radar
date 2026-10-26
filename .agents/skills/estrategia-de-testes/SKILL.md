@@ -228,8 +228,8 @@ request descrito em `CONTRIBUTING.md`.
   `distanceBetween` por unidade; no teste de componente de `RadarChart`, `BlipPoints` e
   `QuadrantRings`, afirme sobre presença e quantidade de elementos, não sobre valores
   de `d`, `cx`, `cy` ou `transform`.
-- **A geometria assume quatro quadrantes nas posições 1 a 4.** `arcAngel` em
-  `QuadrantRings.tsx` e o vetor de deslocamento em `BlipPoints.tsx` são indexados por
+- **A geometria assume quatro quadrantes nas posições 1 a 4.** `arcAngel` e
+  `blipQuarterTurns`, em `src/components/Chart/legacyAngles.ts`, são indexados por
   `quadrantPosition - 1`. Fixture com posição fora desse intervalo produz `undefined`
   em tempo de execução.
 - **A viewport do jsdom é móvel.** `isMobileViewport()` (`src/config.ts`) compara

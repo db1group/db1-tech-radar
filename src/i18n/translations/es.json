@@ -67,28 +67,28 @@
             "El radar actúa como una visión general de las tecnologías que creemos que todos los miembros de los equipos deberían conocer en la actualidad.",
             "Su objetivo es servir de guía e inspiración para el trabajo diario en los equipos. Su propósito es también proporcionar información útil y una perspectiva a vista de pájaro, de modo que las decisiones puedan tomarse con una comprensión mucho más profunda del asunto. El resultado son decisiones más informadas y mejor alineadas.",
             "También esperamos que los desarrolladores ajenos a DB1 encuentren inspiradora la información de nuestro resumen tecnológico.",
-            "Agrupamos o clasificamos los artículos en 4 cuadrantes (a veces, cuando no está 100% claro a qué cuadrante pertenece un artículo, elegimos el que mejor encaja)."
+            "Agrupamos o clasificamos los artículos en cuadrantes (a veces, cuando no está 100% claro a qué cuadrante pertenece un artículo, elegimos el que mejor encaja)."
           ]
         }
       ],
-      "quadrants": [
-        {
+      "quadrants": {
+        "languages-and-frameworks": {
           "description": "Aquí hemos colocado lenguajes de desarrollo, marcos de desarrollo, que son útiles para implementar software personalizado de todo tipo.",
           "name": "Lenguajes y frameworks"
         },
-        {
+        "methods-and-patterns": {
           "description": "Los estándares son muy importantes. Muchos de ellos duran mucho más que las herramientas o los marcos. Por lo tanto, esta categoría determina cómo desarrollamos el software.",
           "name": "Métodos y modelos"
         },
-        {
+        "platforms-and-operations": {
           "description": "Aquí incluimos plataformas y servicios de infraestructura. También utilizamos esta categoría para comunicar noticias sobre los servicios de DB1 que queremos que todos los equipos de DB1 conozcan.",
           "name": "Plataformas y operaciones"
         },
-        {
+        "tools": {
           "description": "Aquí presentamos diferentes herramientas de software, desde pequeños ayudantes hasta grandes proyectos de software.",
           "name": "Herramientas"
         }
-      ],
+      },
       "quadrantsPreDescription": "Los cuadrantes son:",
       "rings": [
         {

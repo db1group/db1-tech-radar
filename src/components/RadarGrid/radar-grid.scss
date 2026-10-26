@@ -14,6 +14,73 @@
 .radar-grid .quadrant-label {
     position: absolute;
     width: 20%;
+    top: 0;
+    left: 0;
+}
+
+.radar-grid .quadrant-label--slot-1,
+.radar-grid .quadrant-label--slot-2 {
+    left: auto;
+    right: 0;
+}
+
+.radar-grid .quadrant-label--slot-2,
+.radar-grid .quadrant-label--slot-3 {
+    top: auto;
+    bottom: 0;
+}
+
+.radar-grid .quadrant-label--slot-4,
+.radar-grid .quadrant-label--slot-5,
+.radar-grid .quadrant-label--slot-6 {
+    top: 0;
+    bottom: auto;
+    left: 0;
+    right: auto;
+}
+
+.radar-grid[data-quadrants="1"] .quadrant-label--slot-1,
+.radar-grid[data-quadrants="2"] .quadrant-label--slot-2,
+.radar-grid[data-quadrants="3"] .quadrant-label--slot-3 {
+    top: 0;
+    bottom: auto;
+    left: 0;
+    right: auto;
+}
+
+.radar-grid[data-quadrants="5"] {
+    padding-bottom: 200px;
+}
+
+.radar-grid[data-quadrants="5"] .quadrant-label--slot-3 {
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.radar-grid[data-quadrants="5"] .quadrant-label--slot-4 {
+    top: auto;
+    bottom: 0;
+}
+
+.radar-grid[data-quadrants="6"] {
+    padding: 0 22% 10%;
+}
+
+.radar-grid[data-quadrants="6"] .quadrant-label--slot-2,
+.radar-grid[data-quadrants="6"] .quadrant-label--slot-5 {
+    bottom: auto;
+    top: 38%;
+    transform: translateY(-50%);
+}
+
+.radar-grid[data-quadrants="6"] .quadrant-label--slot-3 {
+    left: auto;
+    right: 0;
+}
+
+.radar-grid[data-quadrants="6"] .quadrant-label--slot-4 {
+    top: auto;
+    bottom: 0;
 }
 
 .quadrant-label .split {
@@ -46,6 +113,13 @@
     width: 15%;
     right: 0;
     top: 45%;
+}
+
+.radar-grid[data-quadrants="6"] .radar-legend {
+    top: auto;
+    bottom: 0;
+    right: 50%;
+    transform: translateX(50%);
 }
 
 .radar-legend .wrapper {

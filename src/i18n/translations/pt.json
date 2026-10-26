@@ -68,28 +68,28 @@
             "O radar funciona como uma visão geral das tecnologias que, em nossa opinião, todos os membros das equipes deveriam conhecer.",
             "Seu objetivo é servir de guia e inspiração para o trabalho diário das equipes. Seu objetivo também é fornecer informações úteis e uma perspectiva panorâmica, de modo que as decisões possam ser tomadas com uma compreensão muito mais profunda do assunto. Isso resulta em decisões mais bem informadas e mais bem alinhadas.",
             "Também esperamos que os desenvolvedores de fora da DB1 considerem as informações em nossa visão geral da tecnologia inspiradoras.",
-            "Agrupamos ou categorizamos os itens em 4 quadrantes (às vezes, quando não está 100% claro onde um item pertence, escolhemos o mais adequado)."
+            "Agrupamos ou categorizamos os itens em quadrantes (às vezes, quando não está 100% claro onde um item pertence, escolhemos o mais adequado)."
           ]
         }
       ],
-      "quadrants": [
-        {
+      "quadrants": {
+        "languages-and-frameworks": {
           "description": "Aqui colocamos linguagens e frameworks de desenvolvimento que são úteis para a implementação de software personalizado de todos os tipos.",
           "name": "Linguagens e frameworks"
         },
-        {
+        "methods-and-patterns": {
           "description": "Padrões são muito importantes. Muitos deles duram muito mais que ferramentas ou frameworks. Portanto, esta categoria determina o como desenvolvemos software.",
           "name": "Métodos e padrões"
         },
-        {
+        "platforms-and-operations": {
           "description": "Aqui incluímos plataformas e serviços de infraestrutura. Também usamos essa categoria para comunicar notícias sobre os serviços da DB1 que queremos que todas as equipes da DB1 conheçam.",
           "name": "Plataformas e operações"
         },
-        {
+        "tools": {
           "description": "Aqui colocamos diferentes ferramentas de software, desde pequenas ferramentas auxiliares até projetos de software maiores.",
           "name": "Ferramentas"
         }
-      ],
+      },
       "quadrantsPreDescription": "Os quadrantes são:",
       "rings": [
         {

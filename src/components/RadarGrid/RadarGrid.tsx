@@ -19,7 +19,6 @@ const QuadrantLabel: React.FC<{
     { bottom: 0, right: 0 },
   ];
   const { t } = useTranslation();
-  const quadrants = t("pageHelp.quadrants", { returnObjects: true }) as QuadrantConfig[];
   return (
     <div
       className="quadrant-label"
@@ -38,7 +37,7 @@ const QuadrantLabel: React.FC<{
       </div>
       <hr style={{ borderColor: quadrantConfig.colour }} />
       <h4 className="headline">{quadrantLabel}</h4>
-      <div className="description">{t(`${quadrants[quadrantConfig.position - 1].description}`)}</div>
+      <div className="description">{t(`pageHelp.quadrants.${quadrantName}.description`)}</div>
     </div>
   );
 };

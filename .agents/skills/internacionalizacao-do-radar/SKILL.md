@@ -21,7 +21,7 @@ metadata:
 > idiomas — exige atualizar esta skill junto com o código. Refatoração técnica que preserva o
 > padrão — renomear um componente, mover um arquivo, extrair uma função, atualizar a versão de
 > `i18next` ou de `moment` — não exige tocar aqui. Divergência entre o que esta skill prescreve e
-> o que o código faz, sem decisão registrada em `.agents/context/discovery-answers.md` ou em ADR,
+> o que o código faz, sem decisão registrada em `.agents/context/discovery-answers.md`,
 > deve ser escalada para a pessoa responsável, não resolvida por inferência.
 
 ## Visão geral do padrão e do problema que resolve
@@ -62,10 +62,11 @@ demanda nem backend de tradução.
 2. Siga a organização em vigor: chaves planas para rótulos globais (`radarName`, `versionLabel`,
    `footerFootnote`), objetos aninhados para escopos de página (`navbar`, `pageIndex`, `pageItem`,
    `pageOverview`, `pageHelp`) e dicionários indexados pelo slug do dado (`quadrants.<slug>`,
-   `rings.<anel>`, `flags.<flag>`, `legend.<item>`).
+   `pageHelp.quadrants.<slug>`, `rings.<anel>`, `flags.<flag>`, `legend.<item>`).
 3. Mantenha a forma idêntica nos três arquivos. Quando o valor é uma lista — como
-   `pageHelp.paragraphs`, `pageHelp.quadrants` e `pageHelp.rings` —, o número de elementos e os
-   campos de cada elemento devem coincidir nos três idiomas.
+   `pageHelp.paragraphs` e `pageHelp.rings` —, o número de elementos e os campos de cada elemento
+   devem coincidir nos três idiomas. Quando é um dicionário indexado pelo slug, o conjunto de
+   slugs é que deve coincidir.
 4. Renomear uma chave significa renomeá-la nos três arquivos e em todos os pontos de consumo no
    mesmo commit, inclusive nos usos com chave dinâmica.
 
@@ -215,10 +216,14 @@ Não chame `moment(...).format(...)` direto em um componente: isso formata no lo
   string da chave. É o caso de `flags.changed`: `FlagType.changed` existe em `src/model.ts`,
   `public/db1-opinion.json` tem itens com `"flag": "changed"` e `Flag` chama
   ``t(`flags.${item.flag}`)``, mas apenas `flags.new` está traduzida nos três arquivos.
-- **Lista fora de sincronia some sem erro.** `pageHelp.paragraphs[2].values[2]` existe em `pt.json`
-  e em `en.json` e falta em `es.json`; a página de ajuda em espanhol exibe um parágrafo a menos,
-  porque `returnObjects` resolve a estrutura inteira no idioma ativo e não faz fallback por
-  elemento.
+- **Estrutura fora de sincronia some sem erro.** `returnObjects` resolve a estrutura inteira no
+  idioma ativo e não faz recurso por elemento: `pageHelp.paragraphs[2].values[2]` existe em
+  `pt.json` e em `en.json` e falta em `es.json`, e a página de ajuda em espanhol exibe um parágrafo
+  a menos. Vale o mesmo para o mapa por slug: um slug sem entrada em `pageHelp.quadrants` no idioma
+  ativo some da lista da página de ajuda. A leitura por chave composta de folha —
+  ``t(`pageHelp.quadrants.${slug}.description`)``, usada pelo bloco de rótulo da página inicial —
+  tem recurso e cai no inglês. `src/i18n/translations.test.tsx` compara os três dicionários com os
+  slugs de `public/config.json` e acusa a falta nomeando o slug e o idioma.
 - **Valor traduzido pode estar no idioma errado.** `pageHelp.quadrantsPreDescription` em `en.json`
   contém o texto português `"Os quadrantes são:"`. Estrutura sincronizada não garante tradução
   feita; a revisão do valor é humana.

@@ -1,6 +1,6 @@
 ---
 name: discovery-answers
-description: Contexto e decisões da descoberta funcional do db1-tech-radar — objetivo, escopo, restrições, decisões transversais com destino (i18n, testes, ADRs, observabilidade, publicação em S3 com CloudFront, estado, estilos, tooling), ausência de framework spec-driven concorrente e o registro das sete decisões humanas resolvidas.
+description: Contexto e decisões da descoberta funcional do db1-tech-radar — objetivo, escopo, restrições, decisões transversais com destino (i18n, testes, registro de decisões de arquitetura, observabilidade, publicação em S3 com CloudFront, estado, estilos, tooling), ausência de framework spec-driven concorrente e o registro das sete decisões humanas resolvidas.
 metadata:
   author: clovis-cli
   responsibility: "Durable memory of the functional-discovery context and decisions: objective, scope, declared restrictions, validated cross-cutting decisions (with destination), documentation forms to maintain and the log of human decisions resolved in the gap loop. Source re-read by the following stages; its restrictions take precedence over later inferences."
@@ -61,9 +61,10 @@ seguintes precisam respeitar.
 - Página de ajuda embutida no produto (`help-and-about-tech-radar`), cujo conteúdo vive nos
   arquivos de tradução (`src/i18n/translations/*.json`, chave `pageHelp`) e explica ao
   leitor o que é o radar, como ele é criado e o significado de cada quadrante e anel.
-- **ADRs** para decisões de arquitetura. Toda escolha estrutural — geometria configurável do
-  gráfico, origem do acervo, forma de publicação — passa a ter um registro próprio. O formato
-  e o local dos arquivos são definidos pela skill técnica `registros-de-decisao-arquitetural`.
+- **Skills** para decisões de arquitetura. Toda escolha estrutural — geometria configurável do
+  gráfico, origem do acervo, forma de publicação — fica registrada, com o porquê e as
+  alternativas descartadas, na skill que governa o assunto, e a discussão fica no pull request.
+  O repositório não mantém diretório de ADRs.
 
 Swagger/OpenAPI e coleções Postman não se aplicam: o projeto não expõe nem consome API.
 Storybook não é mantido.
@@ -74,7 +75,7 @@ Storybook não é mantido.
 | --- | --- | --- |
 | Internacionalização com `i18next` + `react-i18next`, detector de idioma e persistência em `localStorage`; chaves em `src/i18n/translations/{pt,en,es}.json` | Evidência: `src/i18n/index.ts`, `src/components/ButtonFlag/ButtonFlag.tsx`, `src/hooks/get-item-body.tsx`, `src/date.ts` | `technical-skill` `internacionalizacao-do-radar` |
 | Teste unitário para lógica nova e teste de componente para as telas alteradas, com Jest e Testing Library | Decisão humana (`g2`) | `technical-skill` `estrategia-de-testes` |
-| ADRs como registro das decisões de arquitetura | Decisão humana (`g1`) | `technical-skill` `registros-de-decisao-arquitetural` |
+| Decisões de arquitetura registradas na skill que governa o assunto, sem ADRs | Decisão humana (`g1`) | Skill de cada assunto; a geometria do gráfico em `technical-skill` `componente-grafico-do-radar` |
 | Sem instrumentação: o site público não recebe analytics nem monitoramento de erro | Decisão humana (`g3`) | Convenção em `AGENTS.md` |
 | Publicação única: GitHub Actions compila e sincroniza com o bucket S3, seguido de invalidação do CloudFront | Decisões humanas (`g4`, `g5`) + `.github/workflows/prod-deploy-app-on-harbor.yml` | Convenção em `AGENTS.md` e domínio **Publicação e Distribuição do Radar** |
 | Gerenciamento de estado sem biblioteca externa: estado local do React, Context apenas para os links institucionais e a URL como fonte de verdade de busca e filtros | Evidência: `src/hooks/use-search-param-state.tsx`, `src/context/MessagesContext/index.tsx`, `src/components/Header/Header.tsx` | Convenção em `AGENTS.md` |
@@ -93,8 +94,8 @@ Três decisões viram `technical-skill` porque exigem um passo a passo reutiliz�
   registrar o locale do `moment` ao formatar datas.
 - **`estrategia-de-testes`** — onde colocar o teste, como montar um teste de componente com
   Testing Library neste projeto e o que conta como tela alterada.
-- **`registros-de-decisao-arquitetural`** — formato do ADR, local dos arquivos, numeração e
-  quando uma mudança merece registro.
+- **`componente-grafico-do-radar`** — a geometria única dos setores, o slot de tela separado
+  da posição, a trava de retrocompatibilidade com o desenho publicado e o porquê das escolhas.
 
 As demais são regras curtas e estáveis, que cabem como convenção.
 
@@ -113,7 +114,7 @@ próprio CLI). Nenhuma decisão humana foi necessária neste ponto.
 
 | Gap | O que estava em aberto | Decisão tomada | Destino |
 | --- | --- | --- | --- |
-| `g1` | Qual forma de documentação manter além do `README.md`, do `CONTRIBUTING.md` e da página de ajuda do site. | Manter **ADRs** para decisões de arquitetura. | `technical-skill` `registros-de-decisao-arquitetural` |
+| `g1` | Qual forma de documentação manter além do `README.md`, do `CONTRIBUTING.md` e da página de ajuda do site. | **Sem ADRs**: o porquê das decisões de arquitetura vive na skill que governa o assunto (revisão do PR #74). | Skill de cada assunto |
 | `g2` | Que nível de teste automatizado exigir nas alterações de manutenção. | **Teste unitário mais teste de componente nas telas alteradas.** | `technical-skill` `estrategia-de-testes` |
 | `g3` | Se o site público passa a ter analytics ou monitoramento de erro. | **Seguir sem instrumentação.** | Convenção em `AGENTS.md` |
 | `g4` | O que fazer com o pipeline Markdown em `scripts/` e `dist_scripts/`, o `Dockerfile` e a configuração do Firebase Hosting. | **Remover os artefatos não usados do repositório**, junto com `tsconfig.scripts.json`, o script `build:scripts`, o `.dockerignore` e as dependências exclusivas deles: `marked`, `highlight.js`, `front-matter`, `walk`, `fs-extra`, `xml-sitemap` e os `@types` correspondentes. | Domínios **Publicação e Distribuição do Radar**, **Catálogo de Opiniões Tecnológicas** e **Taxonomia de Quadrantes e Anéis** |

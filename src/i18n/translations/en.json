@@ -68,28 +68,28 @@
             "The radar acts as an overview of technologies that we think everyone in the teams should currently know about.",
             "Its goal is to act as a guide and inspiration for the daily work in the teams. Its purpose is also to provide helpful information and a bird's-eye perspective - so that decisions can be taken with a much deeper understanding of the subject matter. This results in more-informed and better-aligned decisions.",
             "We also hope that developers outside of DB1 find the information in our technology overview inspirational.",
-            "We group or categorize the items in 4 quadrants (sometimes, when it's not 100% clear where a item belongs, we choose the best fit)."
+            "We group or categorize the items in quadrants (sometimes, when it's not 100% clear where a item belongs, we choose the best fit)."
           ]
         }
       ],
-      "quadrants": [
-        {
+      "quadrants": {
+        "languages-and-frameworks": {
           "description": "Here we've placed development languages, development frameworks, which are useful for implementing custom software of all kinds.",
           "name": "Languages and Frameworks"
         },
-        {
+        "methods-and-patterns": {
           "description": "Patterns are very important. Many of them last much longer than tools or frameworks. Therefore, this category determines how we develop software.",
           "name": "Methods and Patterns"
         },
-        {
+        "platforms-and-operations": {
           "description": "Here we include infrastructure platforms and services. We also use this category to communicate news about DB1 services that we want all DB1 teams to be aware of.",
           "name": "Platforms and Operations"
         },
-        {
+        "tools": {
           "description": "Here we put different software tools - from small helpers to bigger software projects.",
           "name": "Tools"
         }
-      ],
+      },
       "quadrantsPreDescription": "Os quadrantes são:",
       "rings": [
         {

@@ -28,10 +28,11 @@ Cada item diz o que é e o que deixa de funcionar no domínio se ele faltar.
   inicialização, nenhum rótulo de eixo é traduzido e a interface exibe as chaves cruas, mesmo
   com os dicionários presentes.
 
-- **Listas posicionais de descrição nos dicionários (`pageHelp.quadrants` e `pageHelp.rings`)** —
-  o rótulo de quadrante no gráfico e a página de ajuda leem a descrição pela posição do eixo na
-  lista, não pelo slug. Lista ausente em um idioma quebra a página de ajuda naquele idioma;
-  lista fora de ordem atribui a descrição de um eixo a outro, sem erro visível.
+- **Descrições de eixo nos dicionários (`pageHelp.quadrants` e `pageHelp.rings`)** — o mapa de
+  quadrantes é endereçado pelo slug; a lista de anéis é posicional e segue a ordem do centro para
+  a borda. Chave ausente em um idioma quebra a página de ajuda naquele idioma; a lista de anéis
+  fora de ordem atribui a descrição de um anel a outro, sem erro visível, e o quadrante sem
+  entrada no idioma ativo some da lista da página de ajuda.
 
 - **Geometria por anel em `chartConfig.ringsAttributes`** — uma entrada de raio e espessura por
   anel, na mesma ordem da lista de anéis. Com menos entradas do que anéis, o desenho procura uma

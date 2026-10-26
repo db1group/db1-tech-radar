@@ -207,12 +207,19 @@ As camadas são desenhadas nesta ordem, de baixo para cima: os setores de cada q
 e arcos), depois os rótulos de anel, e por último os pontos. Essa ordem é o que mantém todo ponto
 clicável e visível sobre o seu setor.
 
-### 16. A geometria publicada pressupõe exatamente quatro quadrantes
+### 16. Os arcos acompanham a quantidade de quadrantes; o resto do desenho, não
 
-O desenho assume quatro quadrantes, nas posições 1 a 4, e a tradução entre a posição declarada na
-taxonomia e o setor do círculo é parte do cálculo da geometria. Tornar esse número configurável é
-decisão de arquitetura, sujeita a registro próprio, e carrega a exigência de que o desenho
-permaneça idêntico ao publicado hoje sempre que houver quatro quadrantes.
+Os arcos dos anéis são desenhados na fatia do slot de tela de cada quadrante, repartindo o
+círculo pela quantidade de quadrantes declarada na taxonomia, qualquer que seja ela. O restante
+do desenho continua preso a quatro posições: o brilho de fundo do setor, o deslocamento angular
+que sorteia a posição dos pontos e os blocos de rótulo nos cantos leem tabelas de quatro entradas
+indexadas pela posição exibida do quadrante, e um quinto quadrante declarado as faz devolver
+valor inexistente.
+
+Publicar o radar com uma quantidade de quadrantes diferente de quatro depende de migrar essas
+três peças, e carrega a exigência de que o desenho permaneça idêntico ao publicado hoje sempre
+que houver quatro quadrantes. Cada passo dessa migração é decisão de arquitetura, sujeita a
+registro próprio.
 
 ### 17. Item que o gráfico não consegue posicionar é omitido, sem aviso
 
@@ -299,19 +306,21 @@ dois eixos, no meio do quadrado.
 
 ### Setor de cada quadrante
 
-O setor é determinado pela posição do quadrante na taxonomia. Os ângulos abaixo são medidos a
-partir do topo do círculo, no sentido horário:
+O setor é a fatia do círculo apontada pelo **slot de tela** do quadrante, declarado na taxonomia.
+O círculo é repartido em fatias iguais de 360° dividido pela quantidade de quadrantes declarados,
+e o slot escolhe qual delas o quadrante ocupa, varrendo o círculo em ordem a partir do topo, no
+sentido horário. Com os quatro quadrantes publicados:
 
-| Posição | Setor | Canto |
+| Slot | Setor | Canto |
 | --- | --- | --- |
-| 1 | 270° a 360° | superior esquerdo |
-| 2 | 0° a 90° | superior direito |
+| 1 | 0° a 90° | superior direito |
+| 2 | 90° a 180° | inferior direito |
 | 3 | 180° a 270° | inferior esquerdo |
-| 4 | 90° a 180° | inferior direito |
+| 4 | 270° a 360° | superior esquerdo |
 
-A numeração de posição da taxonomia e a ordem angular do desenho **não coincidem**: a sequência
-de posições 1, 2, 3, 4 percorre o círculo fora de ordem, e a conversão entre uma e outra é parte
-da geometria.
+O slot de tela e a posição exibida do quadrante são dados distintos: a numeração que o leitor vê
+nos blocos de rótulo percorre o círculo em outra ordem, e é o slot — não ela — que decide a fatia
+do arco.
 
 ### Dados de item consumidos pelo desenho
 

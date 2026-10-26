@@ -115,11 +115,13 @@ Markdown em HTML passa a ser feita por quem escreve a opinião, fora do reposit�
 ponto posicionado no cruzamento do seu quadrante com o seu anel, legendado e navegável.
 
 **Evidência no código.**
-- `src/components/Chart/RadarChart.tsx` — escalas, eixos e composição do SVG.
+- `src/components/Chart/RadarChart.tsx` — escalas e composição do SVG.
+- `src/components/Chart/geometry.ts` — a convenção angular única do desenho: graus, 0° = 12
+  horas, sentido horário.
 - `src/components/Chart/BlipPoints.tsx` — posicionamento dos pontos, com ângulo e raio
   sorteados dentro do setor e repulsão entre pontos vizinhos.
-- `src/components/Chart/QuadrantRings.tsx`, `Axes.tsx`, `BlipShapes.tsx` — arcos, eixos e as
-  três formas de ponto.
+- `src/components/Chart/QuadrantRings.tsx`, `BlipShapes.tsx` — arcos e as três formas de
+  ponto.
 - `src/components/RadarGrid/RadarGrid.tsx` — rótulo de cada quadrante, atalho de aproximação
   e legenda das três formas.
 - `public/config.json` (`chartConfig`) — tamanho, escala, raio e espessura de cada anel.
@@ -149,10 +151,10 @@ ponto ao passar o mouse).
   página do item; sem ela o gráfico vira ilustração sem navegação.
 - Convenção de testes (skill `estrategia-de-testes`) — a geometria é a lógica mais densa do
   projeto e pede teste unitário que verifique se o ponto cai no setor correto.
-- Registro em ADR (skill `registros-de-decisao-arquitetural`) — a reescrita da geometria para
-  suportar de um a seis quadrantes, em andamento nas branches
-  `feat/us1-geometry-foundation` e `feat/us2-rings-arcs-geometry`, é decisão de arquitetura e
-  exige o desenho idêntico ao atual quando houver quatro quadrantes.
+- Componente do gráfico (skill `componente-grafico-do-radar`) — a reescrita da geometria para
+  suportar de um a seis quadrantes, em andamento nas branches `feat/us1-shared-geometry` e
+  seguintes, registra ali o porquê da escolha e exige o desenho idêntico ao atual quando houver
+  quatro quadrantes.
 
 **Nível de confiança.** `high` — geometria e regras legíveis diretamente no componente.
 
@@ -305,8 +307,8 @@ pipeline Markdown usava — `marked`, `highlight.js`, `front-matter`, `walk`, `f
 - `PUBLIC_URL` igual a `/` — alimenta o `basename` do roteador e o caminho dos `fetch`;
   divergência entre o valor de build e o caminho real de publicação quebra o carregamento
   dos três JSON.
-- Registro em ADR (skill `registros-de-decisao-arquitetural`) — mudança na forma de publicar
-  é decisão de arquitetura e fica registrada.
+- Registro da decisão de arquitetura — mudança na forma de publicar é decisão de arquitetura e
+  fica registrada, com o porquê, na skill do domínio.
 
 **Nível de confiança.** `medium` — o fluxo e a presença do CloudFront estão confirmados, mas
 a configuração do bucket e da distribuição vive fora do repositório e não é verificável aqui.

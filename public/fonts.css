@@ -1,11 +1,20 @@
 @font-face {
-    font-family: "DIN";
-    src: url("fonts/clanot-news.otf");
-    font-weight: normal;
+    font-family: "Artlab";
+    src: url("fonts/artlab/Artlab-Light.otf") format("opentype");
+    font-weight: 300;
+    font-display: swap;
 }
 
 @font-face {
-    font-family: "DIN";
-    src: url("fonts/clanot-thin.otf");
-    font-weight: 300;
+    font-family: "Artlab";
+    src: url("fonts/artlab/Artlab-Regular.otf") format("opentype");
+    font-weight: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Artlab";
+    src: url("fonts/artlab/Artlab-Bold.otf") format("opentype");
+    font-weight: bold;
+    font-display: swap;
 }

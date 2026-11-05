@@ -16,9 +16,8 @@ export default function LogoLink({ small = false }: { small?: boolean }) {
       <span className="logo-link__slide">
         <img
           className="logo-link__img"
-          src={assetUrl("logo/db1-logo.png")}
-          height="60px"
-          
+          src={assetUrl("logo/db1-itenex-negativo.svg")}
+          height="30px"
           alt={`${t('radarName')}`}
         />
         <div className="button-flag__logo"><ButtonFlag /></div>

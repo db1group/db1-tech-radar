@@ -9,6 +9,9 @@ import FooterEnd from "../FooterEnd/FooterEnd";
 import "./footer.scss";
 import { useTranslation } from "react-i18next";
 
+// Anos de empresa contados a partir de 2000 (2026 = 26 anos)
+const companyYears = () => new Date().getFullYear() - 2000;
+
 interface Props {
   items: Item[];
   pageName: string;
@@ -38,7 +41,9 @@ const Footer: React.FC<Props> = ({ items, pageName }) => {
         >
           <div
             className="footnote"
-            dangerouslySetInnerHTML={sanitize(t('footerFootnote'))}
+            dangerouslySetInnerHTML={sanitize(
+              t("footerFootnote", { years: companyYears() })
+            )}
           ></div>
         </Branding>
       )}

@@ -1,19 +1,22 @@
 :root {
-  --color-dark: #0a0a0a;
-  --color-gray-dark: #475157;
-  --color-gray-dark-alt: #4f585e;
-  --color-gray-dark-alt2: #434d53;
-  --color-gray-normal: #7f858a;
-  --color-gray-light: #7d878d;
-  --color-gray-light-alt: #adadad;
+  // Paleta DB1 Itênex 2026 (tema escuro do guia da marca)
+  --color-dark: #0f1629; // Azul Noite
+  --color-gray-dark: #212b45;
+  --color-gray-dark-alt: #172038;
+  --color-gray-dark-alt2: #141c33;
+  --color-gray-normal: #7d849a; // tom médio: legível sobre Azul Noite e sobre Papel
+  --color-gray-light: #bbc1d2; // Lavanda
+  --color-gray-light-alt: #e4e4eb; // Névoa
+  --color-gray-ink: #646978; // texto secundário sobre fundo claro (Papel)
 
-  --color-white: #fff;
-  --color-green: #5cb449;
-  --color-orange: #faa03d;
-  --color-blue: #40a7d1;
-  --color-marine: #688190;
-  --color-red: #f1235a;
-  --color-brand: #f59134;
+  --color-white: #f8f8f8; // Papel
+  --color-green: #1a7046;
+  --color-orange: #8a5a00;
+  --color-blue: #2f4a8a;
+  --color-marine: #646978;
+  --color-red: #c71d3f; // Vermelho profundo (texto branco em tamanho pequeno)
+  --color-brand: #ff5c75; // Vermelho Itênex para texto sobre Azul Noite
+  --font-family: "Artlab", "Helvetica Neue", Arial, sans-serif;
   --until-sm: 30em;
   --until-md: 48em;
   --until-lg: 61.875em;
@@ -30,7 +33,7 @@ body {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: "DIN";
+  font-family: var(--font-family);
   font-weight: normal;
   font-size: 14px;
   line-height: 1.5;

@@ -1,5 +1,6 @@
 import moment from "moment";
 
+import "./i18n";
 import { formatRelease } from "./date";
 
 describe("formatRelease", () => {

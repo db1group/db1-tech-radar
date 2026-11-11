@@ -59,10 +59,10 @@ exibido não tem esse efeito, porque o rótulo vive na tradução.
 
 | Slug | Posição | Cor | Cor do texto | pt | en | es |
 | --- | --- | --- | --- | --- | --- | --- |
-| `languages-and-frameworks` | 1 | `#cdcaeb` | `#444444` | Linguagens & Frameworks | Languages & Frameworks | Lenguajes y frameworks |
-| `methods-and-patterns` | 2 | `#4867ff` | `white` | Métodos & Padrões | Methods & Patterns | Métodos y modelos |
-| `platforms-and-operations` | 3 | `#ff2d5e` | `#444444` | Plataformas & Operações | Platforms & Operations | Plataformas y operaciones |
-| `tools` | 4 | `#ffc000` | `white` | Ferramentas | Tools | Herramientas |
+| `languages-and-frameworks` | 1 | `#bbc1d2` | `#0f1629` | Linguagens & Frameworks | Languages & Frameworks | Lenguajes y frameworks |
+| `methods-and-patterns` | 2 | `#9db3f0` | `#0f1629` | Métodos & Padrões | Methods & Patterns | Métodos y modelos |
+| `platforms-and-operations` | 3 | `#e81e3f` | `white` | Plataformas & Operações | Platforms & Operations | Plataformas y operaciones |
+| `tools` | 4 | `#f5b94a` | `#0f1629` | Ferramentas | Tools | Herramientas |
 
 A **cor** do quadrante pinta o setor correspondente do gráfico e o ponto de cada item ali
 classificado; a **cor do texto** é a usada sobre essa cor de fundo, para manter o contraste do
@@ -81,20 +81,24 @@ rótulo que acompanha o ponto.
 Quando não está totalmente claro a qual quadrante um item pertence, escolhe-se o mais adequado:
 a classificação é um julgamento editorial, não uma regra mecânica.
 
-### 4. A posição do quadrante é o seu canto no radar
+### 4. Cada quadrante carrega dois números: a posição exibida e o slot de tela
 
-A posição é um número de 1 a 4 e determina simultaneamente o setor do gráfico e o canto onde
-fica o bloco de rótulo daquele quadrante:
+A **posição** (`position`) é o número que o leitor vê, e só isso. O bloco de rótulo apresenta o
+quadrante como "quadrante *N*", com a posição seguida do rótulo traduzido e da descrição.
 
-| Posição | Canto |
-| --- | --- |
-| 1 | superior esquerdo |
-| 2 | superior direito |
-| 3 | inferior esquerdo |
-| 4 | inferior direito |
+O **slot de tela** (`order`) é a fatia do círculo que o quadrante ocupa, contada de 1 a N no
+sentido horário a partir das 12 horas, com N igual à quantidade de quadrantes declarados: o slot
+1 começa no topo e cada slot abrange 360°/N. É ele também que decide onde fica o bloco de rótulo
+daquele quadrante, de modo que bloco e setor ficam do mesmo lado da área do gráfico. Os dois
+números são declarados separados para que o radar possa ser reorganizado na tela sem renumerar os
+quadrantes que o leitor vê.
 
-O bloco de rótulo apresenta o quadrante como "quadrante *N*", com a posição visível para o
-leitor, seguida do rótulo traduzido e da descrição do quadrante.
+| Slug | Posição | Slot de tela |
+| --- | --- | --- |
+| `languages-and-frameworks` | 1 | 4 |
+| `methods-and-patterns` | 2 | 1 |
+| `platforms-and-operations` | 3 | 3 |
+| `tools` | 4 | 2 |
 
 ### 5. Quatro anéis de maturidade, ordenados do centro para a borda
 
@@ -138,8 +142,13 @@ ativo — inclusive a página de um item aberta em tela estreita, que segue a me
 demais. O slug nunca é exibido como rótulo e o nome em inglês guardado na configuração é chave
 de dado, não texto de interface.
 
-Acrescentar um eixo sem acrescentar a chave correspondente nos três dicionários faz a interface
-exibir a chave crua.
+No quadrante, o slug endereça os dois textos: o rótulo curto e a descrição longa são entradas
+próprias do slug no dicionário, de modo que a associação entre quadrante e texto não depende da
+ordem em que as entradas aparecem.
+
+Acrescentar um quadrante sem as chaves correspondentes nos três dicionários faz a validação da
+configuração acusar o slug e o idioma, e o site mostra a tela de erro no lugar do radar.
+Acrescentar um anel sem a chave correspondente faz a interface exibir a chave crua.
 
 O dicionário de anéis carrega, além dos quatro anéis, um rótulo para a opção "todos"
 (`todos` / `all` / `todos`), usado pelos filtros por anel como seleção neutra — ele não é um
@@ -176,20 +185,27 @@ Item sem quadrante ou sem anel declarado também é omitido do gráfico.
 
 ## Fluxos e ciclo de vida
 
-### Acrescentar um quadrante
+Acrescentar um quadrante é alteração de dado, sem tocar no código do gráfico:
 
 1. Escolher o slug em inglês, estável e válido como segmento de URL.
-2. Declará-lo nos dois mapas da taxonomia: o de nomes e o de atributos (ver *Entidades e dados*).
-3. Atribuir a posição (o canto do radar), a cor do setor e a cor do texto.
-4. Acrescentar o rótulo e a descrição nos três dicionários de idioma, mantendo a ordem das
-   listas de descrição igual à ordem das posições.
-5. Acrescentar a entrada de geometria correspondente, para que o novo setor tenha onde ser
-   desenhado.
-6. Publicar com um novo identificador de build, para que a configuração alterada chegue a quem
-   já visitou o site.
+2. Declará-lo nos dois mapas da taxonomia — o de nomes e o de atributos (ver *Entidades e dados*) —
+   com a posição (o número exibido), o slot de tela (a fatia do círculo e o lugar do bloco de
+   rótulo), a cor do setor e a cor do texto.
+3. Acrescentar a entrada do slug nos três dicionários de idioma, com o rótulo curto e com o nome e
+   a descrição longa.
+4. Publicar com um novo identificador de build, para que a configuração alterada chegue a quem já
+   visitou o site.
 
-A geometria publicada hoje pressupõe quatro quadrantes em posições de 1 a 4; um quinto
-quadrante exige, antes, tornar esse número configurável.
+O diagrama e os blocos de rótulo acompanham a quantidade de quadrantes declarada, até o teto de
+seis; o novo setor é desenhado a partir do slot de tela, sem entrada de geometria própria — ao
+contrário de um anel, que declara raio e espessura. O procedimento operacional completo — os campos
+de cada mapa, as chaves de tradução, os itens do acervo no anel `assess`, o identificador de build e
+os limites de um a seis quadrantes — está no guia público `CONTRIBUTING.md`, seção "Adding or
+reordering a quadrant"; reordenar é mudar só o slot de tela (`order`).
+
+`src/components/RadarGrid/RadarGrid.test.tsx` é a trava automatizada de que o desenho acompanha a
+quantidade de quadrantes declarada: renderiza o `RadarGrid` para N = 3/4/5/6 e confere os arcos, o
+brilho, os blips, os blocos de rótulo e os rótulos de anel por quadrante.
 
 ### Acrescentar um anel
 
@@ -225,7 +241,7 @@ aplicação não renderiza nada sem ele. As chaves do domínio:
 | `quadrants` | mapa `slug → nome` | conjunto autoritativo de quadrantes; a ordem de declaração é a ordem das listagens por quadrante, e a existência do slug aqui é o que faz a página daquele quadrante existir |
 | `rings` | lista ordenada de slugs | conjunto autoritativo de anéis; a ordem é a distância do centro |
 | `showEmptyRings` | booleano | exibe ou oculta anel sem itens nas listagens |
-| `quadrantsMap` | mapa `slug → atributos` | atributos visuais e de posicionamento de cada quadrante: `colour`, `txtColour` e `position` |
+| `quadrantsMap` | mapa `slug → atributos` | atributos visuais e de posicionamento de cada quadrante: `colour` e `txtColour`, as duas cores da regra 2; `position` e `order`, os dois números da regra 4; e `description`, texto presente no dado e nunca exibido, porque toda descrição que o leitor vê vem dos dicionários de tradução |
 
 O mesmo documento de configuração carrega chaves de outros domínios (geometria do gráfico,
 conteúdo da página inicial, formato de data, atalho de edição); elas não pertencem à taxonomia.
@@ -236,35 +252,61 @@ Nos dicionários de tradução, um por idioma, o domínio ocupa:
 | --- | --- | --- |
 | `quadrants.<slug>` | texto | rótulo do quadrante naquele idioma |
 | `rings.<slug>` | texto | rótulo do anel naquele idioma, mais a entrada `all` do seletor "todos" |
-| `pageHelp.quadrants` | lista de `{ name, description }` | nome e descrição longa de cada quadrante, **ordenada pela posição do quadrante** |
+| `pageHelp.quadrants` | mapa `slug → { name, description }` | nome e descrição longa de cada quadrante, **endereçados pelo slug** |
 | `pageHelp.rings` | lista de `{ name, description }` | nome e descrição longa de cada anel, **ordenada do centro para a borda** |
 | `pageHelp.quadrantsPreDescription` e `pageHelp.ringsPreDescription` | texto | frase que abre cada uma das duas listas na página de ajuda, escrita no idioma do dicionário |
 
 A descrição de cada eixo vive apenas aqui: a configuração guarda a identidade e os atributos
 visuais, os dicionários guardam todo o texto que o leitor vê.
 
-As duas listas de descrição são posicionais: o item de índice *N* descreve o eixo de posição
-*N*. Uma lista fora de ordem faz a interface atribuir a descrição de um eixo a outro, sem erro
-visível. As descrições longas são o texto público que explica ao leitor o significado de cada
-eixo, e aceitam marcação HTML simples, sanitizada antes de ser exibida.
+A lista de descrições de anel é posicional: o item de índice *N* descreve o anel que ocupa a
+posição *N* na lista ordenada de anéis, e uma lista fora de ordem faz a interface atribuir a
+descrição de um anel a outro, sem erro visível. O mapa de descrições de quadrante é endereçado
+pelo slug, e a ordem de declaração das suas entradas decide apenas a ordem em que a página de
+ajuda as exibe — ela acompanha a ordem de declaração de `quadrants` na configuração. As
+descrições longas são o texto público que explica ao leitor o significado de cada eixo, e aceitam
+marcação HTML simples, sanitizada antes de ser exibida.
 
 ## Restrições e validações
 
+A configuração carregada é verificada a cada carregamento pela função `validateConfig` em
+`src/validateConfig.ts`, que devolve de uma vez todos os problemas encontrados — cada um com
+mensagem legível que nomeia o campo, o slug e o valor. Os problemas aparecem numa tela de erro no
+lugar do radar e são registrados no console do navegador. Cada restrição abaixo é uma das regras
+conferidas:
+
 - **Os dois mapas de quadrante declaram o mesmo conjunto de slugs.** Um slug presente só no mapa
   de nomes tem página própria mas não é desenhado; presente só no mapa de atributos, é desenhado
-  mas não tem página nem listagem.
-- **Posições de 1 a 4, sem repetição.** Duas posições iguais sobrepõem rótulos no mesmo canto.
+  mas não tem página nem listagem. A validação nomeia o slug e o mapa em que ele sobra.
+- **Posições sem repetição.** Duas posições iguais fazem dois blocos de rótulo exibirem o mesmo
+  número ao leitor. A validação nomeia os slugs em conflito e o valor repetido.
+- **Slots de tela contíguos de 1 a N, sem repetição.** Os valores de `order` cobrem a sequência
+  inteira de 1 até a quantidade de quadrantes declarados, sem buraco. Um slot repetido desenha
+  dois quadrantes sobre a mesma fatia do círculo e deixa outra fatia sem dono. A validação nomeia
+  os slugs em conflito e o valor de slot repetido ou ausente.
 - **Uma entrada de geometria por anel**, com raios crescentes. Menos entradas do que anéis
-  impede o gráfico de renderizar.
+  impede o gráfico de renderizar. A validação nomeia a divergência entre a quantidade de entradas
+  e de anéis e o raio fora de ordem crescente.
 - **O slug é segmento de URL**: sem barra, sem espaço e sem acento. A barra separa quadrante e
-  nome do item no endereço da página de um item.
-- **O número de quadrantes é quatro.** A geometria publicada hoje assume quadrantes nas posições
-  1 a 4. Tornar esse número configurável é alteração de arquitetura e exige que o desenho
-  permaneça idêntico ao publicado hoje quando houver quatro quadrantes.
+  nome do item no endereço da página de um item. A validação nomeia o slug e o caractere inválido.
+- **O número de quadrantes vai de um a seis.** O diagrama — arcos, brilho de fundo e pontos — é
+  desenhado a partir do slot de tela para qualquer quantidade declarada; o teto vem da tabela de
+  lugares dos blocos de rótulo ao redor do gráfico, que declara um lugar por slot até seis. A
+  validação conta os quadrantes e aponta um sétimo com uma mensagem que pede de um a seis quadrantes
+  e cita essa tabela como origem do teto, em vez de deixar o seu bloco sobre o do slot 6. Qualquer
+  quantidade declarada precisa manter o desenho idêntico ao publicado hoje quando houver quatro
+  quadrantes.
 - **Os três idiomas são obrigatórios.** Um eixo sem rótulo em um dos idiomas aparece com a chave
-  crua naquele idioma; a lista de descrições faltante quebra a página de ajuda naquele idioma.
-- **Não há validação automática.** A conformidade entre acervo e taxonomia depende da revisão
-  humana do pull request (regra 11).
+  crua naquele idioma. O quadrante sem entrada em `pageHelp.quadrants` no idioma ativo some da
+  lista da página de ajuda, porque a página lê o mapa inteiro do idioma ativo; no bloco de rótulo
+  a descrição dele cai no inglês, porque ali a leitura é por chave de folha. A validação da
+  configuração confere `quadrants.<slug>` e `pageHelp.quadrants.<slug>` com `name` e `description`
+  nos três idiomas e nomeia o slug e o idioma faltante; a suíte de consistência dos dicionários
+  também acusa o slug declarado na taxonomia sem entrada em algum idioma.
+- **A validação automática cobre a configuração, não o acervo.** As regras acima são conferidas na
+  configuração carregada; a conformidade entre acervo e taxonomia continua dependendo da revisão
+  humana do pull request (regra 11): item com quadrante ou anel inexistente não é apontado por
+  nenhuma verificação automática.
 
 ## Integrações e dependências externas
 

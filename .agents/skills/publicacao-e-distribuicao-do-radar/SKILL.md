@@ -56,18 +56,23 @@ Alteração em qualquer outra branch não publica nada. A decisão de publicar �
 decisão de aceitar a alteração — a revisão humana que precede a integração é o último ponto de
 controle antes do site público.
 
-### 2. O caminho de publicação é único e tem cinco etapas
+### 2. O caminho de publicação é único e tem seis etapas
 
 Toda publicação executa a mesma sequência, sem variação por tipo de alteração:
 
 1. **Obter o repositório** na versão integrada.
 2. **Instalar as dependências com o lockfile congelado** — a publicação usa exatamente as versões
    registradas; divergência entre lockfile e manifesto interrompe tudo aqui.
-3. **Compilar o pacote de produção** — gera os arquivos finais do site a partir do código e dos
+3. **Validar a configuração publicada** — roda o teste do `public/config.json` real
+   (`CI=true yarn test src/validateConfig.test.ts`); uma configuração que viole qualquer regra da
+   taxonomia ou da geometria do gráfico falha aqui e interrompe a publicação antes da compilação. O
+   passo roda só essa suíte, para que as suítes já vermelhas na base por transformação de ESM não
+   entrem na trava.
+4. **Compilar o pacote de produção** — gera os arquivos finais do site a partir do código e dos
    arquivos estáticos.
-4. **Obter credencial temporária na AWS por identidade federada** — o fluxo assume um papel de
+5. **Obter credencial temporária na AWS por identidade federada** — o fluxo assume um papel de
    publicação; nenhuma chave de acesso permanente vive no repositório.
-5. **Sincronizar o pacote com o bucket e invalidar o cache da distribuição.**
+6. **Sincronizar o pacote com o bucket e invalidar o cache da distribuição.**
 
 Qualquer etapa que falhe interrompe a publicação: o site continua servindo a versão anterior,
 íntegra. Não há publicação parcial do pacote — o sincronismo é o primeiro momento em que o destino
@@ -153,17 +158,19 @@ documento inicial, com os mesmos metadados para todos os endereços. Tratar inde
 ou pré-visualização de link por item como comportamento existente é erro — é funcionalidade a
 construir, com mudança no caminho de publicação.
 
-### 10. A compilação é a única barreira automática antes do ar
+### 10. A compilação e o teste da configuração são as barreiras automáticas antes do ar
 
-O caminho de publicação instala e compila; ele não roda testes, não roda verificação de estilo e
-não valida o conteúdo do acervo contra a taxonomia.
+O caminho de publicação instala, valida a configuração publicada e compila; ele não roda a suíte
+inteira, não roda verificação de estilo e não valida o conteúdo do acervo contra a taxonomia.
 
 - Erro de compilação ou de tipo interrompe a publicação.
+- Uma configuração (`public/config.json`) que viole a taxonomia ou a geometria do gráfico falha no
+  teste da configuração e interrompe a publicação antes da compilação.
 - Item do acervo com classificação inexistente, corpo de opinião faltando ou marcação malformada
-  **passa** pelo caminho inteiro e chega ao ar.
+  **passa** pelo caminho inteiro e chega ao ar: o acervo continua sem verificação automática.
 
-A qualidade do conteúdo é responsabilidade da revisão humana que antecede a integração. Nenhuma
-etapa automática a substitui.
+A qualidade do conteúdo do acervo é responsabilidade da revisão humana que antecede a integração.
+Nenhuma etapa automática a substitui.
 
 ### 11. Tudo que é publicado é público, inclusive as variáveis de build
 
@@ -257,16 +264,20 @@ As precondições técnicas de cada um estão em
 
 ## Restrições e validações
 
-- **Nenhuma validação de conteúdo no caminho de publicação.** Nada verifica o acervo, a taxonomia
-  ou a marcação das opiniões antes do ar.
-- **Nenhuma verificação de regressão automática.** Testes e verificação de estilo não participam do
-  caminho; só a compilação barra a publicação.
-- **Falha de carga de dados é silenciosa para o leitor.** Quando um dos arquivos de dados não
-  responde, a aplicação não renderiza e nenhuma mensagem aparece na tela; o erro fica no console do
-  navegador.
-- **Ausência dos links institucionais não impede o site de abrir** — o produto renderiza sem eles,
-  perdendo o rodapé institucional e os canais oficiais. A ausência do acervo ou da configuração, ao
-  contrário, deixa o site inteiro em branco.
+- **Nenhuma validação de conteúdo do acervo no caminho de publicação.** Nada verifica o acervo nem
+  a marcação das opiniões antes do ar; a taxonomia e a geometria do gráfico em `public/config.json`,
+  ao contrário, são conferidas pelo teste da configuração que roda antes da compilação.
+- **Nenhuma verificação de regressão automática além do teste da configuração.** A verificação de
+  estilo e a suíte inteira não participam do caminho; barram a publicação a compilação e o teste do
+  `public/config.json` real.
+- **Falha de carga de dados mostra uma tela de erro ao leitor.** Quando `config.json`,
+  `db1-opinion.json` ou `messages.json` não pode ser baixado ou interpretado, a aplicação renderiza
+  uma tela de erro no lugar do radar, nomeando o arquivo que falhou, e registra a falha no console
+  do navegador.
+- **Links institucionais ausentes do conteúdo não impedem o site de abrir** — quando `messages.json`
+  carrega sem os links, ou ainda não chegou, o produto renderiza sem o rodapé institucional e os
+  canais oficiais. A **falha de carga** de `messages.json`, do acervo ou da configuração, ao
+  contrário, renderiza a tela de erro no lugar do radar.
 - **Sem rollback no destino.** Voltar à versão anterior significa publicar novamente a partir do
   repositório.
 - **Sem publicação parcial.** Não há como enviar ao ar apenas um arquivo alterado: toda publicação

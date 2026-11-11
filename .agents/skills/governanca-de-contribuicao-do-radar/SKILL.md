@@ -273,8 +273,9 @@ O domínio não tem registro próprio no acervo: ele vive em três artefatos.
 | `pageHelp.sourcecodeLink.href` | endereço | endereço do repositório público |
 | `pageHelp.sourcecodeLink.name` | texto | rótulo exibido do link |
 
-A mesma página exibe também as listas de descrição dos quadrantes e dos anéis e as frases que as
-abrem; esse texto pertence à taxonomia do radar, que define os eixos.
+A mesma página exibe também o mapa de descrições de quadrante, endereçado pelo slug do quadrante,
+a lista de descrições de anel e as frases que abrem cada uma das duas; esse texto pertence à
+taxonomia do radar, que define os eixos.
 
 ### Atalho de edição
 
@@ -294,12 +295,13 @@ Com a chave ausente, nenhuma das duas versões da página do item exibe o atalho
 - **As duas definições publicadas precisam concordar.** Divergência entre o guia de contribuição e a
   página de ajuda deixa contribuinte e leitor com regras diferentes sobre o mesmo processo.
 - **O texto do processo existe em todos os idiomas do produto e precisa dizer o mesmo em todos.** A
-  página de ajuda lê listas inteiras de objetos do dicionário do idioma ativo; a chave ausente em um
-  idioma quebra a página naquele idioma. Como o idioma de recurso é o inglês, uma chave faltante cai
-  no texto em inglês, e um item faltante *dentro* de uma lista existente simplesmente não é exibido,
-  sem erro visível. Hoje o texto em espanhol da seção "como ele é criado" não traz o parágrafo da
-  etapa de pesquisa do time de Staff Engineering, e o leitor em espanhol recebe a descrição do
-  processo sem essa etapa.
+  página de ajuda lê estruturas inteiras do dicionário do idioma ativo — as listas narrativas e o
+  mapa de descrições de quadrante —, e a chave ausente em um idioma quebra a página naquele idioma.
+  Como o idioma de recurso é o inglês, uma chave faltante cai no texto em inglês, e um item
+  faltante *dentro* de uma estrutura existente simplesmente não é exibido, sem erro visível: o
+  parágrafo some da seção narrativa e o quadrante some da lista de eixos. Hoje o texto em espanhol
+  da seção "como ele é criado" não traz o parágrafo da etapa de pesquisa do time de Staff
+  Engineering, e o leitor em espanhol recebe a descrição do processo sem essa etapa.
 - **O texto do processo é compilado junto com a aplicação.** Alterar o guia de contribuição é
   alterar um documento do repositório, de efeito imediato para quem o lê lá; alterar a página de
   ajuda só chega ao leitor com uma nova publicação do site.

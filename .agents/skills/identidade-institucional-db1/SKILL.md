@@ -2,7 +2,7 @@
 name: identidade-institucional-db1
 description: >
   Esta é a documentação autoritativa do domínio Identidade Institucional DB1: como o radar se
-  apresenta como peça institucional do DB1 Global Software — marca e logotipo, nome do produto na
+  apresenta como peça institucional da DB1 Itênex — marca e logotipo, nome do produto na
   aba do navegador e na pré-visualização de link, nota institucional do rodapé, canais oficiais,
   link de crédito, tipografia e paleta. Carregue ao mexer em rodapé, cabeçalho, logotipo, marca,
   favicon, fontes, redes sociais, título da página ou metadados de compartilhamento.
@@ -25,7 +25,7 @@ metadata:
 
 ## Visão geral do domínio
 
-O radar é um produto público assinado pelo DB1 Global Software. Este domínio responde por essa
+O radar é um produto público assinado pela DB1 Itênex. Este domínio responde por essa
 assinatura: quem publica o radar, como a empresa é apresentada a quem lê e por onde esse leitor
 encontra a organização fora do site.
 
@@ -221,13 +221,14 @@ O link institucional aponta para `https://github.com/db1group/db1-tech-radar`.
 
 | Chave | Papel | Português | Inglês | Espanhol |
 | --- | --- | --- | --- | --- |
-| `footerFootnote` | nota institucional do rodapé, renderizada como HTML sanitizado | texto sobre a DB1 Global Software, sua experiência de mercado e a posição dentro do Grupo DB1 | mesmo conteúdo | mesmo conteúdo |
+| `footerFootnote` | nota institucional do rodapé, renderizada como HTML sanitizado | texto sobre a DB1 Itênex, seus anos de experiência e a posição dentro do Grupo DB1 | mesmo conteúdo | mesmo conteúdo |
 | `legalInformationLabel` | rótulo do link institucional | `Criado usando o Radar DB1` | `Created using DB1 Radar` | `Creado con el radar DB1` |
 | `socialLinksLabel` | convite que precede os canais oficiais | `Siga-nos:` | `Follow us:` | `Síguenos:` |
 | `radarName` | nome do produto | `Radar Tecnológico` | `Tech Radar` | `Radar Tecnológico` |
 
-A nota institucional, em qualquer idioma, apresenta a DB1 Global Software como empresa de
-desenvolvimento de software com vinte anos de experiência, integrante do Grupo DB1 — conglomerado
+A nota institucional, em qualquer idioma, apresenta a DB1 Itênex como empresa de
+desenvolvimento de software com anos de experiência calculados a partir de 2000 (o rodapé passa
+ao texto o valor `years`, ano corrente menos 2000), integrante do Grupo DB1 — conglomerado
 de tecnologia focado na transformação digital de empresas B2B, cuja marca se concentra em garantir
 o crescimento futuro atendendo às necessidades atuais dos clientes.
 
@@ -235,29 +236,32 @@ o crescimento futuro atendendo às necessidades atuais dos clientes.
 
 | Endereço | Papel |
 | --- | --- |
-| `/logo/db1-logo.png` | logotipo do DB1, usado no cabeçalho, no rodapé e como ícone de aplicativo e imagem de compartilhamento do documento publicado |
-| `/favicon.ico` | ícone do site na aba do navegador |
+| `/logo/db1-itenex-negativo.svg` | logotipo da DB1 Itênex em versão negativa, usado no cabeçalho e no rodapé |
+| `/logo/apple-touch-icon.png` | ícone de aplicativo |
+| `/logo/og-db1-itenex.png` | imagem de compartilhamento do documento publicado |
+| `/favicon.ico`, `/favicon-192.png` | ícones do site na aba do navegador |
 | `/fonts.css` | folha que declara a família tipográfica e associa cada peso ao seu arquivo |
-| `/fonts/clanot-news.otf` | tipografia ClanOT, peso normal |
-| `/fonts/clanot-thin.otf` | tipografia ClanOT, peso leve |
-| `/logo.svg`, `/logo/logo-dgs.webp` | logotipos alternativos publicados, sem uso em nenhuma tela |
+| `/fonts/artlab/Artlab-Light.otf` | tipografia Artlab, peso leve (`300`) |
+| `/fonts/artlab/Artlab-Regular.otf` | tipografia Artlab, peso normal |
+| `/fonts/artlab/Artlab-Bold.otf` | tipografia Artlab, negrito |
 | `/logo/10 TONS.mp4`, `/logo/COROA 1.mp4` | peças de marca em vídeo publicadas, sem uso em nenhuma tela |
 
 ### Tipografia
 
-Uma única família tipográfica atende o produto inteiro, declarada sob o apelido `DIN` e servida
-pelos dois arquivos ClanOT: o peso normal e o peso leve (`300`). O corpo do site usa essa família
-em 14 pixels, com altura de linha 1,5.
+Uma única família tipográfica atende o produto inteiro: `Artlab`, servida pelos três arquivos de
+`public/fonts/artlab/` (leve `300`, normal e negrito) e exposta como `--font-family`, com
+`"Helvetica Neue"`, Arial e sans-serif de reserva. O corpo do site usa essa família em 14 pixels,
+com altura de linha 1,5.
 
 ### Paleta institucional
 
 | Nome | Valor | Papel |
 | --- | --- | --- |
-| `--color-brand` | `#f59134` | cor de marca, aplicada a destaques de interação |
-| `--color-dark` | `#0a0a0a` | fundo do site inteiro |
-| `--color-white` | `#fff` | texto sobre o fundo escuro e disco de fundo dos ícones de canal |
-| `--color-gray-normal` | `#7f858a` | nota institucional, fecho do rodapé e a linha que o separa do conteúdo |
-| `--color-gray-dark` | `#475157` | glifo dos ícones de canal, sobre o disco branco |
+| `--color-brand` | `#ff5c75` | cor de marca, aplicada a destaques de interação |
+| `--color-dark` | `#0f1629` | fundo do site inteiro (Azul Noite) |
+| `--color-white` | `#f8f8f8` | texto sobre o fundo escuro e disco de fundo dos ícones de canal |
+| `--color-gray-normal` | `#7d849a` | nota institucional, fecho do rodapé e a linha que o separa do conteúdo |
+| `--color-gray-dark` | `#212b45` | glifo dos ícones de canal, sobre o disco branco |
 
 Cada ícone de canal é um glifo escuro centralizado em um disco branco de 30 pixels.
 

@@ -56,17 +56,29 @@ describe("getTags", () => {
 });
 ```
 
-As funções de geometria do gráfico vivem como funções de módulo não exportadas —
-`generateCoordinates` e `distanceBetween` em `src/components/Chart/BlipPoints.tsx`,
-`arcPath` em `src/components/Chart/QuadrantRings.tsx`. Ao criar ou alterar uma delas,
-exporte-a e cubra-a por unidade, passando as escalas `d3` e um `ConfigData` de fixture.
+A lógica do desenho é coberta por `src/components/Chart/geometry.ts`, que não importa `d3`: é lá
+que vivem a repartição do círculo, o slot de tela de cada quadrante, a conversão para os radianos
+que o gerador de arcos consome, a conversão de polar para cartesiano em pixels de tela, a forma do
+brilho de fundo de cada setor e o sorteio da posição do ponto, e é `geometry.test.tsx` que as
+exercita. Ao lado dele, `src/components/Chart/blips.ts` é o módulo puro que monta a lista de
+pontos a partir dos itens e da configuração, coberto por `blips.test.tsx`.
 
-`generateCoordinates` usa `Math.random()`. Um teste sobre ela deve afirmar invariantes
-(o ponto cai dentro do raio do anel, o sinal das coordenadas corresponde à posição do
-quadrante) ou fixar a aleatoriedade antes de afirmar coordenada exata:
+A chave `jest` do `package.json` transforma o `d3`, os `d3-*` e o `query-string`, de modo que um
+arquivo de teste pode trazer `RadarChart.tsx`, `BlipPoints.tsx`, `QuadrantRings.tsx` ou
+`RadarGrid.tsx` para o grafo de imports e renderizá-los. Ainda assim, cálculo novo do desenho que
+precise de cobertura automática nasce em `geometry.ts`, como função pura sobre números, afirmável
+sem renderizar; a renderização do SVG montado é coberta pelo teste de integração de `RadarGrid`
+(ver *Restrições e armadilhas conhecidas*).
+
+O sorteio da posição do ponto recebe a fonte de aleatoriedade como parâmetro opcional, em
+`blipPosition` e em `buildBlips`, com `Math.random` como padrão. Um teste afirma invariantes com o
+padrão (o ponto cai dentro do setor do quadrante e da faixa do anel) ou injeta um gerador próprio
+para afirmar o caminho determinado — por exemplo, a colisão entre dois pontos do mesmo setor:
 
 ```tsx
-jest.spyOn(Math, "random").mockReturnValue(0.5);
+const alwaysHalf = () => 0.5;
+
+buildBlips(items, config, alwaysHalf);
 ```
 
 ### O que conta como tela alterada
@@ -80,7 +92,8 @@ teste de componente:
 
 - edição do JSX, das props ou de um ramo de renderização de um `src/components/Page*/`;
 - edição de um componente que a página renderiza (`Item`, `ItemList`, `QuadrantSection`,
-  `RadarGrid`, `Search`, `Header`, `Footer`) quando o resultado visível muda;
+  `QuadrantGrid`, `QuadrantLabel`, `RadarGrid`, `Search`, `Header`, `Footer`) quando o resultado
+  visível muda;
 - mudança em `getPageByName` ou nas regras de seleção de página em `Router.tsx`;
 - chave de tradução nova ou renomeada que a página exibe.
 
@@ -115,10 +128,12 @@ do render —, o teste vai no `Page*` correspondente.
 
 ### Como montar o teste de componente
 
-`react-scripts test` descobre sozinho qualquer `*.test.tsx` sob `src/`. Não existe
-arquivo de configuração Jest no repositório nem chave `jest` no `package.json`: a
-configuração é a embutida no `react-scripts`. `src/setupTests.ts` é carregado
-automaticamente antes de cada arquivo de teste e importa `@testing-library/jest-dom`,
+`react-scripts test` descobre sozinho qualquer `*.test.tsx` sob `src/`. A configuração é a
+embutida no `react-scripts`, com um único override: a chave `jest` do `package.json` traz
+`transformIgnorePatterns` que libera `d3`, os `d3-*`, o `query-string` e as dependências ESM deles
+(`internmap`, `delaunator`, `robust-predicates`, `decode-uri-component`, `split-on-first`,
+`filter-obj`) para a transformação do Babel, preservando o padrão de CSS modules. `src/setupTests.ts`
+é carregado automaticamente antes de cada arquivo de teste e importa `@testing-library/jest-dom`,
 de modo que os matchers de DOM já estão disponíveis sem import por arquivo.
 
 Componente que renderiza `Link` (`src/components/Link/Link.tsx`) ou usa
@@ -224,19 +239,25 @@ request descrito em `CONTRIBUTING.md`.
   quando `src/i18n` entra no grafo de imports do teste. Afirme sobre um formato
   independente de locale (`"DD.MM.YYYY"`) ou fixe o idioma no teste antes de esperar
   um nome de mês.
-- **O gráfico é SVG escrito à mão.** Cubra `generateCoordinates`, `arcPath` e
-  `distanceBetween` por unidade; no teste de componente de `RadarChart`, `BlipPoints` e
-  `QuadrantRings`, afirme sobre presença e quantidade de elementos, não sobre valores
-  de `d`, `cx`, `cy` ou `transform`.
-- **A geometria assume quatro quadrantes nas posições 1 a 4.** `arcAngel` em
-  `QuadrantRings.tsx` e o vetor de deslocamento em `BlipPoints.tsx` são indexados por
-  `quadrantPosition - 1`. Fixture com posição fora desse intervalo produz `undefined`
-  em tempo de execução.
+- **O gráfico montado é renderizável pela suíte.** Com a chave `jest` transformando `d3`, os
+  `d3-*` e o `query-string`, `RadarChart`, `QuadrantRings`, `BlipPoints`, `RadarGrid` e `App`
+  entram no alcance do Jest. `src/components/RadarGrid/RadarGrid.test.tsx` renderiza o `RadarGrid`
+  em `MemoryRouter` e afirma sobre o SVG montado — contagem de arcos de anel e de formas de brilho,
+  coordenadas finitas, blips no setor do seu quadrante pelo ângulo renderizado, blocos de rótulo
+  por slot e dois rótulos por anel — para N = 3/4/5/6. As funções puras de `geometry.ts` e de
+  `blips.ts` seguem cobertas por teste unitário, e o lugar em pixels de cada classe de slot continua
+  conferido por captura de tela comparada ao radar publicado.
+- **`jest.mock("../Link/Link")` é isolamento, não necessidade.** O `query-string` 8.1.0 que chega
+  pelo `Link` (`src/components/Link/Link.tsx`, por `use-search-param-state`) é transformado pela
+  chave `jest`, então `Item.test.tsx` e `BlipPoints` carregam e rodam sem substituir módulo.
+  `QuadrantLabel.test.tsx` e `QuadrantGrid.test.tsx` ainda substituem o `Link` com
+  `jest.mock("../Link/Link")` e uma fábrica que devolve um `<a>`, para isolar o componente do
+  roteamento; a substituição é opção de isolamento, não condição para alcançar o módulo.
 - **A viewport do jsdom é móvel.** `isMobileViewport()` (`src/config.ts`) compara
   `window.innerWidth` com 1200, e o padrão do jsdom é 1024. Um teste que renderiza
   `Router` numa rota de item cai em `PageItemMobile`. Renderize o `Page*` desejado
   direto, ou ajuste `window.innerWidth` antes do render.
-- **Item sem quadrante correspondente some em silêncio.** `BlipPoints` descarta o item
+- **Item sem quadrante correspondente some em silêncio.** `buildBlips` descarta o item
   cujo `quadrant` não existe em `config.quadrantsMap`, sem erro. O teste que espera um
   blip deve usar uma fixture em que `item.quadrant` e `item.ring` existam no
   `ConfigData` passado.

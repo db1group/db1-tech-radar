@@ -11,31 +11,52 @@ import {
 import { ConfigData, publicUrl } from "../config";
 import { Messages, MessagesProvider } from "../context/MessagesContext";
 import { useSearchParamState } from "../hooks/use-search-param-state";
+import i18n from "../i18n";
 import { Item, filteredOnly, getTags } from "../model";
+import { validateConfig } from "../validateConfig";
+import ErrorScreen from "./ErrorScreen/ErrorScreen";
 import Footer from "./Footer/Footer";
 import Header from "./Header/Header";
 import Router from "./Router";
 
-const useFetch = <D extends unknown>(url: string): D | undefined => {
-  const [data, setData] = React.useState<D>();
+interface FetchState<D> {
+  data?: D;
+  error?: boolean;
+}
+
+const useFetch = <D extends unknown>(url: string): FetchState<D> => {
+  const [state, setState] = React.useState<FetchState<D>>({});
 
   React.useEffect(() => {
-    console.log(url);
+    let active = true;
+
     fetch(url)
       .then((response) => {
-        console.log(response);
-        return response.json()
+        if (!response.ok) {
+          throw new Error(
+            `Request to ${url} failed with status ${response.status}`
+          );
+        }
+        return response.json();
       })
       .then((data: D) => {
-        setData(data);
+        if (active) {
+          setState({ data });
+        }
       })
       .catch((error) => {
-        console.log(error);
         console.error(`fetch ${url} failed. Did the file exist?`, error);
+        if (active) {
+          setState({ error: true });
+        }
       });
+
+    return () => {
+      active = false;
+    };
   }, [url]);
 
-  return data;
+  return state;
 };
 
 const usePage = (params: Record<string, string | undefined>) => {
@@ -104,10 +125,42 @@ export default function App() {
     `${publicUrl}config.json?${process.env.REACT_APP_BUILDHASH}`
   );
 
-  if (data && config) {
-    const { items, releases } = data;
+  const failedFile = data.error
+    ? "db1-opinion.json"
+    : config.error
+    ? "config.json"
+    : messages.error
+    ? "messages.json"
+    : undefined;
+
+  if (failedFile) {
     return (
-      <MessagesProvider messages={messages}>
+      <ErrorScreen
+        title="Could not load the radar"
+        description={`The file ${failedFile} could not be downloaded or parsed. Check that public/${failedFile} exists and is valid JSON.`}
+      />
+    );
+  }
+
+  if (data.data && config.data) {
+    const problems = validateConfig(config.data, (key, lng) =>
+      i18n.exists(key, { lng })
+    );
+
+    if (problems.length > 0) {
+      problems.forEach((problem) => console.error(problem));
+      return (
+        <ErrorScreen
+          title="Invalid radar configuration"
+          description="Fix the problems below in public/config.json and reload."
+          problems={problems}
+        />
+      );
+    }
+
+    const { items, releases } = data.data;
+    return (
+      <MessagesProvider messages={messages.data}>
         <BrowserRouter basename={`${publicUrl}`}>
           <Routes>
             <Route
@@ -120,7 +173,7 @@ export default function App() {
                     </div>
                     <div className={classNames("page__content")}>
                       <RouterWithPageParam
-                        config={config}
+                        config={config.data}
                         items={items}
                         releases={releases}
                       />

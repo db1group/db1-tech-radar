@@ -1,16 +1,15 @@
 @import "../../styles/sccs-vars.scss";
 
 .quadrant-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 10%;
+
+  @media (max-width: $until-lg) {
+    grid-template-columns: minmax(0, 1fr);
+  }
 
   &__quadrant {
-    flex: 0 0 45%;
     margin-bottom: 40px;
-
-    @media (max-width: $until-lg) {
-      flex-basis: 100%;
-    }
   }
 }

@@ -11,9 +11,11 @@ interface Props {
   onLeave: () => void;
 }
 
-interface Quadrant {
-  name: string;
-  description: string;
+interface QuadrantHelpMap {
+  [slug: string]: {
+    name: string;
+    description: string;
+  };
 }
 
 interface Paragraph {
@@ -29,7 +31,7 @@ interface Ring {
 const PageHelp: React.FC<Props> = ({ leaving, onLeave }) => {
   const { t } = useTranslation();
 
-  const quadrants = t("pageHelp.quadrants", { returnObjects: true }) as Quadrant[];
+  const quadrants = t("pageHelp.quadrants", { returnObjects: true }) as QuadrantHelpMap;
   const paragraphs = t("pageHelp.paragraphs", { returnObjects: true }) as Paragraph[];
   const rings = t("pageHelp.rings", { returnObjects: true }) as Ring[];
 
@@ -55,8 +57,8 @@ const PageHelp: React.FC<Props> = ({ leaving, onLeave }) => {
 
         <p>{t("pageHelp.quadrantsPreDescription")}</p>
         <ul>
-          {quadrants.map(({ name, description }) => (
-            <li key={name}>
+          {Object.entries(quadrants).map(([slug, { name, description }]) => (
+            <li key={slug}>
               <strong>{name}:</strong>{" "}
               <span
                 dangerouslySetInnerHTML={sanitize(description, {})}

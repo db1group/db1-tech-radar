@@ -33,8 +33,9 @@ cada um. É o vocabulário que toda opinião precisa respeitar para existir no r
 **Regras inferidas.**
 - Quadrante e anel são identificados por slug em inglês; o rótulo exibido vem sempre da
   tradução, nunca do dado.
-- A posição do quadrante (1 a 4) determina o canto do gráfico e o canto do rótulo, e é
-  consumida tanto pelo desenho quanto pela legenda.
+- Cada quadrante carrega dois números: o slot de tela (`order`) decide a fatia do círculo que
+  ele ocupa e o lugar do seu bloco de rótulo ao redor do gráfico; a posição (`position`) é o
+  número que o leitor vê no bloco.
 - `showEmptyRings` controla se um anel sem itens aparece nas listagens; hoje está desligado.
 - `hold` ("Evite") está definido na taxonomia mas nenhum item do acervo o usa atualmente.
 - A conformidade entre o item e a taxonomia é garantida pela revisão do pull request: a
@@ -51,8 +52,11 @@ configuração consumido por todos os demais.
   cada quadrante e anel; sem a chave correspondente o rótulo aparece como a própria chave
   crua na interface.
 - Convenção de testes (skill `estrategia-de-testes`) — mudar a taxonomia exige teste
-  unitário sobre quem a lê (`translate`, agrupamentos de `src/model.ts`); sem ele a quebra só
-  aparece em produção, porque nada valida a configuração em tempo de build.
+  unitário sobre quem a lê (`translate`, agrupamentos de `src/model.ts`). A configuração
+  carregada é verificada por `validateConfig` (`src/validateConfig.ts`), que devolve uma tela de
+  erro legível com todos os problemas; o teste do `public/config.json` real roda no deploy
+  (`.github/workflows/prod-deploy-app-on-harbor.yml`) e trava a publicação de uma configuração
+  inválida antes da compilação.
 
 **Nível de confiança.** `high` — configuração e contrato explícitos no código.
 
@@ -115,11 +119,15 @@ Markdown em HTML passa a ser feita por quem escreve a opinião, fora do reposit�
 ponto posicionado no cruzamento do seu quadrante com o seu anel, legendado e navegável.
 
 **Evidência no código.**
-- `src/components/Chart/RadarChart.tsx` — escalas, eixos e composição do SVG.
-- `src/components/Chart/BlipPoints.tsx` — posicionamento dos pontos, com ângulo e raio
-  sorteados dentro do setor e repulsão entre pontos vizinhos.
-- `src/components/Chart/QuadrantRings.tsx`, `Axes.tsx`, `BlipShapes.tsx` — arcos, eixos e as
-  três formas de ponto.
+- `src/components/Chart/RadarChart.tsx` — escalas e composição do SVG.
+- `src/components/Chart/geometry.ts` — a convenção angular única do desenho: graus, 0° = 12
+  horas, sentido horário.
+- `src/components/Chart/blips.ts` — montagem da lista de pontos a partir dos itens e da
+  taxonomia, com o sorteio delegado à geometria e o acúmulo dos pontos já colocados por setor.
+- `src/components/Chart/BlipPoints.tsx` — emissão do JSX de cada ponto, com a forma escolhida
+  pela marca de publicação e o link para a página do item.
+- `src/components/Chart/QuadrantRings.tsx`, `BlipShapes.tsx` — arcos e as três formas de
+  ponto.
 - `src/components/RadarGrid/RadarGrid.tsx` — rótulo de cada quadrante, atalho de aproximação
   e legenda das três formas.
 - `public/config.json` (`chartConfig`) — tamanho, escala, raio e espessura de cada anel.
@@ -128,15 +136,16 @@ ponto posicionado no cruzamento do seu quadrante com o seu anel, legendado e nav
 **Catálogo de Opiniões Tecnológicas**.
 
 **Regras inferidas.**
-- A posição exata do ponto dentro do setor é sorteada a cada renderização, com até cem
-  tentativas para não encostar em outro ponto nem nos eixos. O radar não guarda coordenada;
+- A posição exata do ponto dentro do setor é sorteada a cada renderização, com até 150
+  tentativas para não encostar em outro ponto do mesmo setor. O radar não guarda coordenada;
   o que importa é o setor.
 - Item sem anel ou sem quadrante válido é omitido do gráfico em vez de quebrar o desenho.
 - A forma do ponto comunica a marca do item: novo, alterado ou estável.
 - Só itens em destaque (`featured`) entram no gráfico.
-- A geometria assume quatro quadrantes em posições fixas; a ordem de desenho é
-  anti-horária e a tradução entre posição de negócio e posição geométrica está embutida no
-  cálculo do deslocamento angular.
+- A repartição do círculo acompanha a quantidade de quadrantes declarada na taxonomia, e dela
+  saem os arcos dos anéis, o brilho de fundo, o sorteio da posição dos pontos de cada setor e o
+  lugar do bloco de rótulo de cada quadrante. O teto de seis quadrantes vem da tabela de lugares
+  dos blocos, ao redor do diagrama.
 
 **Dependências externas relevantes.** `d3` (escalas lineares), `react-tooltip` (rótulo do
 ponto ao passar o mouse).
@@ -149,10 +158,10 @@ ponto ao passar o mouse).
   página do item; sem ela o gráfico vira ilustração sem navegação.
 - Convenção de testes (skill `estrategia-de-testes`) — a geometria é a lógica mais densa do
   projeto e pede teste unitário que verifique se o ponto cai no setor correto.
-- Registro em ADR (skill `registros-de-decisao-arquitetural`) — a reescrita da geometria para
-  suportar de um a seis quadrantes, em andamento nas branches
-  `feat/us1-geometry-foundation` e `feat/us2-rings-arcs-geometry`, é decisão de arquitetura e
-  exige o desenho idêntico ao atual quando houver quatro quadrantes.
+- Componente do gráfico (skill `componente-grafico-do-radar`) — a reescrita da geometria para
+  suportar de um a seis quadrantes, em andamento nas branches `feat/us1-shared-geometry` e
+  seguintes, registra ali o porquê da escolha e exige o desenho idêntico ao atual quando houver
+  quatro quadrantes.
 
 **Nível de confiança.** `high` — geometria e regras legíveis diretamente no componente.
 
@@ -247,8 +256,10 @@ acontece; o repositório público é `github.com/db1group/db1-tech-radar`.
 **Dependências técnicas do domínio.**
 - `CONTRIBUTING.md` e a página de ajuda — são a definição publicada do processo; divergência
   entre os dois deixa contribuinte e leitor com regras diferentes.
-- Chave `pageHelp` nos três arquivos de tradução — a página de ajuda lê listas inteiras de
-  objetos da tradução; faltando a chave em um idioma, a página quebra naquele idioma.
+- Chave `pageHelp` nos três arquivos de tradução — a página de ajuda lê estruturas inteiras da
+  tradução do idioma ativo: as listas narrativas `paragraphs` e `rings` e o mapa `quadrants`,
+  endereçado pelo slug do quadrante. Faltando a chave em um idioma, a página quebra naquele
+  idioma.
 - Convenção de testes (skill `estrategia-de-testes`) — a página de ajuda depende da forma dos
   objetos vindos da tradução e leva teste de componente quando essa estrutura muda.
 
@@ -264,8 +275,9 @@ anéis acontece fora do repositório e não é observável no código.
 
 **Evidência no código.**
 - `.github/workflows/prod-deploy-app-on-harbor.yml` — a cada push em `main`: Node 16.14,
-  `yarn install --frozen-lockfile`, `yarn build`, credenciais AWS por OIDC e
-  `aws s3 sync ./build s3://techradar.db1.com.br --delete`.
+  `yarn install --frozen-lockfile`, `CI=true yarn test src/validateConfig.test.ts` (trava a
+  publicação de uma configuração inválida antes de compilar), `yarn build`, credenciais AWS por
+  OIDC e `aws s3 sync ./build s3://techradar.db1.com.br --delete`.
 - `package.json` — `build` executa `react-scripts build`.
 - `.env` — `PUBLIC_URL` e `REACT_APP_BUILDHASH`.
 
@@ -282,6 +294,9 @@ anéis acontece fora do repositório e não é observável no código.
   página `.html` por item.
 - A troca de bundle é percebida pelo navegador via `REACT_APP_BUILDHASH` na querystring dos
   três `fetch` de dados.
+- A falha de carga de qualquer um dos três JSON (`config.json`, `db1-opinion.json`,
+  `messages.json`) — rede, 404 ou JSON inválido — renderiza uma tela de erro no lugar da tela em
+  branco, com a falha registrada no console do navegador.
 - Este é o único caminho de publicação. O pipeline Markdown (`scripts/`, `dist_scripts/`,
   `tsconfig.scripts.json`, script `build:scripts`), o `Dockerfile` com o `.dockerignore` e a
   configuração do Firebase Hosting (`firebase.json`, `.firebaserc`, `.firebase/`) são
@@ -305,8 +320,8 @@ pipeline Markdown usava — `marked`, `highlight.js`, `front-matter`, `walk`, `f
 - `PUBLIC_URL` igual a `/` — alimenta o `basename` do roteador e o caminho dos `fetch`;
   divergência entre o valor de build e o caminho real de publicação quebra o carregamento
   dos três JSON.
-- Registro em ADR (skill `registros-de-decisao-arquitetural`) — mudança na forma de publicar
-  é decisão de arquitetura e fica registrada.
+- Registro da decisão de arquitetura — mudança na forma de publicar é decisão de arquitetura e
+  fica registrada, com o porquê, na skill do domínio.
 
 **Nível de confiança.** `medium` — o fluxo e a presença do CloudFront estão confirmados, mas
 a configuração do bucket e da distribuição vive fora do repositório e não é verificável aqui.
@@ -315,7 +330,7 @@ a configuração do bucket e da distribuição vive fora do repositório e não 
 
 ## 7. Identidade Institucional DB1
 
-**Objetivo de negócio.** Apresentar o radar como peça institucional do DB1 Global Software:
+**Objetivo de negócio.** Apresentar o radar como peça institucional da DB1 Itênex:
 marca, logotipo, canais oficiais e informação legal.
 
 **Evidência no código.**
@@ -325,7 +340,7 @@ marca, logotipo, canais oficiais e informação legal.
   componentes.
 - `src/components/Branding/`, `LogoLink/`, `Footer/`, `FooterEnd/`, `SocialLink/` — cabeçalho
   com marca, rodapé com nota institucional e ícones sociais.
-- `public/fonts/` (ClanOT), `public/logo/`, `src/styles/` — tipografia e identidade visual.
+- `public/fonts/` (Artlab), `public/logo/`, `src/styles/` — tipografia e identidade visual.
 - `src/i18n/translations/*.json`, chaves `footerFootnote`, `legalInformationLabel`,
   `socialLinksLabel` — o texto institucional traduzido.
 
@@ -340,9 +355,9 @@ marca, logotipo, canais oficiais e informação legal.
 **Dependências externas relevantes.** `react-icons` para os ícones dos canais sociais.
 
 **Dependências técnicas do domínio.**
-- `public/messages.json` servido como estático — a ausência do arquivo não impede a aplicação
-  de carregar, mas apaga rodapé institucional e canais sociais.
-- Fontes ClanOT em `public/fonts/` e `public/fonts.css` — sustentam a identidade visual; sem
+- `public/messages.json` servido como estático — sem ele a aplicação mostra a tela de erro de
+  carregamento no lugar do radar, junto com `config.json` e `db1-opinion.json`.
+- Fontes Artlab em `public/fonts/artlab/` e `public/fonts.css` — sustentam a identidade visual; sem
   elas o site cai em fonte alternativa.
 - Convenção de testes (skill `estrategia-de-testes`) — o rodapé leva teste de componente
   quando sua estrutura muda, porque ele aparece em todas as telas.

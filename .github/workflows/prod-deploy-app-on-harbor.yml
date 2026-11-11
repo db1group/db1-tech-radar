@@ -26,6 +26,9 @@ jobs:
       - name: Install Dependencies
         run: yarn install --frozen-lockfile
 
+      - name: Validate published config.json
+        run: CI=true yarn test src/validateConfig.test.ts
+
       - name: Build Application
         run: yarn build
 

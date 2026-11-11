@@ -10,10 +10,10 @@
 
 Cada item diz o que é e o que deixa de funcionar no domínio se ele faltar.
 
-- **`public/messages.json` servido como estático** — a ausência do arquivo não impede a aplicação
-  de carregar, mas apaga rodapé institucional e canais sociais.
+- **`public/messages.json` servido como estático** — sem ele a aplicação mostra a tela de erro de
+  carregamento no lugar do radar, junto com `config.json` e `db1-opinion.json`.
 
-- **Fontes ClanOT em `public/fonts/` e `public/fonts.css`** — sustentam a identidade visual; sem
+- **Fontes Artlab em `public/fonts/artlab/` e `public/fonts.css`** — sustentam a identidade visual; sem
   elas o site cai em fonte alternativa.
 
 - **Convenção de testes do projeto** — o rodapé leva teste de componente quando sua estrutura muda,
@@ -38,9 +38,10 @@ Cada item diz o que é e o que deixa de funcionar no domínio se ele faltar.
   internacionalização, ou com a chave faltando em um idioma, a interface exibe o identificador cru
   da chave no lugar do texto.
 
-- **`public/logo/db1-logo.png` presente no diretório de arquivos estáticos** — é a mesma imagem
-  consumida pelo cabeçalho, pelo rodapé e pelos metadados do documento publicado. Ausente, as três
-  telas ficam com espaço vazio no lugar da marca e o compartilhamento de link perde a imagem.
+- **Logotipo e imagens da marca em `public/logo/`** — `db1-itenex-negativo.svg` é consumido pelo
+  cabeçalho e pelo rodapé, `apple-touch-icon.png` e `og-db1-itenex.png` pelos metadados do
+  documento publicado. Ausentes, as telas ficam com espaço vazio no lugar da marca e o
+  compartilhamento de link perde a imagem.
 
 - **`public/favicon.ico` na raiz publicada** — é o ícone do site na aba do navegador; ausente, o
   navegador exibe seu ícone padrão e a aba perde a identificação do produto.

@@ -5,6 +5,7 @@ import { ConfigData } from "../../config";
 import { Blip, FlagType, Item, Point } from "../../model";
 import Link from "../Link/Link";
 import { ChangedBlip, DefaultBlip, NewBlip } from "./BlipShapes";
+import { blipQuarterTurns } from "./legacyAngles";
 
 /*
 See https://medium.com/create-code/build-a-radar-diagram-with-d3-js-9db6458a9248
@@ -36,7 +37,7 @@ function generateCoordinates(
     Multiples of PI/2. To apply the calculated position to the specific quadrant.
     Order here is counter-clockwise, so we need to "invert" quadrant positions (i.e. swap 2 with 4)
     */
-  const shift = (pi * [1, 4, 2, 3][blip.quadrantPosition - 1]) / 2;
+  const shift = (pi * blipQuarterTurns[blip.quadrantPosition - 1]) / 2;
 
   return {
     x: xScale(Math.cos(randomDegree + shift) * radius),

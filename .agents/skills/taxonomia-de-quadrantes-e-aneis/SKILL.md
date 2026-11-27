@@ -81,20 +81,30 @@ rótulo que acompanha o ponto.
 Quando não está totalmente claro a qual quadrante um item pertence, escolhe-se o mais adequado:
 a classificação é um julgamento editorial, não uma regra mecânica.
 
-### 4. A posição do quadrante é o seu canto no radar
+### 4. Cada quadrante carrega dois números: a posição exibida e o slot de tela
 
-A posição é um número de 1 a 4 e determina simultaneamente o setor do gráfico e o canto onde
-fica o bloco de rótulo daquele quadrante:
+A **posição** (`position`) é o número que o leitor vê. O bloco de rótulo apresenta o quadrante
+como "quadrante *N*", com a posição seguida do rótulo traduzido e da descrição, e é ela também
+que decide em que canto da área do gráfico esse bloco fica:
 
-| Posição | Canto |
+| Posição | Canto do bloco de rótulo |
 | --- | --- |
 | 1 | superior esquerdo |
 | 2 | superior direito |
 | 3 | inferior esquerdo |
 | 4 | inferior direito |
 
-O bloco de rótulo apresenta o quadrante como "quadrante *N*", com a posição visível para o
-leitor, seguida do rótulo traduzido e da descrição do quadrante.
+O **slot de tela** (`order`) é a fatia do círculo que o quadrante ocupa, contada de 1 a N no
+sentido horário a partir das 12 horas, com N igual à quantidade de quadrantes declarados: o slot
+1 começa no topo e cada slot abrange 360°/N. Os dois números são declarados separados para que o
+radar possa ser reorganizado na tela sem renumerar os quadrantes que o leitor vê.
+
+| Slug | Posição | Slot de tela |
+| --- | --- | --- |
+| `languages-and-frameworks` | 1 | 4 |
+| `methods-and-patterns` | 2 | 1 |
+| `platforms-and-operations` | 3 | 3 |
+| `tools` | 4 | 2 |
 
 ### 5. Quatro anéis de maturidade, ordenados do centro para a borda
 
@@ -225,7 +235,7 @@ aplicação não renderiza nada sem ele. As chaves do domínio:
 | `quadrants` | mapa `slug → nome` | conjunto autoritativo de quadrantes; a ordem de declaração é a ordem das listagens por quadrante, e a existência do slug aqui é o que faz a página daquele quadrante existir |
 | `rings` | lista ordenada de slugs | conjunto autoritativo de anéis; a ordem é a distância do centro |
 | `showEmptyRings` | booleano | exibe ou oculta anel sem itens nas listagens |
-| `quadrantsMap` | mapa `slug → atributos` | atributos visuais e de posicionamento de cada quadrante: `colour`, `txtColour` e `position` |
+| `quadrantsMap` | mapa `slug → atributos` | atributos visuais e de posicionamento de cada quadrante: `colour` e `txtColour`, as duas cores da regra 2; `position` e `order`, os dois números da regra 4; e `description`, texto presente no dado e nunca exibido, porque toda descrição que o leitor vê vem dos dicionários de tradução |
 
 O mesmo documento de configuração carrega chaves de outros domínios (geometria do gráfico,
 conteúdo da página inicial, formato de data, atalho de edição); elas não pertencem à taxonomia.
@@ -254,6 +264,9 @@ eixo, e aceitam marcação HTML simples, sanitizada antes de ser exibida.
   de nomes tem página própria mas não é desenhado; presente só no mapa de atributos, é desenhado
   mas não tem página nem listagem.
 - **Posições de 1 a 4, sem repetição.** Duas posições iguais sobrepõem rótulos no mesmo canto.
+- **Slots de tela contíguos de 1 a N, sem repetição.** Os valores de `order` cobrem a sequência
+  inteira de 1 até a quantidade de quadrantes declarados, sem buraco. Um slot repetido desenha
+  dois quadrantes sobre a mesma fatia do círculo e deixa outra fatia sem dono.
 - **Uma entrada de geometria por anel**, com raios crescentes. Menos entradas do que anéis
   impede o gráfico de renderizar.
 - **O slug é segmento de URL**: sem barra, sem espaço e sem acento. A barra separa quadrante e

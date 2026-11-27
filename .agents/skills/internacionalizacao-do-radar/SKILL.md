@@ -21,7 +21,7 @@ metadata:
 > idiomas — exige atualizar esta skill junto com o código. Refatoração técnica que preserva o
 > padrão — renomear um componente, mover um arquivo, extrair uma função, atualizar a versão de
 > `i18next` ou de `moment` — não exige tocar aqui. Divergência entre o que esta skill prescreve e
-> o que o código faz, sem decisão registrada em `.agents/context/discovery-answers.md` ou em ADR,
+> o que o código faz, sem decisão registrada em `.agents/context/discovery-answers.md`,
 > deve ser escalada para a pessoa responsável, não resolvida por inferência.
 
 ## Visão geral do padrão e do problema que resolve

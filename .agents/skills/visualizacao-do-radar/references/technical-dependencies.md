@@ -21,11 +21,11 @@ Cada item diz o que é e o que deixa de funcionar no domínio se ele faltar.
   unitário que verifique se o ponto cai no setor correto; sem ele a quebra só aparece em produção,
   porque nada valida a geometria em tempo de build.
 
-- **Registro em ADR das decisões de arquitetura do desenho** — a reescrita da geometria para
-  suportar de um a seis quadrantes, em andamento nas branches `feat/us1-geometry-foundation` e
-  `feat/us2-rings-arcs-geometry`, é decisão de arquitetura e exige o desenho idêntico ao atual
-  quando houver quatro quadrantes. Sem o registro, a restrição de equivalência visual se perde e
-  a próxima alteração da geometria não tem contra o que ser conferida.
+- **Documentação técnica do componente do gráfico** — a geometria única dos setores, o slot de
+  tela de cada quadrante e a trava de retrocompatibilidade em `src/components/Chart/` guardam a
+  exigência de o desenho permanecer idêntico ao publicado quando houver quatro quadrantes, junto
+  com o porquê das escolhas. Sem ela, a restrição de equivalência visual se perde e a próxima
+  alteração da geometria não tem contra o que ser conferida.
 
 - **`d3`** — fornece as escalas lineares que convertem unidade de coordenada em pixel e o gerador
   de arcos que desenha a faixa de cada anel dentro do setor de cada quadrante. Sem ela, toda a

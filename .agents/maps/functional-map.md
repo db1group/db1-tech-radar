@@ -149,10 +149,10 @@ ponto ao passar o mouse).
   página do item; sem ela o gráfico vira ilustração sem navegação.
 - Convenção de testes (skill `estrategia-de-testes`) — a geometria é a lógica mais densa do
   projeto e pede teste unitário que verifique se o ponto cai no setor correto.
-- Registro em ADR (skill `registros-de-decisao-arquitetural`) — a reescrita da geometria para
-  suportar de um a seis quadrantes, em andamento nas branches
-  `feat/us1-geometry-foundation` e `feat/us2-rings-arcs-geometry`, é decisão de arquitetura e
-  exige o desenho idêntico ao atual quando houver quatro quadrantes.
+- Componente do gráfico (skill `componente-grafico-do-radar`) — a reescrita da geometria para
+  suportar de um a seis quadrantes, em andamento nas branches `feat/us1-shared-geometry` e
+  seguintes, registra ali o porquê da escolha e exige o desenho idêntico ao atual quando houver
+  quatro quadrantes.
 
 **Nível de confiança.** `high` — geometria e regras legíveis diretamente no componente.
 
@@ -305,8 +305,8 @@ pipeline Markdown usava — `marked`, `highlight.js`, `front-matter`, `walk`, `f
 - `PUBLIC_URL` igual a `/` — alimenta o `basename` do roteador e o caminho dos `fetch`;
   divergência entre o valor de build e o caminho real de publicação quebra o carregamento
   dos três JSON.
-- Registro em ADR (skill `registros-de-decisao-arquitetural`) — mudança na forma de publicar
-  é decisão de arquitetura e fica registrada.
+- Registro da decisão de arquitetura — mudança na forma de publicar é decisão de arquitetura e
+  fica registrada, com o porquê, na skill do domínio.
 
 **Nível de confiança.** `medium` — o fluxo e a presença do CloudFront estão confirmados, mas
 a configuração do bucket e da distribuição vive fora do repositório e não é verificável aqui.

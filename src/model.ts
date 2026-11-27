@@ -61,6 +61,7 @@ export type QuadrantConfig = {
   colour: string;
   txtColour: string;
   position: number;
+  order?: number;
   description: string;
 };
 
